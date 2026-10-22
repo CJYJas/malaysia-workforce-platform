@@ -4,7 +4,7 @@
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-green.svg)](https://fastapi.tiangolo.com)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Tests Passing](https://img.shields.io/badge/tests-84%20passed-brightgreen.svg)]()
+[![Tests Passing](https://img.shields.io/badge/tests-105%20passed-brightgreen.svg)]()
 [![RunPod Cloud](https://img.shields.io/badge/RunPod-Serverless%20vLLM-purple.svg)](https://runpod.io)
 
 ---
@@ -22,20 +22,29 @@ The **Malaysia Tech Workforce Intelligence Platform** bridges Malaysian tech job
 
 ## 3. Key Features
 
-1. **Empirical Tech Role Matching**:
+1. **Empirical Tech Role Matching & Flexible Normalization**:
    * Requirements are derived dynamically from Malaysian job market data, not static hand-written checklists.
-   * Transparent scoring: $70\%$ skill coverage + $30\%$ TF-IDF cosine similarity with binding disclaimers.
+   * **Multi-Tier Role Normalization**: Flexible title resolution (`RoleNormalizer`) allows abbreviations, shorthands, and aliases (e.g. `data en` $\to$ `Data Engineer`, `swe` $\to$ `Software Engineer / Developer`, `cloud en` $\to$ `Cloud Engineer`) across all query endpoints.
+   * Transparent scoring: $70\%$ skill coverage + $30\%$ TF-IDF cosine similarity with binding legal disclaimers.
+
 2. **Direct PDF Resume Extraction**:
    * Upload PDF resumes directly to extract canonical skills, retain verbatim matching evidence, and analyze gaps for any target role (`POST /roles/match-resume`, `POST /skills/gap-resume`).
-3. **Skill Gap Remediation with Verified Coursera Courses**:
-   * Maps missing skills directly to authentic courses from 8,370 real Coursera records with verified URLs. Zero fabricated prices or ratings.
-4. **Dense & Hybrid Embeddings**:
-   * Dense semantic retrieval and Reciprocal Rank Fusion ($k=60$) between lexical and semantic search.
-   * 15x retrieval acceleration (**6.9 ms** vs 104 ms lexical).
-5. **Dual-Layer AI Safety & Factual Guardrails**:
+
+3. **Hybrid Semantic Course Retrieval**:
+   * Upgraded hybrid retrieval combining deterministic keyword search (TF-IDF) and dense vector semantic search (`sentence-transformers/all-MiniLM-L6-v2` via CPU-optimized ONNX runtime).
+   * **Reciprocal Rank Fusion (RRF $k=60$)**: Merges retrieval signals with transparent match labeling (`both`, `keyword`, `semantic`).
+   * **Wording Invariance**: Queries with different terminology (e.g. *"data pipeline orchestration"*) successfully retrieve relevant courses (Apache Airflow / ETL pipelines).
+   * **57.1% Reduction in False-Negative Gaps**: Rescues valid Coursera courses for skills like `Golang`, `Vue.js`, `dbt`, and `Redis` while cleanly returning `[]` for uncataloged skills (`FastAPI`, `Next.js`, `Tailwind CSS`) without hallucinating irrelevant courses.
+   * Precomputed 8,370 course embeddings matrix with SHA-256 dataset hash validation.
+
+4. **Dual-Layer AI Safety & Factual Guardrails**:
    * **PII Redaction**: Strips Malaysian NRIC numbers, emails, phone numbers, and street addresses before any LLM processing.
    * **Post-Extraction Verification Gate**: Automatically discards hallucinated skills or non-canonical tokens.
    * **Factual Fidelity Guard**: Rejects ungrounded numbers, fabricated courses, or banned marketing buzzwords (`"emerging"`, `"fast-growing"`), cleanly reverting to deterministic templates.
+
+5. **RunPod Cloud & Local CPU Flexibility**:
+   * CPU-only FastAPI service communicates asynchronously with RunPod Serverless vLLM worker (`Qwen/Qwen2.5-7B-Instruct`).
+   * Operates completely offline on CPU when running locally without a GPU.
 
 ---
 
@@ -62,11 +71,32 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
+### Environment Configuration (`.env`)
+Populate your [`.env`](file:///c:/Documents/Jasmine/XMUM_Hack/.env) file:
+```bash
+# Server & Network
+PORT=8000
+HOST=0.0.0.0
+CORS_ORIGINS=["https://replit.com","http://localhost:3000","http://localhost:5173"]
+
+# Active Course Retriever: hybrid (default) | dense | tfidf
+RETRIEVER=hybrid
+
+# RunPod Authentication & Endpoint
+RUNPOD_API_KEY=your_runpod_api_key
+RUNPOD_ENDPOINT_ID=your_serverless_endpoint_id
+RUNPOD_TIMEOUT_SECONDS=60.0
+LLM_MODEL_NAME=Qwen/Qwen2.5-7B-Instruct
+
+# Hugging Face Access Token (Optional: prevents download rate limits)
+HF_TOKEN=your_huggingface_token
+```
+
 ### Run Automated Tests
 ```bash
 python -m pytest tests -v
 ```
-*Current test suite: **84 passed in ~25 seconds (100% pass rate)**.*
+*Current test suite: **105 passed in ~48 seconds (100% pass rate across 15 test suites)**.*
 
 ### Start Local Development Server
 ```bash
@@ -78,7 +108,20 @@ Interactive API documentation is accessible at:
 
 ---
 
-## 5. RunPod Cloud Deployment
+## 5. Empirical Benchmark & Audit Tools
+
+Audit search and retrieval performance with empirical data from 63,852 postings:
+```bash
+python scripts/audit_search.py
+```
+Outputs empirical metrics and side-by-side retrieval benchmarks directly to `data/review/search_audit_results.json`:
+* **Zero-Course Gaps**: Dropped from **35.0%** (TF-IDF baseline) to **15.0%** (Hybrid Semantic) — a **57.1% reduction**.
+* **Role Title Normalization**: Evaluated on Malaysian postings, resolving non-standard titles and abbreviations.
+* **Skill Vocabulary Expansion**: Top uncataloged tech terms discovered from employer descriptions (e.g. SAP, ERP, Jira, Redis, Git).
+
+---
+
+## 6. RunPod Cloud Deployment
 
 The production deployment runs the FastAPI application on a low-cost CPU container pod, communicating with a serverless GPU worker running `Qwen2.5-7B-Instruct`:
 
@@ -90,32 +133,33 @@ For step-by-step setup, Network Volume configuration, and curl smoke tests, see 
 
 ---
 
-## 6. AI / ML Usage & Safety Transparency
+## 7. AI / ML Usage & Safety Transparency
 
 In compliance with hackathon and production ethics guidelines, the platform transparently discloses the exact role of AI models:
 
 | Component | Technology | Role & Safeguards |
 | :--- | :--- | :--- |
 | **Market Intelligence** | Deterministic Python / Pandas | Strictly frequency-based statistics. Never uses AI to invent trends or demand. |
+| **Role Normalization** | Multi-Tier `RoleNormalizer` | Normalizes queries (`data en` $\to$ `Data Engineer`) via canonical, alias, token-prefix, regex, and fuzzy matching. |
 | **Role Matching** | Deterministic Weighted Vector Math | $70\%$ coverage + $30\%$ TF-IDF cosine. Binding legal disclaimer (*not a hiring probability*). |
-| **Course Retrieval** | `all-MiniLM-L6-v2` & RRF Fusion | Dense and hybrid course matching. Defaults to deterministic TF-IDF until human labels are applied. |
+| **Course Retrieval** | `all-MiniLM-L6-v2` (ONNX CPU) & RRF | Hybrid dense + lexical ranking. Annotated with `match_signal` (`both`, `keyword`, `semantic`). Returns `[]` for non-existent courses (zero hallucinations). |
 | **Profile Parsing** | Open-Weight `Qwen2.5-7B-Instruct` | Extracts skills from text. **Post-extraction verification gate** discards any non-canonical or hallucinated skill. Falls back to dictionary extractor on error. |
 | **Executive Narration** | Open-Weight `Qwen2.5-7B-Instruct` | Summarizes deterministic facts. **Factual fidelity checker** verifies all numbers and entities exist in input data; rejects subjective buzzwords. |
 
 ---
 
-## 7. Performance Benchmarks
+## 8. Performance Benchmarks
 
 Directly measured empirical benchmarks (zero fabricated numbers) recorded in **[docs/BENCHMARKS.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/BENCHMARKS.md)**:
 
 * **Memory Usage**: ~185 MB steady-state RAM (runs comfortably on minimal CPU instances).
 * **Dense Course Retrieval Latency**: **6.9 ms** (vs 104 ms TF-IDF baseline).
 * **Profile Verification Latency**: **1.48 ms** end-to-end.
-* **Test Coverage**: 84 automated unit and integration tests passing.
+* **Test Coverage**: **105 automated unit and integration tests passing (100% pass rate)**.
 
 ---
 
-## 8. Documentation Index
+## 9. Documentation Index
 
 * **[document/API.md](file:///c:/Documents/Jasmine/XMUM_Hack/document/API.md)**: Comprehensive REST API endpoint reference with curl examples.
 * **[docs/RUNPOD.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/RUNPOD.md)**: RunPod deployment guide, vLLM worker setup, and pre-demo checklist.

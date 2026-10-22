@@ -1,0 +1,724 @@
+{
+  "timestamp_utc": "2026-10-22T05:37:43Z",
+  "role_matching_audit": {
+    "total_postings": 63852,
+    "assigned_counts": {
+      "Other / Unassigned": 62299,
+      "Software Engineer / Developer": 1326,
+      "Data Engineer": 104,
+      "Data Scientist": 56,
+      "Cloud Engineer": 35,
+      "Machine Learning / AI Engineer": 32
+    },
+    "unassigned_count": 62299,
+    "unassigned_share_pct": 97.57,
+    "assigned_target_count": 1553,
+    "assigned_target_share_pct": 2.43,
+    "tech_unassigned_identified_count": 1296,
+    "sample_unmatched_titles_20": [
+      "Data Analyst - Asset Management, SPX Express",
+      "Penetration Tester",
+      "Software QA Analyst (Manual Testing)",
+      "IT QA Analyst",
+      "Data Analyst (E-Commerce)",
+      "Front End Engineer",
+      "Angular Developer",
+      "IT EXECUTIVE - CYBER SECURITY",
+      "Network Engineer CCNA",
+      "Full Stack - Tech Lead",
+      "Full Stack Intern Developer",
+      "System / Network Engineer",
+      "DevOps Engineer",
+      "System Developer (Dot Net) - Well known Entertainment Centre - Based in KL",
+      "System Engineer",
+      "DATA ANALYST",
+      "Senior IT Engineer, Cloud & Infra (Based in Shah Alam)",
+      "Data Analyst Internship",
+      "Database Administrators (DBAs)",
+      "Network Engineer (Sunway Digital Wave)"
+    ]
+  },
+  "skill_vocabulary_audit": {
+    "canonical_vocabulary_size": 91,
+    "total_known_aliases": 202,
+    "uncataloged_candidates_tested_count": 58,
+    "postings_with_uncataloged_terms_count": 5869,
+    "share_postings_with_uncataloged_terms_pct": 9.19,
+    "top_50_uncataloged_terms": [
+      {
+        "rank": 1,
+        "term": "SAP",
+        "postings_count": 2414,
+        "posting_share_pct": 3.78,
+        "sample_context": "d check and post invoices into the SAP system promptly and accurately. To"
+      },
+      {
+        "rank": 2,
+        "term": "ERP",
+        "postings_count": 1903,
+        "posting_share_pct": 2.98,
+        "sample_context": "T/Individual Tax) Other Accounting ERP experience & proficient in MS Offi"
+      },
+      {
+        "rank": 3,
+        "term": "Jira",
+        "postings_count": 319,
+        "posting_share_pct": 0.5,
+        "sample_context": "e related issues and questions Use Jira to create, log and report logs Inv"
+      },
+      {
+        "rank": 4,
+        "term": "Spring",
+        "postings_count": 279,
+        "posting_share_pct": 0.44,
+        "sample_context": "quired Skill(s) \u2022Backend (Java 8+, Spring Framework, Hibernate, Microservice"
+      },
+      {
+        "rank": 5,
+        "term": "Salesforce",
+        "postings_count": 253,
+        "posting_share_pct": 0.4,
+        "sample_context": "y to use Excel, Power BI, Tableau, SalesForce and SharePoint to create dashboard"
+      },
+      {
+        "rank": 6,
+        "term": "PowerShell",
+        "postings_count": 173,
+        "posting_share_pct": 0.27,
+        "sample_context": "mental scripting such as Python or PowerShell, HTML, JavaScript, jQuey, AJAX, .N"
+      },
+      {
+        "rank": 7,
+        "term": "Bootstrap",
+        "postings_count": 164,
+        "posting_share_pct": 0.26,
+        "sample_context": "ravel, MySQL, HTML5, CSS3, jQuery, Bootstrap Preferably Senior Executive specia"
+      },
+      {
+        "rank": 8,
+        "term": "WordPress",
+        "postings_count": 153,
+        "posting_share_pct": 0.24,
+        "sample_context": "ciency in HTML, CSS. Familiar with WordPress, WooCommerce or equivalent content"
+      },
+      {
+        "rank": 9,
+        "term": "Flutter",
+        "postings_count": 131,
+        "posting_share_pct": 0.21,
+        "sample_context": "op mobile application on Xamarin / Flutter Opportunity to develop on Microsof"
+      },
+      {
+        "rank": 10,
+        "term": "Confluence",
+        "postings_count": 117,
+        "posting_share_pct": 0.18,
+        "sample_context": "perience with Test delivery tools (Confluence, Mantis & TestRail etc) preferred."
+      },
+      {
+        "rank": 11,
+        "term": "Selenium",
+        "postings_count": 115,
+        "posting_share_pct": 0.18,
+        "sample_context": "experience in working with Appium/Selenium/Puppeteer/automation of web browse"
+      },
+      {
+        "rank": 12,
+        "term": "Figma",
+        "postings_count": 108,
+        "posting_share_pct": 0.17,
+        "sample_context": "t in UX design tools e.g., Sketch, Figma, Adobe XD or similar software. Pro"
+      },
+      {
+        "rank": 13,
+        "term": "Hibernate",
+        "postings_count": 86,
+        "posting_share_pct": 0.13,
+        "sample_context": "ackend (Java 8+, Spring Framework, Hibernate, Microservices, REST Services, Haz"
+      },
+      {
+        "rank": 14,
+        "term": "ISO 27001",
+        "postings_count": 86,
+        "posting_share_pct": 0.13,
+        "sample_context": "ted to information security (e.g., ISO 27001, NIST, GDPR). Security Awareness:"
+      },
+      {
+        "rank": 15,
+        "term": "Azure DevOps",
+        "postings_count": 77,
+        "posting_share_pct": 0.12,
+        "sample_context": "the business requirements. Agile/ Azure DevOps projects experience is required. I"
+      },
+      {
+        "rank": 16,
+        "term": "Nginx",
+        "postings_count": 71,
+        "posting_share_pct": 0.11,
+        "sample_context": "scripting languages Experience of Nginx configuration such as reverse prox"
+      },
+      {
+        "rank": 17,
+        "term": "Kanban",
+        "postings_count": 70,
+        "posting_share_pct": 0.11,
+        "sample_context": "elopment Agile methodology (Scrum, Kanban) Cloud platforms (e.g. AWS, Azure)"
+      },
+      {
+        "rank": 18,
+        "term": "Bitbucket",
+        "postings_count": 64,
+        "posting_share_pct": 0.1,
+        "sample_context": "nd static analysis, namely GitHub, Bitbucket, JFrog Artifactory, Docker, Jenkin"
+      },
+      {
+        "rank": 19,
+        "term": "Penetration Testing",
+        "postings_count": 59,
+        "posting_share_pct": 0.09,
+        "sample_context": "re in place. Conduct comprehensive penetration testing (internal, external, white box, an"
+      },
+      {
+        "rank": 20,
+        "term": "Postman",
+        "postings_count": 58,
+        "posting_share_pct": 0.09,
+        "sample_context": "ld be advantages: Bootstrap JQuery Postman Cloud technologies (Azure, AWS or"
+      },
+      {
+        "rank": 21,
+        "term": "Scrum Master",
+        "postings_count": 58,
+        "posting_share_pct": 0.09,
+        "sample_context": "roject management education, PMP / Scrum Master, a plus, but not required. Mandari"
+      },
+      {
+        "rank": 22,
+        "term": "Splunk",
+        "postings_count": 53,
+        "posting_share_pct": 0.08,
+        "sample_context": "tools: such as wireshark, tcpdump, Splunk, etc Familiar with the principles"
+      },
+      {
+        "rank": 23,
+        "term": "Shopify",
+        "postings_count": 52,
+        "posting_share_pct": 0.08,
+        "sample_context": "form integrates with Amazon, eBay, Shopify and WooCommerce. Day-to-day, you w"
+      },
+      {
+        "rank": 24,
+        "term": "Entity Framework",
+        "postings_count": 46,
+        "posting_share_pct": 0.07,
+        "sample_context": "ills below: asp.net, MVC, C# MSSQL Entity framework, angular 6 HTML &CSS, JS & TS Adde"
+      },
+      {
+        "rank": 25,
+        "term": "Helm",
+        "postings_count": 45,
+        "posting_share_pct": 0.07,
+        "sample_context": "antage : Kubernetes Docker Jenkins Helm Chart Git Code and image scanning"
+      },
+      {
+        "rank": 26,
+        "term": "Grafana",
+        "postings_count": 41,
+        "posting_share_pct": 0.06,
+        "sample_context": "anding on monitoring tools such as Grafana and Prometheus - Willing to learn"
+      },
+      {
+        "rank": 27,
+        "term": "Looker",
+        "postings_count": 33,
+        "posting_share_pct": 0.05,
+        "sample_context": "dashboards using Python, PowerBI, Looker Studio. Familiarity with Agile dev"
+      },
+      {
+        "rank": 28,
+        "term": "Databricks",
+        "postings_count": 33,
+        "posting_share_pct": 0.05,
+        "sample_context": "houses/data lakes (e.g. Snowflake, Databricks, etc.). Effective communication to"
+      },
+      {
+        "rank": 29,
+        "term": "Prometheus",
+        "postings_count": 32,
+        "posting_share_pct": 0.05,
+        "sample_context": "nitoring tools such as Grafana and Prometheus - Willing to learn new technology"
+      },
+      {
+        "rank": 30,
+        "term": "RabbitMQ",
+        "postings_count": 30,
+        "posting_share_pct": 0.05,
+        "sample_context": "miliar with message queues such as rabbitmq and kafaka. \u2060Familiar with commonl"
+      },
+      {
+        "rank": 31,
+        "term": "Qlik",
+        "postings_count": 30,
+        "posting_share_pct": 0.05,
+        "sample_context": "ronments. Preferable experience in Qlik development and with knowledge/ski"
+      },
+      {
+        "rank": 32,
+        "term": "OWASP",
+        "postings_count": 29,
+        "posting_share_pct": 0.05,
+        "sample_context": "ternal and internal, utilising the OWASP and OSSTMM open standards and othe"
+      },
+      {
+        "rank": 33,
+        "term": "Jest",
+        "postings_count": 25,
+        "posting_share_pct": 0.04,
+        "sample_context": "ks e.g. Node.js, Express, GraphQL, Jest, React Testing Library, Apollo. Us"
+      },
+      {
+        "rank": 34,
+        "term": "Redux",
+        "postings_count": 23,
+        "posting_share_pct": 0.04,
+        "sample_context": "eact.js workflows (such as Flux or Redux). Familiarity with newer specifica"
+      },
+      {
+        "rank": 35,
+        "term": "Alteryx",
+        "postings_count": 16,
+        "posting_share_pct": 0.03,
+        "sample_context": "pret data (such as Power BI, ERPs, Alteryx, etc.) Maintain and update KPI das"
+      },
+      {
+        "rank": 36,
+        "term": "Swagger",
+        "postings_count": 13,
+        "posting_share_pct": 0.02,
+        "sample_context": "SQL Preferable Skillset: \uf0b7 Java \uf0b7 Swagger \uf0b7 JSON \uf0b7 WebLogic \uf0b7 Banking experi"
+      },
+      {
+        "rank": 37,
+        "term": "Cypress",
+        "postings_count": 13,
+        "posting_share_pct": 0.02,
+        "sample_context": "ntain automated test scripts using Cypress or similar automation tools. Ident"
+      },
+      {
+        "rank": 38,
+        "term": "Tailwind CSS",
+        "postings_count": 12,
+        "posting_share_pct": 0.02,
+        "sample_context": "ry, Express, etc), CSS, Bootstrap, Tailwind CSS, Animation, Flutter, etc. Provide"
+      },
+      {
+        "rank": 39,
+        "term": "ActiveMQ",
+        "postings_count": 7,
+        "posting_share_pct": 0.01,
+        "sample_context": "s or other middleware technologies ActiveMQ We regret that only shortlisted ca"
+      },
+      {
+        "rank": 40,
+        "term": "Cloudflare",
+        "postings_count": 7,
+        "posting_share_pct": 0.01,
+        "sample_context": "2, S3, Route 53, IMA, Cloud Front, Cloudflare, Akama, etc Excellent communicatio"
+      },
+      {
+        "rank": 41,
+        "term": "WebSockets",
+        "postings_count": 6,
+        "posting_share_pct": 0.01,
+        "sample_context": "d understanding and proficiency in WebSockets/Socket.IO/GIT/REST APIs. Knowledge"
+      },
+      {
+        "rank": 42,
+        "term": "CircleCI",
+        "postings_count": 6,
+        "posting_share_pct": 0.01,
+        "sample_context": "pipeline tools, such as Jenkins or CircleCI, and the ability to optimize and a"
+      },
+      {
+        "rank": 43,
+        "term": "gRPC",
+        "postings_count": 5,
+        "posting_share_pct": 0.01,
+        "sample_context": "ations. You will contribute to our gRPC API initiative which aim to replac"
+      },
+      {
+        "rank": 44,
+        "term": "OpenAPI",
+        "postings_count": 5,
+        "posting_share_pct": 0.01,
+        "sample_context": ". Familiar with API documentation: OpenAPI, Swagger. Familiar with back-end d"
+      },
+      {
+        "rank": 45,
+        "term": "ArgoCD",
+        "postings_count": 4,
+        "posting_share_pct": 0.01,
+        "sample_context": "Grafana, Terraform, Gitlab CI/CD, ArgoCD and Ansible. Nice to have - Unders"
+      },
+      {
+        "rank": 46,
+        "term": "LangChain",
+        "postings_count": 4,
+        "posting_share_pct": 0.01,
+        "sample_context": "e Experiences in AI tools, such as Langchain, PyTorch, HuggingFace Proficiency"
+      },
+      {
+        "rank": 47,
+        "term": "Metabase",
+        "postings_count": 4,
+        "posting_share_pct": 0.01,
+        "sample_context": "I tools such as Power BI, Tableau, Metabase, or Google Data Studio. Proficient"
+      },
+      {
+        "rank": 48,
+        "term": "Pytest",
+        "postings_count": 4,
+        "posting_share_pct": 0.01,
+        "sample_context": "e.g. Cypress, Appium, Selenium or Pytest, etc. Passionate in writing testin"
+      },
+      {
+        "rank": 49,
+        "term": "Playwright",
+        "postings_count": 4,
+        "posting_share_pct": 0.01,
+        "sample_context": "or web applications using Cypress, Playwright, or similar Experience developing"
+      },
+      {
+        "rank": 50,
+        "term": "Apache Web Server",
+        "postings_count": 4,
+        "posting_share_pct": 0.01,
+        "sample_context": "wing: \u2022 Eclipse, SVN, Ant, Tomcat, Apache Web Server, Maven, JUnit 5. Hands on knowledg"
+      }
+    ]
+  },
+  "course_retrieval_audit": {
+    "total_skill_gaps_tested": 20,
+    "tfidf_baseline": {
+      "zero_courses_gaps_count": 7,
+      "zero_courses_gaps_share_pct": 35.0,
+      "zero_courses_gaps_list": [
+        "FastAPI",
+        "Next.js",
+        "Tailwind CSS",
+        "Redis",
+        "Golang",
+        "Vue.js",
+        "dbt"
+      ],
+      "gap_detailed_results": {
+        "FastAPI": {
+          "courses_found": 0,
+          "top_course_title": null,
+          "top_course_url": null,
+          "top_course_score": null
+        },
+        "Next.js": {
+          "courses_found": 0,
+          "top_course_title": null,
+          "top_course_url": null,
+          "top_course_score": null
+        },
+        "Kubernetes": {
+          "courses_found": 3,
+          "top_course_title": "Exam Prep CKA: Certified Kubernetes Administrator",
+          "top_course_url": "https://www.coursera.org/learn/exam-prep-cka-certified-kubernetes-administrator",
+          "top_course_score": 19.0
+        },
+        "PostgreSQL": {
+          "courses_found": 3,
+          "top_course_title": "Using Ruby on Rails with Cloud SQL for PostgreSQL on Cloud Run",
+          "top_course_url": "https://www.coursera.org/projects/googlecloud-using-ruby-on-rails-with-cloud-sql-for-postgresql-on-cloud-run-ql3pm",
+          "top_course_score": 13.0
+        },
+        "Tailwind CSS": {
+          "courses_found": 0,
+          "top_course_title": null,
+          "top_course_url": null,
+          "top_course_score": null
+        },
+        "Terraform": {
+          "courses_found": 3,
+          "top_course_title": "Exam Prep: HashiCorp Certified Terraform Associate (003)",
+          "top_course_url": "https://www.coursera.org/learn/exam-prep-hashicorp-certified-terraform-associate-003",
+          "top_course_score": 12.0
+        },
+        "PyTorch": {
+          "courses_found": 3,
+          "top_course_title": "Introduction to Machine Learning",
+          "top_course_url": "https://www.coursera.org/learn/machine-learning-duke",
+          "top_course_score": 8.94
+        },
+        "Tableau": {
+          "courses_found": 3,
+          "top_course_title": "Tableau Business Intelligence Analyst  Professional Certificate",
+          "top_course_url": "https://www.coursera.org/professional-certificates/tableau-business-intelligence-analyst",
+          "top_course_score": 18.94
+        },
+        "Power BI": {
+          "courses_found": 3,
+          "top_course_title": "Microsoft Power BI Data Analyst Professional Certificate",
+          "top_course_url": "https://www.coursera.org/professional-certificates/microsoft-power-bi-data-analyst",
+          "top_course_score": 19.92
+        },
+        "Redis": {
+          "courses_found": 0,
+          "top_course_title": null,
+          "top_course_url": null,
+          "top_course_score": null
+        },
+        "GraphQL": {
+          "courses_found": 2,
+          "top_course_title": "Application Development using Microservices and Serverless",
+          "top_course_url": "https://www.coursera.org/learn/applications-development-microservices-serverless-openshift",
+          "top_course_score": 1.92
+        },
+        "CI/CD": {
+          "courses_found": 3,
+          "top_course_title": "Continuous Integration and Continuous Delivery (CI/CD)",
+          "top_course_url": "https://www.coursera.org/learn/continuous-integration-and-continuous-delivery-ci-cd",
+          "top_course_score": 14.96
+        },
+        "Golang": {
+          "courses_found": 0,
+          "top_course_title": null,
+          "top_course_url": null,
+          "top_course_score": null
+        },
+        "Rust": {
+          "courses_found": 3,
+          "top_course_title": "Rust Programming Specialization",
+          "top_course_url": "https://www.coursera.org/specializations/rust-programming",
+          "top_course_score": 18.84
+        },
+        "Vue.js": {
+          "courses_found": 0,
+          "top_course_title": null,
+          "top_course_url": null,
+          "top_course_score": null
+        },
+        "Snowflake": {
+          "courses_found": 3,
+          "top_course_title": "Snowflake for Beginners: Make your First Snowsight Dashboard",
+          "top_course_url": "https://www.coursera.org/projects/snowflake-for-beginners-make-your-first-snowsight-dashboard",
+          "top_course_score": 13.92
+        },
+        "dbt": {
+          "courses_found": 0,
+          "top_course_title": null,
+          "top_course_url": null,
+          "top_course_score": null
+        },
+        "Airflow": {
+          "courses_found": 3,
+          "top_course_title": "ETL and Data Pipelines with Shell, Airflow and Kafka",
+          "top_course_url": "https://www.coursera.org/learn/etl-and-data-pipelines-shell-airflow-kafka",
+          "top_course_score": 14.9
+        },
+        "Kafka": {
+          "courses_found": 3,
+          "top_course_title": "ETL and Data Pipelines with Shell, Airflow and Kafka",
+          "top_course_url": "https://www.coursera.org/learn/etl-and-data-pipelines-shell-airflow-kafka",
+          "top_course_score": 14.9
+        },
+        "Scikit-Learn": {
+          "courses_found": 3,
+          "top_course_title": "Machine Learning with Python",
+          "top_course_url": "https://www.coursera.org/learn/machine-learning-with-python",
+          "top_course_score": 8.94
+        }
+      }
+    },
+    "hybrid_semantic": {
+      "zero_courses_gaps_count": 3,
+      "zero_courses_gaps_share_pct": 15.0,
+      "zero_courses_gaps_list": [
+        "FastAPI",
+        "Next.js",
+        "Tailwind CSS"
+      ],
+      "gap_detailed_results": {
+        "FastAPI": {
+          "courses_found": 0,
+          "top_course_title": null,
+          "top_course_url": null,
+          "top_course_score": null,
+          "match_signal": null,
+          "why_recommended": null
+        },
+        "Next.js": {
+          "courses_found": 0,
+          "top_course_title": null,
+          "top_course_url": null,
+          "top_course_score": null,
+          "match_signal": null,
+          "why_recommended": null
+        },
+        "Kubernetes": {
+          "courses_found": 3,
+          "top_course_title": "Exam Prep CKA: Certified Kubernetes Administrator",
+          "top_course_url": "https://www.coursera.org/learn/exam-prep-cka-certified-kubernetes-administrator",
+          "top_course_score": 6.22,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'Kubernetes' (RRF score: 6.22)."
+        },
+        "PostgreSQL": {
+          "courses_found": 3,
+          "top_course_title": "Introduction to Relational Databases (RDBMS)",
+          "top_course_url": "https://www.coursera.org/learn/introduction-to-relational-databases",
+          "top_course_score": 9.23,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'PostgreSQL' (RRF score: 9.23)."
+        },
+        "Tailwind CSS": {
+          "courses_found": 0,
+          "top_course_title": null,
+          "top_course_url": null,
+          "top_course_score": null,
+          "match_signal": null,
+          "why_recommended": null
+        },
+        "Terraform": {
+          "courses_found": 3,
+          "top_course_title": "Exam Prep: HashiCorp Certified Terraform Associate (003)",
+          "top_course_url": "https://www.coursera.org/learn/exam-prep-hashicorp-certified-terraform-associate-003",
+          "top_course_score": 3.2,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'Terraform' (RRF score: 3.2)."
+        },
+        "PyTorch": {
+          "courses_found": 3,
+          "top_course_title": "Introduction to Machine Learning",
+          "top_course_url": "https://www.coursera.org/learn/machine-learning-duke",
+          "top_course_score": 9.53,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'PyTorch' (RRF score: 9.53)."
+        },
+        "Tableau": {
+          "courses_found": 3,
+          "top_course_title": "Data Visualization with Tableau Specialization",
+          "top_course_url": "https://www.coursera.org/specializations/data-visualization",
+          "top_course_score": 6.25,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'Tableau' (RRF score: 6.25)."
+        },
+        "Power BI": {
+          "courses_found": 3,
+          "top_course_title": "Deploy and Maintain Power BI Assets and Capstone project",
+          "top_course_url": "https://www.coursera.org/learn/deploy-and-maintain-power-bi-assets-and-capstone-project",
+          "top_course_score": 5.84,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'Power BI' (RRF score: 5.84)."
+        },
+        "Redis": {
+          "courses_found": 3,
+          "top_course_title": "Los bits y bytes de las redes inform\u00e1ticas",
+          "top_course_url": "https://www.coursera.org/learn/redes-informaticas",
+          "top_course_score": 4.55,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'Redis' (RRF score: 4.55)."
+        },
+        "GraphQL": {
+          "courses_found": 3,
+          "top_course_title": "Graph Search, Shortest Paths, and Data Structures",
+          "top_course_url": "https://www.coursera.org/learn/algorithms-graphs-data-structures",
+          "top_course_score": 4.41,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'GraphQL' (RRF score: 4.41)."
+        },
+        "CI/CD": {
+          "courses_found": 3,
+          "top_course_title": "IBM Applied DevOps Engineering Professional Certificate",
+          "top_course_url": "https://www.coursera.org/professional-certificates/ibm-applied-devops-engineering",
+          "top_course_score": 6.3,
+          "match_signal": "keyword",
+          "why_recommended": "Direct keyword curriculum match addressing skill gap 'CI/CD' (RRF score: 6.3)."
+        },
+        "Golang": {
+          "courses_found": 3,
+          "top_course_title": "Getting Started with Go",
+          "top_course_url": "https://www.coursera.org/learn/golang-getting-started",
+          "top_course_score": 4.84,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'Golang' (RRF score: 4.84)."
+        },
+        "Rust": {
+          "courses_found": 3,
+          "top_course_title": "Rust Programming Specialization",
+          "top_course_url": "https://www.coursera.org/specializations/rust-programming",
+          "top_course_score": 6.4,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'Rust' (RRF score: 6.4)."
+        },
+        "Vue.js": {
+          "courses_found": 2,
+          "top_course_title": "Web Technologies and Security Specialization",
+          "top_course_url": "https://www.coursera.org/specializations/codio-web-tech-security",
+          "top_course_score": 3.25,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'Vue.js' (RRF score: 3.25)."
+        },
+        "Snowflake": {
+          "courses_found": 3,
+          "top_course_title": "Spark, Hadoop, and Snowflake for Data Engineering",
+          "top_course_url": "https://www.coursera.org/learn/spark-hadoop-snowflake-data-engineering",
+          "top_course_score": 4.41,
+          "match_signal": "keyword",
+          "why_recommended": "Direct keyword curriculum match addressing skill gap 'Snowflake' (RRF score: 4.41)."
+        },
+        "dbt": {
+          "courses_found": 3,
+          "top_course_title": "Databases for Data Scientists Specialization",
+          "top_course_url": "https://www.coursera.org/specializations/databases-for-data-scientists",
+          "top_course_score": 4.76,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'dbt' (RRF score: 4.76)."
+        },
+        "Airflow": {
+          "courses_found": 3,
+          "top_course_title": "ETL and Data Pipelines with Shell, Airflow and Kafka",
+          "top_course_url": "https://www.coursera.org/learn/etl-and-data-pipelines-shell-airflow-kafka",
+          "top_course_score": 6.4,
+          "match_signal": "keyword",
+          "why_recommended": "Direct keyword curriculum match addressing skill gap 'Airflow' (RRF score: 6.4)."
+        },
+        "Kafka": {
+          "courses_found": 3,
+          "top_course_title": "ETL and Data Pipelines with Shell, Airflow and Kafka",
+          "top_course_url": "https://www.coursera.org/learn/etl-and-data-pipelines-shell-airflow-kafka",
+          "top_course_score": 12.8,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'Kafka' (RRF score: 12.8)."
+        },
+        "Scikit-Learn": {
+          "courses_found": 3,
+          "top_course_title": "Machine Learning with Python",
+          "top_course_url": "https://www.coursera.org/learn/machine-learning-with-python",
+          "top_course_score": 9.68,
+          "match_signal": "both",
+          "why_recommended": "Dual confirmation: Direct keyword curriculum match + Semantic similarity for 'Scikit-Learn' (RRF score: 9.68)."
+        }
+      }
+    },
+    "comparative_delta": {
+      "rescued_skills_count": 4,
+      "rescued_skills_list": [
+        "Redis",
+        "Golang",
+        "Vue.js",
+        "dbt"
+      ],
+      "zero_gap_reduction_pct": 57.14,
+      "verified_uncataloged_empty_gaps": [
+        "FastAPI",
+        "Next.js",
+        "Tailwind CSS"
+      ]
+    }
+  }
+}

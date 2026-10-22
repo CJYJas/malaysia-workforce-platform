@@ -15,6 +15,7 @@ from typing import Dict, List, Optional, Any, Tuple
 import pandas as pd
 from app.config import Config, load_config
 from app.skill_normalizer import SkillNormalizer
+from app.role_normalizer import RoleNormalizer
 
 logger = logging.getLogger(__name__)
 
@@ -42,10 +43,12 @@ class TrendAnalyzer:
         self,
         df: Optional[pd.DataFrame] = None,
         config: Optional[Config] = None,
-        normalizer: Optional[SkillNormalizer] = None
+        normalizer: Optional[SkillNormalizer] = None,
+        role_normalizer: Optional[RoleNormalizer] = None
     ):
         self.config = config or load_config()
         self.normalizer = normalizer or SkillNormalizer(config=self.config)
+        self.role_normalizer = role_normalizer or RoleNormalizer(config=self.config)
         self.df: Optional[pd.DataFrame] = None
         self.is_data_loaded: bool = False
 
@@ -82,15 +85,17 @@ class TrendAnalyzer:
 
     def validate_role(self, role: str) -> str:
         """
-        Validates and matches a role string case-insensitively.
+        Validates and matches a role string flexibly (supporting abbreviations,
+        aliases, prefix matches, and case-insensitivity, e.g. 'data en' -> 'Data Engineer').
         Returns the exact canonical role title.
         """
         supported = self.get_supported_roles()
-        role_clean = role.strip().lower()
+        if not role or not isinstance(role, str):
+            raise RoleNotFoundError(str(role), supported)
 
-        for canonical in supported:
-            if canonical.lower() == role_clean:
-                return canonical
+        canonical = self.role_normalizer.normalize_role(role)
+        if canonical and canonical in supported:
+            return canonical
 
         raise RoleNotFoundError(role, supported)
 

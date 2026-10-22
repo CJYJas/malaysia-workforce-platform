@@ -111,6 +111,10 @@ class Config:
         return dict(self._raw.get("roles", {}).get("rules", {}))
 
     @property
+    def role_aliases(self) -> Dict[str, str]:
+        return dict(self._raw.get("roles", {}).get("aliases", {}))
+
+    @property
     def dataset_licenses(self) -> Dict[str, str]:
         return dict(self._raw.get("dataset_licenses", {}))
 
@@ -198,6 +202,38 @@ class Config:
             "ordering_disclaimer",
             "Learning order is determined by a prerequisite heuristic and does not represent an accredited educational sequence."
         ))
+
+    @property
+    def semantic_retrieval_enabled(self) -> bool:
+        env_val = os.environ.get("SEMANTIC_RETRIEVAL_ENABLED")
+        if env_val is not None:
+            return env_val.strip().lower() in ("true", "1", "yes")
+        return bool(self._raw.get("course_recommendations", {}).get("semantic_enabled", True))
+
+    @property
+    def course_retriever_type(self) -> str:
+        env_val = os.environ.get("RETRIEVER")
+        if env_val:
+            return env_val.strip().lower()
+        return str(self._raw.get("course_recommendations", {}).get("retriever", "hybrid")).lower()
+
+    @property
+    def embedding_model_name(self) -> str:
+        return str(self._raw.get("course_recommendations", {}).get(
+            "embedding_model", "sentence-transformers/all-MiniLM-L6-v2"
+        ))
+
+    @property
+    def min_semantic_similarity(self) -> float:
+        return float(self._raw.get("course_recommendations", {}).get("min_semantic_similarity", 0.25))
+
+    @property
+    def rrf_k(self) -> int:
+        return int(self._raw.get("course_recommendations", {}).get("rrf_k", 60))
+
+    @property
+    def retrieval_candidate_pool_size(self) -> int:
+        return int(self._raw.get("course_recommendations", {}).get("candidate_pool_size", 20))
 
     @property
     def sdg_mappings_config(self) -> Dict[str, Any]:

@@ -4,7 +4,8 @@
   "records_count": 8370,
   "embedding_dimensions": 384,
   "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+  "backend": "onnx",
   "is_sentence_transformers": false,
-  "created_at_utc": "2026-10-22T03:36:28Z",
-  "generation_time_seconds": 1.12
+  "created_at_utc": "2026-10-22T05:29:09Z",
+  "generation_time_seconds": 423.82
 }

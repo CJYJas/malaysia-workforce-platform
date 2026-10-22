@@ -6,10 +6,14 @@ Generates:
 """
 
 import os
+import sys
 import json
 import hashlib
 import time
 import logging
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import numpy as np
 import pandas as pd
 
@@ -69,6 +73,7 @@ def main():
         "records_count": len(retriever.records),
         "embedding_dimensions": embeddings.shape[1],
         "model_name": embedder.model_name,
+        "backend": embedder.backend,
         "is_sentence_transformers": embedder.model is not None,
         "created_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "generation_time_seconds": round(elapsed, 2)

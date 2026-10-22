@@ -61,25 +61,88 @@ roles:
   # Target role matching regex patterns (case-insensitive word boundary rules)
   rules:
     "Software Engineer / Developer":
-      pattern: '(?i)\b(software\s+(?:engineer|developer)|full\s*stack\s+(?:engineer|developer)|backend\s+(?:engineer|developer)|frontend\s+(?:engineer|developer)|web\s+developer|mobile\s+developer|(?:ios|android)\s+developer|application\s+developer|software\s+programmer|java\s+developer|\.net\s+developer|python\s+developer)\b'
+      pattern: '(?i)\b(software\s+(?:engineer|developer|dev|en|eng)|full\s*stack\s+(?:engineer|developer|dev)|backend\s+(?:engineer|developer|dev)|frontend\s+(?:engineer|developer|dev)|web\s+developer|mobile\s+developer|(?:ios|android)\s+developer|application\s+developer|software\s+programmer|java\s+developer|\.net\s+developer|python\s+developer)\b'
       priority: 1
       description: "Builds and maintains software applications, services, and digital products across web, mobile, and backend platforms."
     "Data Engineer":
-      pattern: '(?i)\b(data\s+engineer|big\s*data\s+engineer|data\s+pipeline\s+engineer|etl\s+developer|database\s+engineer)\b'
+      pattern: '(?i)\b(data\s+(?:engineer|en|eng)|big\s*data\s+engineer|data\s+pipeline\s+engineer|etl\s+developer|database\s+engineer)\b'
       priority: 2
       description: "Designs, constructs, and maintains scalable data architectures, ingestion pipelines, and ETL/ELT workflows."
     "Data Scientist":
-      pattern: '(?i)\b(data\s+scientist|data\s+science\s+specialist|lead\s+data\s+scientist|senior\s+data\s+scientist)\b'
+      pattern: '(?i)\b(data\s+(?:scientist|sc|sci)|data\s+science\s+specialist|lead\s+data\s+scientist|senior\s+data\s+scientist)\b'
       priority: 3
       description: "Applies statistical modeling, machine learning algorithms, and exploratory data analysis to derive business insights."
     "Machine Learning / AI Engineer":
-      pattern: '(?i)\b(machine\s+learning\s+(?:engineer|specialist)|ml\s+engineer|ai\s+(?:engineer|specialist)|artificial\s+intelligence\s+engineer|deep\s+learning\s+engineer|nlp\s+engineer|computer\s+vision\s+engineer)\b'
+      pattern: '(?i)\b(machine\s+learning\s+(?:engineer|specialist|en|eng)|ml\s+(?:engineer|en|eng)|ai\s+(?:engineer|specialist|en|eng)|artificial\s+intelligence\s+engineer|deep\s+learning\s+engineer|nlp\s+engineer|computer\s+vision\s+engineer)\b'
       priority: 4
       description: "Develops, trains, evaluates, and deploys machine learning models and artificial intelligence systems into production."
     "Cloud Engineer":
-      pattern: '(?i)\b(cloud\s+(?:engineer|architect|infrastructure\s+engineer|systems\s+engineer|operations\s+engineer)|aws\s+engineer|azure\s+engineer|gcp\s+engineer)\b'
+      pattern: '(?i)\b(cloud\s+(?:engineer|en|eng|architect|infrastructure\s+engineer|systems\s+engineer|operations\s+engineer)|aws\s+engineer|azure\s+engineer|gcp\s+engineer)\b'
       priority: 5
       description: "Architects, provisions, automates, and operates cloud infrastructure, container platforms, and DevOps environments."
+
+  # Flexible role aliases and shorthand representations
+  aliases:
+    # Data Engineer
+    "data en": "Data Engineer"
+    "data eng": "Data Engineer"
+    "data engineer": "Data Engineer"
+    "data engineering": "Data Engineer"
+    "de": "Data Engineer"
+    "big data engineer": "Data Engineer"
+    "data pipeline engineer": "Data Engineer"
+    "etl developer": "Data Engineer"
+    "database engineer": "Data Engineer"
+
+    # Software Engineer / Developer
+    "software en": "Software Engineer / Developer"
+    "software eng": "Software Engineer / Developer"
+    "software developer": "Software Engineer / Developer"
+    "software engineer": "Software Engineer / Developer"
+    "software dev": "Software Engineer / Developer"
+    "se": "Software Engineer / Developer"
+    "swe": "Software Engineer / Developer"
+    "dev": "Software Engineer / Developer"
+    "developer": "Software Engineer / Developer"
+    "full stack": "Software Engineer / Developer"
+    "full stack developer": "Software Engineer / Developer"
+    "full stack engineer": "Software Engineer / Developer"
+    "backend developer": "Software Engineer / Developer"
+    "backend engineer": "Software Engineer / Developer"
+    "frontend developer": "Software Engineer / Developer"
+    "frontend engineer": "Software Engineer / Developer"
+    "web developer": "Software Engineer / Developer"
+    "mobile developer": "Software Engineer / Developer"
+
+    # Data Scientist
+    "data sc": "Data Scientist"
+    "data sci": "Data Scientist"
+    "data scientist": "Data Scientist"
+    "data science": "Data Scientist"
+    "ds": "Data Scientist"
+
+    # Machine Learning / AI Engineer
+    "ml en": "Machine Learning / AI Engineer"
+    "ml eng": "Machine Learning / AI Engineer"
+    "ml engineer": "Machine Learning / AI Engineer"
+    "ai engineer": "Machine Learning / AI Engineer"
+    "ai en": "Machine Learning / AI Engineer"
+    "machine learning": "Machine Learning / AI Engineer"
+    "machine learning engineer": "Machine Learning / AI Engineer"
+    "ml": "Machine Learning / AI Engineer"
+    "ai": "Machine Learning / AI Engineer"
+
+    # Cloud Engineer
+    "cloud en": "Cloud Engineer"
+    "cloud eng": "Cloud Engineer"
+    "cloud engineer": "Cloud Engineer"
+    "cloud architect": "Cloud Engineer"
+    "cloud": "Cloud Engineer"
+    "aws engineer": "Cloud Engineer"
+    "azure engineer": "Cloud Engineer"
+    "gcp engineer": "Cloud Engineer"
+    "devops engineer": "Cloud Engineer"
+    "devops": "Cloud Engineer"
 
 dataset_licenses:
   jobstreet_all_job_dataset.csv: "Not specified / Web scraped from JobStreet Malaysia"
@@ -112,6 +175,12 @@ course_recommendations:
   max_total_courses: 10
   ordering_label: "heuristic, not a validated sequence"
   ordering_disclaimer: "Learning order is determined by a prerequisite heuristic and does not represent an accredited educational sequence."
+  semantic_enabled: true
+  retriever: "hybrid"  # "hybrid", "dense", "tfidf"
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+  min_semantic_similarity: 0.35
+  rrf_k: 60
+  candidate_pool_size: 20
 
 sdg_mappings:
   disclaimer: "Documented mapping based on UN SDG targets; does not represent measured social impact."
