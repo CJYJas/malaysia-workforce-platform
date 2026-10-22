@@ -1,0 +1,807 @@
+{
+  "coursera": {
+    "dataset_name": "elvinrustam/coursera-dataset",
+    "filename": "CourseraDataset-Clean.csv",
+    "file_size_bytes": 5406326,
+    "file_size_mb": 5.16,
+    "total_rows": 8370,
+    "total_columns": 13,
+    "columns": {
+      "Course Title": {
+        "dtype": "object",
+        "raw_null_count": 0,
+        "raw_null_pct": 0.0,
+        "placeholder_not_specified": 0,
+        "effective_missing_count": 0,
+        "effective_missing_pct": 0.0
+      },
+      "Rating": {
+        "dtype": "float64",
+        "raw_null_count": 0,
+        "raw_null_pct": 0.0,
+        "placeholder_not_specified": 0,
+        "effective_missing_count": 0,
+        "effective_missing_pct": 0.0
+      },
+      "Level": {
+        "dtype": "object",
+        "raw_null_count": 0,
+        "raw_null_pct": 0.0,
+        "placeholder_not_specified": 1106,
+        "effective_missing_count": 1106,
+        "effective_missing_pct": 13.21
+      },
+      "Schedule": {
+        "dtype": "object",
+        "raw_null_count": 0,
+        "raw_null_pct": 0.0,
+        "placeholder_not_specified": 0,
+        "effective_missing_count": 0,
+        "effective_missing_pct": 0.0
+      },
+      "What you will learn": {
+        "dtype": "object",
+        "raw_null_count": 0,
+        "raw_null_pct": 0.0,
+        "placeholder_not_specified": 4110,
+        "effective_missing_count": 4110,
+        "effective_missing_pct": 49.1
+      },
+      "Skill gain": {
+        "dtype": "object",
+        "raw_null_count": 0,
+        "raw_null_pct": 0.0,
+        "placeholder_not_specified": 2699,
+        "effective_missing_count": 2699,
+        "effective_missing_pct": 32.25
+      },
+      "Modules": {
+        "dtype": "object",
+        "raw_null_count": 33,
+        "raw_null_pct": 0.39,
+        "placeholder_not_specified": 0,
+        "effective_missing_count": 33,
+        "effective_missing_pct": 0.39
+      },
+      "Instructor": {
+        "dtype": "object",
+        "raw_null_count": 88,
+        "raw_null_pct": 1.05,
+        "placeholder_not_specified": 0,
+        "effective_missing_count": 88,
+        "effective_missing_pct": 1.05
+      },
+      "Offered By": {
+        "dtype": "object",
+        "raw_null_count": 0,
+        "raw_null_pct": 0.0,
+        "placeholder_not_specified": 0,
+        "effective_missing_count": 0,
+        "effective_missing_pct": 0.0
+      },
+      "Keyword": {
+        "dtype": "object",
+        "raw_null_count": 0,
+        "raw_null_pct": 0.0,
+        "placeholder_not_specified": 0,
+        "effective_missing_count": 0,
+        "effective_missing_pct": 0.0
+      },
+      "Course Url": {
+        "dtype": "object",
+        "raw_null_count": 0,
+        "raw_null_pct": 0.0,
+        "placeholder_not_specified": 0,
+        "effective_missing_count": 0,
+        "effective_missing_pct": 0.0
+      },
+      "Duration to complete (Approx.)": {
+        "dtype": "float64",
+        "raw_null_count": 0,
+        "raw_null_pct": 0.0,
+        "placeholder_not_specified": 0,
+        "effective_missing_count": 0,
+        "effective_missing_pct": 0.0
+      },
+      "Number of Review": {
+        "dtype": "int64",
+        "raw_null_count": 0,
+        "raw_null_pct": 0.0,
+        "placeholder_not_specified": 0,
+        "effective_missing_count": 0,
+        "effective_missing_pct": 0.0
+      }
+    },
+    "declared_license": "NOT VERIFIED - needs manual check on Kaggle",
+    "provenance": "Scraped from Coursera catalog across 10 top-level topic keywords.",
+    "field_availability": {
+      "course_name": true,
+      "course_name_col": "Course Title",
+      "description": true,
+      "description_cols": [
+        "What you will learn",
+        "Modules"
+      ],
+      "skills": true,
+      "skills_col": "Skill gain",
+      "difficulty": true,
+      "difficulty_col": "Level",
+      "rating": true,
+      "rating_col": "Rating",
+      "duration": true,
+      "duration_col": "Duration to complete (Approx.)",
+      "url": true,
+      "url_col": "Course Url",
+      "price": false,
+      "price_col": null
+    },
+    "url_usability": {
+      "total_urls": 8370,
+      "valid_http_pct": 100.0,
+      "coursera_domain_pct": 100.0,
+      "sample_urls": [
+        "https://www.coursera.org/learn/fashion-design",
+        "https://www.coursera.org/learn/modern-american-poetry",
+        "https://www.coursera.org/learn/pixel-art-video-games"
+      ]
+    },
+    "duplicates": {
+      "exact_row_dups": 0,
+      "title_dups": 2289,
+      "url_dups": 2277,
+      "unique_urls": 6093
+    },
+    "samples": [
+      {
+        "Course Title": "Fashion as Design",
+        "Rating": "4.8",
+        "Level": "Beginner level",
+        "Schedule": "Flexible schedule",
+        "What you will learn": "Not specified",
+        "Skill gain": "Art History, Art, History, Creativity",
+        "Modules": "Introduction, Heroes, Silhouettes, Coutures, Lifecycle, Modesty, Expression",
+        "Instructor": "Anna Burckhardt, Paola Antonelli, Michelle Millar Fisher, Stephanie Kramer",
+        "Offered By": "The Museum of Modern Art",
+        "Keyword": "Arts and Humanities",
+        "Course Url": "https://www.coursera.org/learn/fashion-design",
+        "Duration to complete (Approx.)": "20.0",
+        "Number of Review": "2813"
+      },
+      {
+        "Course Title": "Modern American Poetry",
+        "Rating": "4.4",
+        "Level": "Beginner level",
+        "Schedule": "Flexible schedule",
+        "What you will learn": "Not specified",
+        "Skill gain": "Not specified",
+        "Modules": "Orientation, Module 1, Module 2, Module 3, Module 4",
+        "Instructor": "Cary Nelson",
+        "Offered By": "University of Illinois at Urbana-Champaign",
+        "Keyword": "Arts and Humanities",
+        "Course Url": "https://www.coursera.org/learn/modern-american-poetry",
+        "Duration to complete (Approx.)": "34.0",
+        "Number of Review": "100"
+      },
+      {
+        "Course Title": "Pixel Art for Video Games",
+        "Rating": "4.5",
+        "Level": "Beginner level",
+        "Schedule": "Flexible schedule",
+        "What you will learn": "Not specified",
+        "Skill gain": "Not specified",
+        "Modules": "Week 1: Introduction to Pixel Art, Week 2: Pixel Art Environments, Week 3: Pixel Art Characters, Wee...",
+        "Instructor": "Andrew Dennis, Ricardo Guimaraes",
+        "Offered By": "Michigan State University",
+        "Keyword": "Arts and Humanities",
+        "Course Url": "https://www.coursera.org/learn/pixel-art-video-games",
+        "Duration to complete (Approx.)": "9.0",
+        "Number of Review": "227"
+      }
+    ]
+  },
+  "jobstreet": {
+    "dataset_name": "azraimohamad/jobstreet-all-job-dataset",
+    "filename": "jobstreet_all_job_dataset.csv",
+    "file_size_bytes": 166519093,
+    "file_size_mb": 158.8,
+    "total_rows": 69024,
+    "total_columns": 11,
+    "columns": {
+      "job_id": {
+        "dtype": "float64",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "job_title": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "company": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "descriptions": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "location": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "category": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "subcategory": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "role": {
+        "dtype": "object",
+        "null_count": 2252,
+        "null_pct": 3.26
+      },
+      "type": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "salary": {
+        "dtype": "object",
+        "null_count": 37430,
+        "null_pct": 54.23
+      },
+      "listingDate": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      }
+    },
+    "declared_license": "NOT VERIFIED - needs manual check on Kaggle",
+    "provenance": "Scraped from JobStreet Malaysia (jobstreet.com.my) via JobStreet Search API / HTML listings.",
+    "key_columns": {
+      "title": "job_title",
+      "description": "descriptions",
+      "location": "location",
+      "date": "listingDate",
+      "skills": null
+    },
+    "duplicates": {
+      "exact_row_dups": 0,
+      "exact_row_dups_pct": 0.0,
+      "job_id_dups": 0,
+      "job_id_dups_pct": 0.0,
+      "content_dups_title_company_loc": 4988,
+      "content_dups_pct": 7.23
+    },
+    "malaysia_coverage": {
+      "narrow_rule": "Case-insensitive regex matching Malaysian states, federal territories, and tech hubs in 'location'",
+      "narrow_malaysia_rows": 46822,
+      "narrow_malaysia_pct": 67.83,
+      "comprehensive_rule": "Exclusion of ambiguous 'Others' (all other 350+ location strings are verified gazetted Malaysian administrative districts/towns)",
+      "comprehensive_malaysia_rows": 68826,
+      "comprehensive_malaysia_pct": 99.71,
+      "ambiguous_others_rows": 198,
+      "ambiguous_others_pct": 0.29,
+      "top_locations": {
+        "Kuala Lumpur": 15390,
+        "Petaling": 9746,
+        "Johor Bahru District": 4480,
+        "Selangor": 2842,
+        "Shah Alam/Subang": 2621,
+        "Kuala Lumpur City Centre": 2112,
+        "Penang": 1930,
+        "Penang Island": 1885,
+        "Seberang Perai": 1796,
+        "Klang District": 1427,
+        "Hulu Langat": 958,
+        "Kajang/Bangi/Serdang": 937,
+        "Sepang": 865,
+        "Kota Kinabalu District": 805,
+        "Kinta District": 776
+      }
+    },
+    "date_analysis": {
+      "column": "listingDate",
+      "valid_dates_count": 69024,
+      "valid_dates_pct": 100.0,
+      "min_date": "2023-03-23 19:44:00+00:00",
+      "max_date": "2025-05-08 11:12:22+00:00",
+      "date_range_days": 776,
+      "monthly_distribution": {
+        "2023-03": 38,
+        "2023-04": 68,
+        "2023-05": 132,
+        "2023-06": 114,
+        "2023-07": 140,
+        "2023-08": 113,
+        "2023-09": 341,
+        "2023-10": 244,
+        "2023-11": 217,
+        "2023-12": 310,
+        "2024-01": 529,
+        "2024-02": 6633,
+        "2024-03": 22131,
+        "2024-04": 10598,
+        "2024-05": 10801,
+        "2024-06": 6897,
+        "2025-03": 4046,
+        "2025-04": 5270,
+        "2025-05": 402
+      },
+      "reliability_assessment": "Timestamps are ISO-8601 posting dates. However, distribution is highly bimodal/clustered (57,060 rows, 82.7%, in Feb-June 2024; 9,718 rows in Mar-May 2025; sporadic 2023). Not a uniform multi-year longitudinal series; long-term trend lines will reflect batch collection artifacts rather than true macroeconomic shifts."
+    },
+    "target_roles": {
+      "all_rows": {
+        "Software Engineer / Developer": 1490,
+        "Data Engineer": 118,
+        "Data Scientist": 63,
+        "Machine Learning / AI Engineer": 35,
+        "Cloud Engineer": 35
+      },
+      "malaysia_narrow_rows": {
+        "Software Engineer / Developer": 1104,
+        "Data Engineer": 88,
+        "Data Scientist": 47,
+        "Machine Learning / AI Engineer": 28,
+        "Cloud Engineer": 27
+      },
+      "malaysia_comprehensive_rows": {
+        "Software Engineer / Developer": 1486,
+        "Data Engineer": 118,
+        "Data Scientist": 63,
+        "Machine Learning / AI Engineer": 35,
+        "Cloud Engineer": 35
+      }
+    },
+    "samples": [
+      {
+        "job_id": "74630583.0",
+        "job_title": "Procurement Executive (Contract)",
+        "company": "Coca-Cola Bottlers (Malaysia) Sdn Bhd",
+        "descriptions": "Position Purpose\nManage aspects of procurement including supplier management, contract management, a...",
+        "location": "Negeri Sembilan",
+        "category": "Manufacturing, Transport & Logistics",
+        "subcategory": "Purchasing, Procurement & Inventory",
+        "role": "procurement-executive",
+        "type": "Contract/Temp",
+        "salary": "nan",
+        "listingDate": "2024-03-21T05:58:35Z"
+      },
+      {
+        "job_id": "74660602.0",
+        "job_title": "Account Executive/ Assistant",
+        "company": "Acoustic & Lighting System Sdn Bhd",
+        "descriptions": "We are looking for a Account Executive/ Assistant to join our team.\nWhat you will get when you join ...",
+        "location": "Petaling",
+        "category": "Accounting",
+        "subcategory": "Bookkeeping & Small Practice Accounting",
+        "role": "executive-assistant",
+        "type": "Full time",
+        "salary": "RM\u00a02,800 \u2013 RM\u00a03,200 per month",
+        "listingDate": "2024-03-22T06:52:57Z"
+      },
+      {
+        "job_id": "74655679.0",
+        "job_title": "Data Analyst - Asset Management, SPX Express",
+        "company": "Shopee Mobile Malaysia Sdn Bhd",
+        "descriptions": "Performs detailed data analysis on existing spendings / consumptions of SPX and identifies cost savi...",
+        "location": "Klang District",
+        "category": "Manufacturing, Transport & Logistics",
+        "subcategory": "Analysis & Reporting",
+        "role": "asset-management-analyst",
+        "type": "Full time",
+        "salary": "nan",
+        "listingDate": "2024-03-22T04:22:43Z"
+      }
+    ]
+  },
+  "techsalerator": {
+    "dataset_name": "techsalerator/job-posting-data-in-malaysia",
+    "filename": "Job Posting.csv",
+    "file_size_bytes": 39361744,
+    "file_size_mb": 37.54,
+    "total_rows": 9919,
+    "total_columns": 21,
+    "columns": {
+      "Website Domain": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "Ticker": {
+        "dtype": "float64",
+        "null_count": 9919,
+        "null_pct": 100.0
+      },
+      "Job Opening Title": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "Job Opening URL": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "First Seen At": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "Last Seen At": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "Location": {
+        "dtype": "object",
+        "null_count": 411,
+        "null_pct": 4.14
+      },
+      "Location Data": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "Category": {
+        "dtype": "object",
+        "null_count": 1669,
+        "null_pct": 16.83
+      },
+      "Seniority": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "Keywords": {
+        "dtype": "object",
+        "null_count": 2273,
+        "null_pct": 22.92
+      },
+      "Description": {
+        "dtype": "object",
+        "null_count": 112,
+        "null_pct": 1.13
+      },
+      "Salary": {
+        "dtype": "object",
+        "null_count": 9343,
+        "null_pct": 94.19
+      },
+      "Salary Data": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "Contract Types": {
+        "dtype": "object",
+        "null_count": 1915,
+        "null_pct": 19.31
+      },
+      "Job Status": {
+        "dtype": "object",
+        "null_count": 3147,
+        "null_pct": 31.73
+      },
+      "Job Language": {
+        "dtype": "object",
+        "null_count": 2,
+        "null_pct": 0.02
+      },
+      "Job Last Processed At": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "O*NET Code": {
+        "dtype": "object",
+        "null_count": 3,
+        "null_pct": 0.03
+      },
+      "O*NET Family": {
+        "dtype": "object",
+        "null_count": 3,
+        "null_pct": 0.03
+      },
+      "O*NET Occupation Name": {
+        "dtype": "object",
+        "null_count": 3,
+        "null_pct": 0.03
+      }
+    },
+    "declared_license": "NOT VERIFIED - needs manual check on Kaggle",
+    "provenance": "Aggregated by Techsalerator from corporate ATS / career portals (e.g. SmartRecruiters, Workday).",
+    "key_columns": {
+      "title": "Job Opening Title",
+      "description": "Description",
+      "location": "Location",
+      "date": "First Seen At",
+      "skills": "Keywords"
+    },
+    "duplicates": {
+      "exact_row_dups": 0,
+      "exact_row_dups_pct": 0.0,
+      "url_dups": 14,
+      "url_dups_pct": 0.14,
+      "content_dups": 2155,
+      "content_dups_pct": 21.73
+    },
+    "malaysia_coverage": {
+      "rule": "Case-insensitive regex matching Malaysian states, tech hubs, or 'Malaysia' in 'Location' or 'Location Data'",
+      "malaysia_rows": 123,
+      "malaysia_pct": 1.24,
+      "unknown_ambiguous_rows": 9796,
+      "unknown_ambiguous_pct": 98.76,
+      "top_locations": {
+        "Bangalore, India": 642,
+        "nan": 411,
+        "India": 320,
+        "Chennai, India": 305,
+        "Indiana, United States": 239,
+        "Germany": 229,
+        "Campinas, Brazil": 212,
+        "Cz_stochowa, Poland": 207,
+        "Hanau, Germany": 197,
+        "Budapest, Hungary": 196,
+        "Mexico": 168,
+        "Portugal": 154,
+        "Shanghai, China": 139,
+        "Brazil": 138,
+        "Bursa, Turkey": 127
+      }
+    },
+    "date_analysis": {
+      "column": "First Seen At",
+      "valid_dates_count": 9919,
+      "valid_dates_pct": 100.0,
+      "min_date": "2024-03-04 15:41:37+00:00",
+      "max_date": "2024-09-04 07:03:16+00:00",
+      "date_range_days": 183,
+      "monthly_distribution": {
+        "2024-03": 1159,
+        "2024-04": 1989,
+        "2024-05": 1994,
+        "2024-06": 1519,
+        "2024-07": 1696,
+        "2024-08": 1402,
+        "2024-09": 160
+      },
+      "reliability_assessment": "First Seen At represents web crawler observation dates between Feb 2024 and Sep 2024. Not reliable as Malaysian market dates because 98.76% of rows are outside Malaysia."
+    },
+    "target_roles": {
+      "all_rows": {
+        "Software Engineer / Developer": 254,
+        "Data Engineer": 41,
+        "Data Scientist": 14,
+        "Machine Learning / AI Engineer": 9,
+        "Cloud Engineer": 3
+      },
+      "malaysia_rows": {
+        "Software Engineer / Developer": 1,
+        "Data Engineer": 0,
+        "Data Scientist": 0,
+        "Machine Learning / AI Engineer": 0,
+        "Cloud Engineer": 0
+      }
+    },
+    "samples": [
+      {
+        "Website Domain": "bosch.com",
+        "Ticker": "nan",
+        "Job Opening Title": "IN_RBAI_Assistant Manager_Dispensing Process Engineer_IN",
+        "Job Opening URL": "https://jobs.smartrecruiters.com/BoschGroup/743999990638322-in-rbai-assistant-manager-dispensing-pro...",
+        "First Seen At": "2024-05-29T19:59:45Z",
+        "Last Seen At": "2024-07-31T14:35:44Z",
+        "Location": "Indiana, United States",
+        "Location Data": "[{\"city\":null,\"state\":\"Indiana\",\"zip_code\":null,\"country\":\"United States\",\"region\":null,\"continent\":...",
+        "Category": "engineering, management, support",
+        "Seniority": "manager",
+        "Keywords": "nan",
+        "Description": "**IN\\_RBAI\\_Assistant Manager\\_Dispensing Process Engineer\\_IN**\n\n\n* Full-time\n* Legal Entity: Bosch...",
+        "Salary": "nan",
+        "Salary Data": "{\"salary_low\":null,\"salary_high\":null,\"salary_currency\":null,\"salary_low_usd\":null,\"salary_high_usd\"...",
+        "Contract Types": "full time",
+        "Job Status": "closed",
+        "Job Language": "en",
+        "Job Last Processed At": "2024-08-02T14:47:55Z",
+        "O*NET Code": "43-1011.00",
+        "O*NET Family": "Office and Administrative Support",
+        "O*NET Occupation Name": "First-Line Supervisors of Office and Administrative Support Workers"
+      },
+      {
+        "Website Domain": "bosch.com",
+        "Ticker": "nan",
+        "Job Opening Title": "Professional Internship: Hardware Development (M/F/Div.)",
+        "Job Opening URL": "https://jobs.smartrecruiters.com/BoschGroup/743999984913104-professional-internship-hardware-develop...",
+        "First Seen At": "2024-05-04T01:00:12Z",
+        "Last Seen At": "2024-07-29T17:46:16Z",
+        "Location": "Delaware, United States",
+        "Location Data": "[{\"city\":null,\"state\":\"Delaware\",\"zip_code\":null,\"country\":\"United States\",\"region\":null,\"continent\"...",
+        "Category": "internship",
+        "Seniority": "non_manager",
+        "Keywords": "Scrum",
+        "Description": "**Professional Internship: Hardware Development (M/F/Div.)**\n\n\n* Full-time\n* Legal Entity: Home Comf...",
+        "Salary": "nan",
+        "Salary Data": "{\"salary_low\":null,\"salary_high\":null,\"salary_currency\":null,\"salary_low_usd\":null,\"salary_high_usd\"...",
+        "Contract Types": "full time, internship, m/f",
+        "Job Status": "closed",
+        "Job Language": "en",
+        "Job Last Processed At": "2024-07-31T17:50:07Z",
+        "O*NET Code": "17-2061.00",
+        "O*NET Family": "Architecture and Engineering",
+        "O*NET Occupation Name": "Computer Hardware Engineers"
+      },
+      {
+        "Website Domain": "zf.com",
+        "Ticker": "nan",
+        "Job Opening Title": "Process Expert BMS Production",
+        "Job Opening URL": "https://jobs.zf.com/job/Shenyang-Process-Expert-BMS-Production-LN-110141/1038753201",
+        "First Seen At": "2024-04-19T06:47:24Z",
+        "Last Seen At": "2024-05-16T02:25:08Z",
+        "Location": "China",
+        "Location Data": "[{\"city\":null,\"state\":null,\"zip_code\":null,\"country\":\"China\",\"region\":null,\"continent\":null,\"fuzzy_m...",
+        "Category": "engineering",
+        "Seniority": "non_manager",
+        "Keywords": "SAP",
+        "Description": "ZF is a global technology company supplying systems for passenger cars, commercial vehicles and indu...",
+        "Salary": "nan",
+        "Salary Data": "{\"salary_low\":null,\"salary_high\":null,\"salary_currency\":null,\"salary_low_usd\":null,\"salary_high_usd\"...",
+        "Contract Types": "nan",
+        "Job Status": "closed",
+        "Job Language": "en",
+        "Job Last Processed At": "2024-05-18T02:32:04Z",
+        "O*NET Code": "51-9141.00",
+        "O*NET Family": "Production",
+        "O*NET Occupation Name": "Semiconductor Processing Technicians"
+      }
+    ]
+  },
+  "meerawks": {
+    "dataset_name": "meerawks/it-skills-from-jobs",
+    "filename": "JobsDatasetProcessed.csv",
+    "file_size_bytes": 13403035,
+    "file_size_mb": 12.78,
+    "total_rows": 3000,
+    "total_columns": 9,
+    "columns": {
+      "ID": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "Query": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "Job Title": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "Description": {
+        "dtype": "object",
+        "null_count": 0,
+        "null_pct": 0.0
+      },
+      "IT Skills": {
+        "dtype": "object",
+        "null_count": 10,
+        "null_pct": 0.33
+      },
+      "Soft Skills": {
+        "dtype": "object",
+        "null_count": 22,
+        "null_pct": 0.73
+      },
+      "Education": {
+        "dtype": "object",
+        "null_count": 1437,
+        "null_pct": 47.9
+      },
+      "Experience": {
+        "dtype": "object",
+        "null_count": 1428,
+        "null_pct": 47.6
+      },
+      "Token Usage": {
+        "dtype": "int64",
+        "null_count": 0,
+        "null_pct": 0.0
+      }
+    },
+    "declared_license": "NOT VERIFIED - needs manual check on Kaggle",
+    "provenance": "Processed dataset of 25 job queries with LLM-extracted IT Skills, Soft Skills, Education, Experience.",
+    "key_columns": {
+      "title": "Job Title",
+      "description": "Description",
+      "location": null,
+      "date": null,
+      "skills": "IT Skills"
+    },
+    "duplicates": {
+      "exact_row_dups": 0,
+      "exact_row_dups_pct": 0.0,
+      "id_dups": 0,
+      "id_dups_pct": 0.0,
+      "content_dups": 35,
+      "content_dups_pct": 1.17
+    },
+    "malaysia_coverage": {
+      "rule": "Keyword search for Malaysia in 'Description' (no location column present)",
+      "malaysia_rows": 1,
+      "malaysia_pct": 0.03,
+      "unknown_ambiguous_rows": 2999,
+      "unknown_ambiguous_pct": 99.97,
+      "notes": "Dataset completely lacks location and date columns. The 1 matched description is a US job posting referencing international offices."
+    },
+    "date_analysis": {
+      "column": null,
+      "valid_dates_count": 0,
+      "valid_dates_pct": 0.0,
+      "min_date": null,
+      "max_date": null,
+      "date_range_days": 0,
+      "monthly_distribution": {},
+      "reliability_assessment": "No date column present."
+    },
+    "target_roles": {
+      "all_rows": {
+        "Software Engineer / Developer": 179,
+        "Data Engineer": 117,
+        "Data Scientist": 123,
+        "Machine Learning / AI Engineer": 25,
+        "Cloud Engineer": 16
+      },
+      "malaysia_rows": {
+        "Software Engineer / Developer": 0,
+        "Data Engineer": 0,
+        "Data Scientist": 0,
+        "Machine Learning / AI Engineer": 0,
+        "Cloud Engineer": 0
+      }
+    },
+    "samples": [
+      {
+        "ID": "3859",
+        "Query": "Artificial Intelligence",
+        "Job Title": " Collaborative Manipulation Roboticist",
+        "Description": "Location: Schlumberger-Doll Research, Cambridge, MA, USA At Schlumberger-Doll Research (SDR) in Camb...",
+        "IT Skills": "Collaborative Manipulation, Artificial Intelligence, Robot Operating System (ROS), Programming (Pyth...",
+        "Soft Skills": "Problem-solving, Organizational skills, Communication skills",
+        "Education": "nan",
+        "Experience": "These skills are related to experience.",
+        "Token Usage": "562"
+      },
+      {
+        "ID": "3764",
+        "Query": "Artificial Intelligence",
+        "Job Title": "Software Engineer - Innovation Lab",
+        "Description": "About DENSO DENSO is one of the largest global automotive suppliers of advanced technology, systems ...",
+        "IT Skills": "Software Development, Infotainment Systems, Augmented Reality (AR), Heads-up Display (HUD), Haptic D...",
+        "Soft Skills": "Creativity, Collaboration, Problem-solving, Adaptability, Proactive Attitude, Self-direction",
+        "Education": "nan",
+        "Experience": "nan",
+        "Token Usage": "616"
+      },
+      {
+        "ID": "3597",
+        "Query": "Artificial Intelligence",
+        "Job Title": "Director, Standards & Strategy",
+        "Description": "As a Director of Strategy & Strategy at Xperi, you will participate in industry standardization acti...",
+        "IT Skills": "Audio/video codec, Media streaming and storage formats, AR/VR, Machine learning, Artificial intellig...",
+        "Soft Skills": "Participation in international standards, consortia, or industry fora, Working in an international a...",
+        "Education": "Skills Related to Education:, Undergraduate degree in Engineering or Science, Postgraduate degree a ...",
+        "Experience": "Skills Related to Experience:, Audio/video codec, Media streaming and storage formats, AR/VR, Machin...",
+        "Token Usage": "549"
+      }
+    ]
+  }
+}

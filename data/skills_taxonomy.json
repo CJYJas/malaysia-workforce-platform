@@ -1,0 +1,460 @@
+{
+  "version": "1.0.0",
+  "skills": [
+    {
+      "canonical": "Python",
+      "category": "Programming Languages",
+      "aliases": ["python", "py", "python3", "python 3"]
+    },
+    {
+      "canonical": "JavaScript",
+      "category": "Programming Languages",
+      "aliases": ["javascript", "js", "ecmascript"]
+    },
+    {
+      "canonical": "TypeScript",
+      "category": "Programming Languages",
+      "aliases": ["typescript", "ts"]
+    },
+    {
+      "canonical": "Java",
+      "category": "Programming Languages",
+      "aliases": ["java", "core java", "jdk", "jre"]
+    },
+    {
+      "canonical": "C++",
+      "category": "Programming Languages",
+      "aliases": ["c++", "cpp"]
+    },
+    {
+      "canonical": "C#",
+      "category": "Programming Languages",
+      "aliases": ["c#", "csharp", "c sharp"]
+    },
+    {
+      "canonical": "Go",
+      "category": "Programming Languages",
+      "aliases": ["golang", "go language"]
+    },
+    {
+      "canonical": "Rust",
+      "category": "Programming Languages",
+      "aliases": ["rust", "rust-lang"]
+    },
+    {
+      "canonical": "PHP",
+      "category": "Programming Languages",
+      "aliases": ["php"]
+    },
+    {
+      "canonical": "Ruby",
+      "category": "Programming Languages",
+      "aliases": ["ruby", "ruby on rails", "rails"]
+    },
+    {
+      "canonical": "Swift",
+      "category": "Programming Languages",
+      "aliases": ["swift", "swiftui"]
+    },
+    {
+      "canonical": "Kotlin",
+      "category": "Programming Languages",
+      "aliases": ["kotlin"]
+    },
+    {
+      "canonical": "Scala",
+      "category": "Programming Languages",
+      "aliases": ["scala"]
+    },
+    {
+      "canonical": "R",
+      "category": "Programming Languages",
+      "aliases": ["r language", "r programming", "r-lang"]
+    },
+    {
+      "canonical": "SQL",
+      "category": "Databases & Query",
+      "aliases": ["sql", "structured query language"]
+    },
+    {
+      "canonical": "HTML",
+      "category": "Web Technologies",
+      "aliases": ["html", "html5"]
+    },
+    {
+      "canonical": "CSS",
+      "category": "Web Technologies",
+      "aliases": ["css", "css3", "sass", "scss"]
+    },
+    {
+      "canonical": "Bash",
+      "category": "Scripting",
+      "aliases": ["bash", "shell scripting", "shell script"]
+    },
+    {
+      "canonical": "React",
+      "category": "Frameworks & Libraries",
+      "aliases": ["react", "reactjs", "react.js", "react native"]
+    },
+    {
+      "canonical": "Angular",
+      "category": "Frameworks & Libraries",
+      "aliases": ["angular", "angularjs", "angular.js"]
+    },
+    {
+      "canonical": "Vue.js",
+      "category": "Frameworks & Libraries",
+      "aliases": ["vue", "vuejs", "vue.js"]
+    },
+    {
+      "canonical": "Node.js",
+      "category": "Frameworks & Libraries",
+      "aliases": ["node.js", "nodejs", "node js"]
+    },
+    {
+      "canonical": "Next.js",
+      "category": "Frameworks & Libraries",
+      "aliases": ["next.js", "nextjs"]
+    },
+    {
+      "canonical": "Express.js",
+      "category": "Frameworks & Libraries",
+      "aliases": ["express.js", "expressjs"]
+    },
+    {
+      "canonical": "Django",
+      "category": "Frameworks & Libraries",
+      "aliases": ["django"]
+    },
+    {
+      "canonical": "Flask",
+      "category": "Frameworks & Libraries",
+      "aliases": ["flask"]
+    },
+    {
+      "canonical": "FastAPI",
+      "category": "Frameworks & Libraries",
+      "aliases": ["fastapi", "fast api"]
+    },
+    {
+      "canonical": "Spring Boot",
+      "category": "Frameworks & Libraries",
+      "aliases": ["spring boot", "spring framework"]
+    },
+    {
+      "canonical": ".NET",
+      "category": "Frameworks & Libraries",
+      "aliases": [".net", ".net core", "dotnet", "asp.net", "asp.net core"]
+    },
+    {
+      "canonical": "Laravel",
+      "category": "Frameworks & Libraries",
+      "aliases": ["laravel"]
+    },
+    {
+      "canonical": "PostgreSQL",
+      "category": "Databases & Query",
+      "aliases": ["postgresql", "postgres"]
+    },
+    {
+      "canonical": "MySQL",
+      "category": "Databases & Query",
+      "aliases": ["mysql"]
+    },
+    {
+      "canonical": "MongoDB",
+      "category": "Databases & Query",
+      "aliases": ["mongodb", "mongo"]
+    },
+    {
+      "canonical": "Redis",
+      "category": "Databases & Query",
+      "aliases": ["redis"]
+    },
+    {
+      "canonical": "Elasticsearch",
+      "category": "Databases & Query",
+      "aliases": ["elasticsearch", "elastic search", "elk"]
+    },
+    {
+      "canonical": "Oracle",
+      "category": "Databases & Query",
+      "aliases": ["oracle database", "oracle db", "pl/sql", "plsql"]
+    },
+    {
+      "canonical": "Microsoft SQL Server",
+      "category": "Databases & Query",
+      "aliases": ["sql server", "ms sql", "mssql"]
+    },
+    {
+      "canonical": "Cassandra",
+      "category": "Databases & Query",
+      "aliases": ["cassandra", "apache cassandra"]
+    },
+    {
+      "canonical": "DynamoDB",
+      "category": "Databases & Query",
+      "aliases": ["dynamodb", "dynamo db"]
+    },
+    {
+      "canonical": "NoSQL",
+      "category": "Databases & Query",
+      "aliases": ["nosql"]
+    },
+    {
+      "canonical": "Snowflake",
+      "category": "Data Warehousing",
+      "aliases": ["snowflake"]
+    },
+    {
+      "canonical": "BigQuery",
+      "category": "Data Warehousing",
+      "aliases": ["bigquery", "google bigquery"]
+    },
+    {
+      "canonical": "Apache Spark",
+      "category": "Data Engineering & Big Data",
+      "aliases": ["spark", "apache spark", "pyspark"]
+    },
+    {
+      "canonical": "Apache Kafka",
+      "category": "Data Engineering & Big Data",
+      "aliases": ["kafka", "apache kafka"]
+    },
+    {
+      "canonical": "Apache Hadoop",
+      "category": "Data Engineering & Big Data",
+      "aliases": ["hadoop", "apache hadoop"]
+    },
+    {
+      "canonical": "Apache Airflow",
+      "category": "Data Engineering & Big Data",
+      "aliases": ["airflow", "apache airflow"]
+    },
+    {
+      "canonical": "Apache Hive",
+      "category": "Data Engineering & Big Data",
+      "aliases": ["hive", "apache hive"]
+    },
+    {
+      "canonical": "ETL",
+      "category": "Data Engineering & Big Data",
+      "aliases": ["etl", "extract transform load"]
+    },
+    {
+      "canonical": "Data Modeling",
+      "category": "Data Engineering & Big Data",
+      "aliases": ["data modeling", "data modelling"]
+    },
+    {
+      "canonical": "Data Warehousing",
+      "category": "Data Engineering & Big Data",
+      "aliases": ["data warehousing", "data warehouse", "dwh"]
+    },
+    {
+      "canonical": "Data Pipelines",
+      "category": "Data Engineering & Big Data",
+      "aliases": ["data pipeline", "data pipelines"]
+    },
+    {
+      "canonical": "dbt",
+      "category": "Data Engineering & Big Data",
+      "aliases": ["dbt"]
+    },
+    {
+      "canonical": "Machine Learning",
+      "category": "Machine Learning & AI",
+      "aliases": ["machine learning", "ml"]
+    },
+    {
+      "canonical": "Deep Learning",
+      "category": "Machine Learning & AI",
+      "aliases": ["deep learning", "dl"]
+    },
+    {
+      "canonical": "Natural Language Processing",
+      "category": "Machine Learning & AI",
+      "aliases": ["natural language processing", "nlp"]
+    },
+    {
+      "canonical": "Computer Vision",
+      "category": "Machine Learning & AI",
+      "aliases": ["computer vision", "cv"]
+    },
+    {
+      "canonical": "Artificial Intelligence",
+      "category": "Machine Learning & AI",
+      "aliases": ["artificial intelligence", "ai"]
+    },
+    {
+      "canonical": "Large Language Models",
+      "category": "Machine Learning & AI",
+      "aliases": ["large language models", "llm", "llms", "generative ai", "genai"]
+    },
+    {
+      "canonical": "TensorFlow",
+      "category": "Machine Learning & AI",
+      "aliases": ["tensorflow", "tf"]
+    },
+    {
+      "canonical": "PyTorch",
+      "category": "Machine Learning & AI",
+      "aliases": ["pytorch", "torch"]
+    },
+    {
+      "canonical": "Scikit-Learn",
+      "category": "Machine Learning & AI",
+      "aliases": ["scikit-learn", "sklearn"]
+    },
+    {
+      "canonical": "Keras",
+      "category": "Machine Learning & AI",
+      "aliases": ["keras"]
+    },
+    {
+      "canonical": "Pandas",
+      "category": "Data Science & Analytics",
+      "aliases": ["pandas"]
+    },
+    {
+      "canonical": "NumPy",
+      "category": "Data Science & Analytics",
+      "aliases": ["numpy"]
+    },
+    {
+      "canonical": "SciPy",
+      "category": "Data Science & Analytics",
+      "aliases": ["scipy"]
+    },
+    {
+      "canonical": "OpenCV",
+      "category": "Machine Learning & AI",
+      "aliases": ["opencv"]
+    },
+    {
+      "canonical": "MLOps",
+      "category": "Machine Learning & AI",
+      "aliases": ["mlops"]
+    },
+    {
+      "canonical": "AWS",
+      "category": "Cloud & DevOps",
+      "aliases": ["aws", "amazon web services"]
+    },
+    {
+      "canonical": "Microsoft Azure",
+      "category": "Cloud & DevOps",
+      "aliases": ["azure", "microsoft azure"]
+    },
+    {
+      "canonical": "Google Cloud",
+      "category": "Cloud & DevOps",
+      "aliases": ["google cloud", "gcp", "google cloud platform"]
+    },
+    {
+      "canonical": "Docker",
+      "category": "Cloud & DevOps",
+      "aliases": ["docker", "containerization"]
+    },
+    {
+      "canonical": "Kubernetes",
+      "category": "Cloud & DevOps",
+      "aliases": ["kubernetes", "k8s"]
+    },
+    {
+      "canonical": "CI/CD",
+      "category": "Cloud & DevOps",
+      "aliases": ["ci/cd", "ci-cd", "cicd", "continuous integration", "continuous deployment"]
+    },
+    {
+      "canonical": "Terraform",
+      "category": "Cloud & DevOps",
+      "aliases": ["terraform"]
+    },
+    {
+      "canonical": "Ansible",
+      "category": "Cloud & DevOps",
+      "aliases": ["ansible"]
+    },
+    {
+      "canonical": "Linux",
+      "category": "Operating Systems & Infrastructure",
+      "aliases": ["linux", "unix"]
+    },
+    {
+      "canonical": "Git",
+      "category": "Developer Tools",
+      "aliases": ["git", "github", "gitlab"]
+    },
+    {
+      "canonical": "Jenkins",
+      "category": "Cloud & DevOps",
+      "aliases": ["jenkins"]
+    },
+    {
+      "canonical": "Microservices",
+      "category": "Architecture & Methodologies",
+      "aliases": ["microservices", "microservice architecture"]
+    },
+    {
+      "canonical": "Tableau",
+      "category": "Data Science & Analytics",
+      "aliases": ["tableau"]
+    },
+    {
+      "canonical": "Power BI",
+      "category": "Data Science & Analytics",
+      "aliases": ["power bi", "powerbi"]
+    },
+    {
+      "canonical": "Excel",
+      "category": "Data Science & Analytics",
+      "aliases": ["excel", "microsoft excel"]
+    },
+    {
+      "canonical": "Data Analysis",
+      "category": "Data Science & Analytics",
+      "aliases": ["data analysis", "data analytics"]
+    },
+    {
+      "canonical": "Business Intelligence",
+      "category": "Data Science & Analytics",
+      "aliases": ["business intelligence", "bi"]
+    },
+    {
+      "canonical": "Data Visualization",
+      "category": "Data Science & Analytics",
+      "aliases": ["data visualization", "data visualisation"]
+    },
+    {
+      "canonical": "Statistics",
+      "category": "Data Science & Analytics",
+      "aliases": ["statistics", "statistical analysis", "statistical modeling"]
+    },
+    {
+      "canonical": "REST API",
+      "category": "Architecture & Methodologies",
+      "aliases": ["rest api", "restful api", "restful apis", "rest apis"]
+    },
+    {
+      "canonical": "GraphQL",
+      "category": "Architecture & Methodologies",
+      "aliases": ["graphql"]
+    },
+    {
+      "canonical": "Agile",
+      "category": "Architecture & Methodologies",
+      "aliases": ["agile", "scrum"]
+    },
+    {
+      "canonical": "Test-Driven Development",
+      "category": "Architecture & Methodologies",
+      "aliases": ["tdd", "test-driven development", "unit testing"]
+    },
+    {
+      "canonical": "Cybersecurity",
+      "category": "Security",
+      "aliases": ["cybersecurity", "cyber security", "information security"]
+    }
+  ]
+}

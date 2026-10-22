@@ -1,0 +1,178 @@
+# ==============================================================================
+# Malaysia Tech Workforce Intelligence Platform - Pipeline & Service Configuration
+# ==============================================================================
+# All operational thresholds, paths, rules, and keys are defined here.
+# NO magic numbers are permitted in application code.
+
+pipeline:
+  version: "1.0.0"
+  min_postings_per_role: 30
+  sample_size_warning_threshold: 50
+  min_months_for_trends: 3
+
+paths:
+  raw_jobstreet: "data/jobstreet_all_job_dataset.csv"
+  raw_coursera: "data/CourseraDataset-Clean.csv"
+  raw_skills: "data/JobsDatasetProcessed.csv"
+  skills_taxonomy: "data/skills_taxonomy.json"
+  processed_dir: "data/processed"
+  processed_output_parquet: "data/processed/v1.0.0/processed_jobs.parquet"
+  processed_output_csv: "data/processed/v1.0.0/processed_jobs.csv"
+  metadata_path: "data/processed/v1.0.0/processing_metadata.json"
+  latest_metadata_path: "data/processed/processing_metadata.json"
+
+schema:
+  required_columns:
+    - "job_title"
+    - "company"
+    - "descriptions"
+    - "location"
+    - "listingDate"
+  expected_types:
+    job_title: "str"
+    company: "str"
+    descriptions: "str"
+    location: "str"
+    listingDate: "str"
+
+malaysia_filter:
+  location_column: "location"
+  # Ambiguous or non-specific location values excluded from Malaysia stats
+  excluded_values:
+    - "Others"
+    - "others"
+    - "Unknown"
+    - "unknown"
+    - "nan"
+    - "None"
+    - ""
+  min_location_length: 2
+
+deduplication:
+  # Documented deduplication key: Identical vacancy reposts share title, company & location
+  key:
+    - "job_title"
+    - "company"
+    - "location"
+  keep: "first"
+
+roles:
+  title_column: "job_title"
+  # Target role matching regex patterns (case-insensitive word boundary rules)
+  rules:
+    "Software Engineer / Developer":
+      pattern: '(?i)\b(software\s+(?:engineer|developer)|full\s*stack\s+(?:engineer|developer)|backend\s+(?:engineer|developer)|frontend\s+(?:engineer|developer)|web\s+developer|mobile\s+developer|(?:ios|android)\s+developer|application\s+developer|software\s+programmer|java\s+developer|\.net\s+developer|python\s+developer)\b'
+      priority: 1
+      description: "Builds and maintains software applications, services, and digital products across web, mobile, and backend platforms."
+    "Data Engineer":
+      pattern: '(?i)\b(data\s+engineer|big\s*data\s+engineer|data\s+pipeline\s+engineer|etl\s+developer|database\s+engineer)\b'
+      priority: 2
+      description: "Designs, constructs, and maintains scalable data architectures, ingestion pipelines, and ETL/ELT workflows."
+    "Data Scientist":
+      pattern: '(?i)\b(data\s+scientist|data\s+science\s+specialist|lead\s+data\s+scientist|senior\s+data\s+scientist)\b'
+      priority: 3
+      description: "Applies statistical modeling, machine learning algorithms, and exploratory data analysis to derive business insights."
+    "Machine Learning / AI Engineer":
+      pattern: '(?i)\b(machine\s+learning\s+(?:engineer|specialist)|ml\s+engineer|ai\s+(?:engineer|specialist)|artificial\s+intelligence\s+engineer|deep\s+learning\s+engineer|nlp\s+engineer|computer\s+vision\s+engineer)\b'
+      priority: 4
+      description: "Develops, trains, evaluates, and deploys machine learning models and artificial intelligence systems into production."
+    "Cloud Engineer":
+      pattern: '(?i)\b(cloud\s+(?:engineer|architect|infrastructure\s+engineer|systems\s+engineer|operations\s+engineer)|aws\s+engineer|azure\s+engineer|gcp\s+engineer)\b'
+      priority: 5
+      description: "Architects, provisions, automates, and operates cloud infrastructure, container platforms, and DevOps environments."
+
+dataset_licenses:
+  jobstreet_all_job_dataset.csv: "Not specified / Web scraped from JobStreet Malaysia"
+  CourseraDataset-Clean.csv: "Not specified / Kaggle (elvinrustam/coursera-dataset)"
+  JobsDatasetProcessed.csv: "Apache 2.0 (meerawks/it-skills-from-jobs on Kaggle)"
+  Job Posting.csv: "Commercial teaser / Restricted (Techsalerator)"
+
+trend_analysis:
+  min_months_for_trends: 3
+  sample_size_warning_threshold: 50
+  default_top_n_skills: 20
+  representative_start_month: "2024-02"
+  representative_end_month: "2024-06"
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  cors_origins_default:
+    - "*"
+
+matching:
+  weight_skill_coverage: 0.70
+  weight_tfidf_similarity: 0.30
+  min_core_skill_share: 0.25
+  min_recommended_skill_share: 0.10
+  disclaimer: "This match score reflects empirical alignment with analyzed Malaysian job postings and does not constitute a hiring guarantee or probability of employment."
+
+course_recommendations:
+  default_top_k_per_gap: 3
+  max_total_courses: 10
+  ordering_label: "heuristic, not a validated sequence"
+  ordering_disclaimer: "Learning order is determined by a prerequisite heuristic and does not represent an accredited educational sequence."
+
+sdg_mappings:
+  disclaimer: "Documented mapping based on UN SDG targets; does not represent measured social impact."
+  sources:
+    - "United Nations Sustainable Development Goals (UN SDG) 2030 Agenda"
+    - "Department of Statistics Malaysia (DOSM) SDG Indicators"
+  roles:
+    "Software Engineer / Developer":
+      sdgs:
+        - number: 8
+          target: "8.5"
+          title: "Decent Work and Economic Growth"
+          rationale: "Fosters productive employment, digital economy participation, and technical capacity building in Malaysia."
+        - number: 9
+          target: "9.b"
+          title: "Industry, Innovation and Infrastructure"
+          rationale: "Supports domestic technology development, software infrastructure, and innovation in digital services."
+    "Data Engineer":
+      sdgs:
+        - number: 9
+          target: "9.b"
+          title: "Industry, Innovation and Infrastructure"
+          rationale: "Develops national enterprise data pipelines, digital storage, and infrastructure necessary for Industry 4.0."
+        - number: 8
+          target: "8.2"
+          title: "Decent Work and Economic Growth"
+          rationale: "Achieves higher levels of economic productivity through technological upgrading and automation."
+    "Data Scientist":
+      sdgs:
+        - number: 9
+          target: "9.5"
+          title: "Industry, Innovation and Infrastructure"
+          rationale: "Enhances scientific research and upgrades technological capabilities for evidence-based industrial decision making."
+        - number: 8
+          target: "8.5"
+          title: "Decent Work and Economic Growth"
+          rationale: "Promotes high-value digital employment and analytics-driven enterprise productivity."
+    "Machine Learning / AI Engineer":
+      sdgs:
+        - number: 9
+          target: "9.b"
+          title: "Industry, Innovation and Infrastructure"
+          rationale: "Drives domestic AI innovation, frontier technology adoption, and smart industrial automation."
+        - number: 8
+          target: "8.2"
+          title: "Decent Work and Economic Growth"
+          rationale: "Improves economic productivity through high-value artificial intelligence and automation technologies."
+    "Cloud Engineer":
+      sdgs:
+        - number: 9
+          target: "9.1"
+          title: "Industry, Innovation and Infrastructure"
+          rationale: "Builds resilient, scalable cloud computing infrastructure supporting domestic digital transformation."
+        - number: 8
+          target: "8.2"
+          title: "Decent Work and Economic Growth"
+          rationale: "Enables cloud-based enterprise modernization and cost-effective digital service delivery."
+  skills:
+    "technical_gap_remediation":
+      sdgs:
+        - number: 4
+          target: "4.4"
+          title: "Quality Education"
+          rationale: "Substantially increases the number of youth and adults with technical skills for decent employment."

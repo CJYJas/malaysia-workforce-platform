@@ -1,0 +1,218 @@
+{
+  "pipeline_version": "1.0.0",
+  "timestamp_utc": "2026-10-22T02:42:38.200026+00:00",
+  "execution_duration_seconds": 635.36,
+  "config_hash_sha256": "db0b2e8411f37ed1b6fda848562c6f2c75a3beabe23df9de0228a8b3d7827b9d",
+  "dataset_licenses": {
+    "jobstreet_all_job_dataset.csv": "Not specified / Web scraped from JobStreet Malaysia",
+    "CourseraDataset-Clean.csv": "Not specified / Kaggle (elvinrustam/coursera-dataset)",
+    "JobsDatasetProcessed.csv": "Apache 2.0 (meerawks/it-skills-from-jobs on Kaggle)",
+    "Job Posting.csv": "Commercial teaser / Restricted (Techsalerator)"
+  },
+  "deduplication_policy": {
+    "key": [
+      "job_title",
+      "company",
+      "location"
+    ],
+    "keep": "first",
+    "rationale": "Deduplicate on job_title, company, and location to eliminate re-advertisements."
+  },
+  "malaysia_filtering_policy": {
+    "location_column": "location",
+    "excluded_values": [
+      "Others",
+      "others",
+      "Unknown",
+      "unknown",
+      "nan",
+      "None",
+      ""
+    ],
+    "unknown_location_excluded_count": 198,
+    "exclusion_breakdown": {
+      "Others": 198
+    }
+  },
+  "stage_row_counts": {
+    "raw_loaded": 69024,
+    "schema_validated": 69024,
+    "malformed_dropped": 0,
+    "malaysia_filtered": 68826,
+    "unknown_location_excluded": 198,
+    "deduplicated": 63852,
+    "duplicates_removed": 4974,
+    "final_processed_rows": 63852
+  },
+  "role_counts": {
+    "Software Engineer / Developer": 1326,
+    "Data Engineer": 104,
+    "Data Scientist": 56,
+    "Machine Learning / AI Engineer": 32,
+    "Cloud Engineer": 35,
+    "Other / Unassigned": 62299,
+    "target_roles_total": 1553
+  },
+  "role_sample_adequacy": {
+    "Software Engineer / Developer": {
+      "postings_count": 1326,
+      "min_required": 30,
+      "meets_threshold": true,
+      "sample_warning": false
+    },
+    "Data Engineer": {
+      "postings_count": 104,
+      "min_required": 30,
+      "meets_threshold": true,
+      "sample_warning": false
+    },
+    "Data Scientist": {
+      "postings_count": 56,
+      "min_required": 30,
+      "meets_threshold": true,
+      "sample_warning": false
+    },
+    "Machine Learning / AI Engineer": {
+      "postings_count": 32,
+      "min_required": 30,
+      "meets_threshold": true,
+      "sample_warning": false
+    },
+    "Cloud Engineer": {
+      "postings_count": 35,
+      "min_required": 30,
+      "meets_threshold": true,
+      "sample_warning": false
+    }
+  },
+  "date_coverage": {
+    "valid_dates_count": 63852,
+    "min_date": "2023-03-23 19:44:00+00:00",
+    "max_date": "2025-05-08 11:12:22+00:00",
+    "months_count": 19,
+    "min_months_for_trends_threshold": 3,
+    "has_sufficient_trend_data": true,
+    "monthly_distribution": {
+      "2023-03": 38,
+      "2023-04": 68,
+      "2023-05": 131,
+      "2023-06": 112,
+      "2023-07": 138,
+      "2023-08": 108,
+      "2023-09": 336,
+      "2023-10": 238,
+      "2023-11": 212,
+      "2023-12": 305,
+      "2024-01": 510,
+      "2024-02": 6487,
+      "2024-03": 21634,
+      "2024-04": 9396,
+      "2024-05": 8998,
+      "2024-06": 5656,
+      "2025-03": 3978,
+      "2025-04": 5119,
+      "2025-05": 388
+    }
+  },
+  "skill_extraction_summary": {
+    "vocabulary_canonical_count": 91,
+    "vocabulary_total_aliases": 202,
+    "total_skill_mentions_extracted": 48442,
+    "postings_with_at_least_one_skill": 22292,
+    "top_skills_overall": {
+      "Excel": 10870,
+      "SQL": 2622,
+      "Data Analysis": 2274,
+      "Agile": 1764,
+      "R": 1598,
+      "Python": 1237,
+      "JavaScript": 1229,
+      "Go": 1224,
+      "Java": 1082,
+      "Statistics": 1007,
+      "HTML": 1002,
+      "Computer Vision": 991,
+      "Artificial Intelligence": 988,
+      "Linux": 974,
+      "Oracle": 971,
+      "CSS": 900,
+      "AWS": 829,
+      "Cybersecurity": 759,
+      "Git": 740,
+      "Microsoft Azure": 739,
+      "C#": 736,
+      "Power BI": 731,
+      "Microsoft SQL Server": 711,
+      "React": 686,
+      "MySQL": 657
+    },
+    "target_role_top_skills": {
+      "Software Engineer / Developer": {
+        "JavaScript": 608,
+        "HTML": 468,
+        "CSS": 459,
+        "Java": 449,
+        "C#": 347,
+        "Git": 344,
+        "React": 339,
+        "Agile": 333,
+        "MySQL": 330,
+        ".NET": 297
+      },
+      "Data Engineer": {
+        "SQL": 78,
+        "ETL": 63,
+        "Python": 56,
+        "Data Warehousing": 52,
+        "Data Pipelines": 51,
+        "AWS": 43,
+        "Microsoft Azure": 40,
+        "Apache Spark": 36,
+        "Data Modeling": 34,
+        "Apache Hadoop": 32
+      },
+      "Data Scientist": {
+        "Python": 44,
+        "Machine Learning": 41,
+        "Statistics": 33,
+        "R": 31,
+        "Data Analysis": 28,
+        "SQL": 28,
+        "Artificial Intelligence": 20,
+        "Power BI": 16,
+        "Apache Spark": 15,
+        "Data Visualization": 15
+      },
+      "Machine Learning / AI Engineer": {
+        "Artificial Intelligence": 29,
+        "Machine Learning": 28,
+        "Python": 20,
+        "Deep Learning": 15,
+        "PyTorch": 13,
+        "TensorFlow": 11,
+        "Computer Vision": 11,
+        "Natural Language Processing": 11,
+        "Statistics": 9,
+        "Microsoft Azure": 8
+      },
+      "Cloud Engineer": {
+        "AWS": 22,
+        "Google Cloud": 14,
+        "Terraform": 13,
+        "Microsoft Azure": 13,
+        "Linux": 9,
+        "Kubernetes": 7,
+        "Docker": 7,
+        "Python": 6,
+        "CI/CD": 6,
+        "Ansible": 5
+      }
+    }
+  },
+  "output_artifacts": {
+    "parquet_path": "C:\\Documents\\Jasmine\\XMUM_Hack\\data\\processed\\v1.0.0\\processed_jobs.parquet",
+    "csv_path": "C:\\Documents\\Jasmine\\XMUM_Hack\\data\\processed\\v1.0.0\\processed_jobs.csv",
+    "versioned_metadata_path": "C:\\Documents\\Jasmine\\XMUM_Hack\\data\\processed\\v1.0.0\\processing_metadata.json",
+    "latest_metadata_path": "C:\\Documents\\Jasmine\\XMUM_Hack\\data\\processed\\processing_metadata.json"
+  }
+}

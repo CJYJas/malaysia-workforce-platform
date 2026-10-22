@@ -1,0 +1,41 @@
+{
+  "tfidf": {
+    "queries_evaluated": 30,
+    "average_latency_ms": 104.61,
+    "p95_latency_ms": 133.99,
+    "total_courses_retrieved": 296,
+    "mean_results_per_query": 9.9,
+    "metrics_status": "Awaiting human annotation in retrieval_eval_candidates.json",
+    "p_at_5": null,
+    "r_at_10": null,
+    "mrr": null,
+    "ndcg_at_10": null,
+    "current_default": true
+  },
+  "dense": {
+    "queries_evaluated": 30,
+    "average_latency_ms": 6.93,
+    "p95_latency_ms": 3.46,
+    "total_courses_retrieved": 300,
+    "mean_results_per_query": 10.0,
+    "metrics_status": "Awaiting human annotation in retrieval_eval_candidates.json",
+    "p_at_5": null,
+    "r_at_10": null,
+    "mrr": null,
+    "ndcg_at_10": null,
+    "current_default": false
+  },
+  "hybrid": {
+    "queries_evaluated": 30,
+    "average_latency_ms": 122.47,
+    "p95_latency_ms": 155.17,
+    "total_courses_retrieved": 300,
+    "mean_results_per_query": 10.0,
+    "metrics_status": "Awaiting human annotation in retrieval_eval_candidates.json",
+    "p_at_5": null,
+    "r_at_10": null,
+    "mrr": null,
+    "ndcg_at_10": null,
+    "current_default": false
+  }
+}

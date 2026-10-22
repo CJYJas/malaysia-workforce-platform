@@ -1,0 +1,3937 @@
+{
+  "metadata": {
+    "total_candidate_pairs": 239,
+    "total_queries": 30,
+    "retrievers_compared": [
+      "tfidf",
+      "dense",
+      "hybrid"
+    ],
+    "scoring_guidelines": {
+      "0": "Irrelevant / No coverage of the target skill",
+      "1": "Marginally relevant / Skill is mentioned tangentially",
+      "2": "Directly relevant / Primary focus is teaching the target skill"
+    }
+  },
+  "candidates": [
+    {
+      "pair_id": 1,
+      "query_skill": "Python",
+      "course_title": "Use Python Unit Test to Demonstrate TDD",
+      "course_url": "https://www.coursera.org/projects/python-unit-test-demonstrate-tdd",
+      "source_record_id": "coursera_6544",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 2,
+      "query_skill": "Python",
+      "course_title": "Crash Course on Python",
+      "course_url": "https://www.coursera.org/learn/python-crash-course",
+      "source_record_id": "coursera_1419",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 3,
+      "query_skill": "Python",
+      "course_title": "The Brain and Space",
+      "course_url": "https://www.coursera.org/learn/human-brain",
+      "source_record_id": "coursera_3916",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 4,
+      "query_skill": "Python",
+      "course_title": "Learn to Program: The Fundamentals",
+      "course_url": "https://www.coursera.org/learn/learn-to-program",
+      "source_record_id": "coursera_5325",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 4,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 5,
+      "query_skill": "Python",
+      "course_title": "Python Programming Essentials",
+      "course_url": "https://www.coursera.org/learn/python-programming",
+      "source_record_id": "coursera_5391",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 5,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 6,
+      "query_skill": "Python",
+      "course_title": "Introduction to Python Programming",
+      "course_url": "https://www.coursera.org/learn/python-programming-intro",
+      "source_record_id": "coursera_5385",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 7,
+      "query_skill": "Python",
+      "course_title": "Data Processing Using Python",
+      "course_url": "https://www.coursera.org/learn/python-data-processing",
+      "source_record_id": "coursera_2344",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 8,
+      "query_skill": "SQL",
+      "course_title": "Hosting SQL Server & Database with Azure",
+      "course_url": "https://www.coursera.org/projects/hosting-sql-server-database-with-azure",
+      "source_record_id": "coursera_5096",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 9,
+      "query_skill": "SQL",
+      "course_title": "Oracle SQL Databases Specialization",
+      "course_url": "https://www.coursera.org/specializations/oracle-sql-databases",
+      "source_record_id": "coursera_1858",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 10,
+      "query_skill": "SQL",
+      "course_title": "Apache Spark (TM) SQL for Data Analysts",
+      "course_url": "https://www.coursera.org/learn/apache-spark-sql-for-data-analysts",
+      "source_record_id": "coursera_3331",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "dense": 5,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 11,
+      "query_skill": "SQL",
+      "course_title": "Introduction to Structured Query Language (SQL)",
+      "course_url": "https://www.coursera.org/learn/intro-sql",
+      "source_record_id": "coursera_3098",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 3,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 12,
+      "query_skill": "SQL",
+      "course_title": "Learn SQL Basics for Data Science Specialization",
+      "course_url": "https://www.coursera.org/specializations/learn-sql-basics-data-science",
+      "source_record_id": "coursera_5352",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 13,
+      "query_skill": "SQL",
+      "course_title": "SQL for Data Science",
+      "course_url": "https://www.coursera.org/learn/sql-for-data-science",
+      "source_record_id": "coursera_5195",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 14,
+      "query_skill": "ETL",
+      "course_title": "BI Foundations with SQL, ETL and Data Warehousing Specialization",
+      "course_url": "https://www.coursera.org/specializations/bi-foundations-sql-etl-data-warehouse",
+      "source_record_id": "coursera_2705",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 15,
+      "query_skill": "ETL",
+      "course_title": "ETL and Data Pipelines with Shell, Airflow and Kafka",
+      "course_url": "https://www.coursera.org/learn/etl-and-data-pipelines-shell-airflow-kafka",
+      "source_record_id": "coursera_1930",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 16,
+      "query_skill": "ETL",
+      "course_title": "Introduction to Molecular Spectroscopy",
+      "course_url": "https://www.coursera.org/learn/spectroscopy",
+      "source_record_id": "coursera_6729",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 17,
+      "query_skill": "ETL",
+      "course_title": "Healing with the Arts",
+      "course_url": "https://www.coursera.org/learn/healing-with-the-arts",
+      "source_record_id": "coursera_6000",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "dense",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 18,
+      "query_skill": "ETL",
+      "course_title": "Google Proje Y\u00f6netimi Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/google-proje-yonetimi",
+      "source_record_id": "coursera_7756",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 5,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 19,
+      "query_skill": "ETL",
+      "course_title": "IBM Data Warehouse Engineer Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/data-warehouse-engineering",
+      "source_record_id": "coursera_4377",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 20,
+      "query_skill": "ETL",
+      "course_title": "IBM Data Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-data-engineer",
+      "source_record_id": "coursera_4361",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 21,
+      "query_skill": "ETL",
+      "course_title": "Python Project for Data Engineering",
+      "course_url": "https://www.coursera.org/learn/python-project-for-data-engineering",
+      "source_record_id": "coursera_4543",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 22,
+      "query_skill": "Docker",
+      "course_title": "Virtualization, Docker, and Kubernetes for Data Engineering",
+      "course_url": "https://www.coursera.org/learn/virtualization-docker-kubernetes-data-engineering",
+      "source_record_id": "coursera_3218",
+      "difficulty_level": "Advanced level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 23,
+      "query_skill": "Docker",
+      "course_title": "Docker Essentials & Building a Containerized Web Application",
+      "course_url": "https://www.coursera.org/projects/docker-container-essentials-web-app",
+      "source_record_id": "coursera_4810",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 24,
+      "query_skill": "Docker",
+      "course_title": "Introduction to Docker: Build Your Own Portfolio Site",
+      "course_url": "https://www.coursera.org/projects/introduction-to-docker-build-portfolio-site",
+      "source_record_id": "coursera_5017",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 25,
+      "query_skill": "Docker",
+      "course_title": "Docker for absolute beginners",
+      "course_url": "https://www.coursera.org/projects/docker-for-absolute-beginners",
+      "source_record_id": "coursera_2158",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "dense": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 26,
+      "query_skill": "Docker",
+      "course_title": "Introduction to Containers w/ Docker, Kubernetes & OpenShift",
+      "course_url": "https://www.coursera.org/learn/ibm-containers-docker-kubernetes-openshift",
+      "source_record_id": "coursera_4459",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 27,
+      "query_skill": "Docker",
+      "course_title": "Ideas from the History of Graphic Design",
+      "course_url": "https://www.coursera.org/learn/graphic-design-history",
+      "source_record_id": "coursera_82",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 28,
+      "query_skill": "Docker",
+      "course_title": "Teaching Character and Creating Positive Classrooms",
+      "course_url": "https://www.coursera.org/learn/teaching-character",
+      "source_record_id": "coursera_7937",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 29,
+      "query_skill": "Docker",
+      "course_title": "Containerization Using Docker",
+      "course_url": "https://www.coursera.org/projects/containerization-using-docker",
+      "source_record_id": "coursera_5018",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 30,
+      "query_skill": "Docker",
+      "course_title": "Fundamentals of Graphic Design",
+      "course_url": "https://www.coursera.org/learn/fundamentals-of-graphic-design",
+      "source_record_id": "coursera_2647",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 31,
+      "query_skill": "Docker",
+      "course_title": "IBM Applied DevOps Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-applied-devops-engineering",
+      "source_record_id": "coursera_5470",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 32,
+      "query_skill": "Docker",
+      "course_title": "Graphic Design Specialization",
+      "course_url": "https://www.coursera.org/specializations/graphic-design",
+      "source_record_id": "coursera_2723",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 33,
+      "query_skill": "Docker",
+      "course_title": "IBM DevOps and Software Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+      "source_record_id": "coursera_5462",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 34,
+      "query_skill": "Docker",
+      "course_title": "Graphic Design",
+      "course_url": "https://www.coursera.org/learn/presentation-design",
+      "source_record_id": "coursera_1284",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 35,
+      "query_skill": "Kubernetes",
+      "course_title": "Exam Prep CKA: Certified Kubernetes Administrator",
+      "course_url": "https://www.coursera.org/learn/exam-prep-cka-certified-kubernetes-administrator",
+      "source_record_id": "coursera_2045",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "dense": 2,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 36,
+      "query_skill": "Kubernetes",
+      "course_title": "Getting Started with Google Kubernetes Engine",
+      "course_url": "https://www.coursera.org/learn/google-kubernetes-engine",
+      "source_record_id": "coursera_4535",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 37,
+      "query_skill": "Kubernetes",
+      "course_title": "Introduction to Containers w/ Docker, Kubernetes & OpenShift",
+      "course_url": "https://www.coursera.org/learn/ibm-containers-docker-kubernetes-openshift",
+      "source_record_id": "coursera_4459",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "dense": 5,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 38,
+      "query_skill": "Kubernetes",
+      "course_title": "Virtualization, Docker, and Kubernetes for Data Engineering",
+      "course_url": "https://www.coursera.org/learn/virtualization-docker-kubernetes-data-engineering",
+      "source_record_id": "coursera_3218",
+      "difficulty_level": "Advanced level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 39,
+      "query_skill": "Kubernetes",
+      "course_title": "Small Business Marketing Using LinkedIn",
+      "course_url": "https://www.coursera.org/projects/small-business-marketing-linkedin",
+      "source_record_id": "coursera_532",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 40,
+      "query_skill": "Kubernetes",
+      "course_title": "Introduction to Complex Analysis",
+      "course_url": "https://www.coursera.org/learn/complex-analysis",
+      "source_record_id": "coursera_5232",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 41,
+      "query_skill": "Kubernetes",
+      "course_title": "IBM Applied DevOps Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-applied-devops-engineering",
+      "source_record_id": "coursera_5470",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 42,
+      "query_skill": "AWS",
+      "course_title": "AWS Fundamentals Specialization",
+      "course_url": "https://www.coursera.org/specializations/aws-fundamentals",
+      "source_record_id": "coursera_4480",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 2,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 43,
+      "query_skill": "AWS",
+      "course_title": "AWS Cloud Technical Essentials",
+      "course_url": "https://www.coursera.org/learn/aws-cloud-technical-essentials",
+      "source_record_id": "coursera_4609",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "dense": 3,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 44,
+      "query_skill": "AWS",
+      "course_title": "AWS Cloud Solutions Architect  Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/aws-cloud-solutions-architect",
+      "source_record_id": "coursera_1499",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "dense": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 45,
+      "query_skill": "AWS",
+      "course_title": "AWS CodePipeline Beginner's Guide",
+      "course_url": "https://www.coursera.org/projects/aws-codepipeline-beginner-guide",
+      "source_record_id": "coursera_5101",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 1,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 46,
+      "query_skill": "AWS",
+      "course_title": "Hands-on with AWS for IT Professionals",
+      "course_url": "https://www.coursera.org/learn/aws-handson-skills",
+      "source_record_id": "coursera_4907",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 47,
+      "query_skill": "Machine Learning",
+      "course_title": "IBM Introduction to Machine Learning Specialization",
+      "course_url": "https://www.coursera.org/specializations/ibm-intro-machine-learning",
+      "source_record_id": "coursera_1695",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "dense": 2,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 48,
+      "query_skill": "Machine Learning",
+      "course_title": "IBM Machine Learning Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-machine-learning",
+      "source_record_id": "coursera_2500",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 49,
+      "query_skill": "Machine Learning",
+      "course_title": "Machine Learning Engineering for Production (MLOps) Specialization",
+      "course_url": "https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops",
+      "source_record_id": "coursera_2564",
+      "difficulty_level": "Advanced level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 50,
+      "query_skill": "Machine Learning",
+      "course_title": "Applied Machine Learning in Python",
+      "course_url": "https://www.coursera.org/learn/python-machine-learning",
+      "source_record_id": "coursera_1985",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 51,
+      "query_skill": "Machine Learning",
+      "course_title": "Machine Learning Introduction for Everyone",
+      "course_url": "https://www.coursera.org/learn/machine-learning-introduction-for-everyone",
+      "source_record_id": "coursera_1966",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 4,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 52,
+      "query_skill": "Machine Learning",
+      "course_title": "Introduction to Machine Learning on AWS",
+      "course_url": "https://www.coursera.org/learn/machine-learning-on-aws",
+      "source_record_id": "coursera_4628",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 53,
+      "query_skill": "Machine Learning",
+      "course_title": "Machine Learning Specialization",
+      "course_url": "https://www.coursera.org/specializations/machine-learning",
+      "source_record_id": "coursera_5538",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 54,
+      "query_skill": "Machine Learning",
+      "course_title": "Machine Learning with Apache Spark",
+      "course_url": "https://www.coursera.org/learn/machine-learning-with-apache-spark",
+      "source_record_id": "coursera_5636",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 55,
+      "query_skill": "Deep Learning",
+      "course_title": "Deep Learning for Business",
+      "course_url": "https://www.coursera.org/learn/deep-learning-business",
+      "source_record_id": "coursera_542",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 56,
+      "query_skill": "Deep Learning",
+      "course_title": "Introduction to Deep Learning & Neural Networks with Keras",
+      "course_url": "https://www.coursera.org/learn/introduction-to-deep-learning-with-keras",
+      "source_record_id": "coursera_1808",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 57,
+      "query_skill": "Deep Learning",
+      "course_title": "Deep Learning for Healthcare Specialization",
+      "course_url": "https://www.coursera.org/specializations/deep-learning-healthcare",
+      "source_record_id": "coursera_1998",
+      "difficulty_level": "Advanced level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "dense": 4,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 58,
+      "query_skill": "Deep Learning",
+      "course_title": "Deep Learning Methods for Healthcare",
+      "course_url": "https://www.coursera.org/learn/deep-learning-methods-healthcare",
+      "source_record_id": "coursera_3764",
+      "difficulty_level": "Advanced level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 59,
+      "query_skill": "Deep Learning",
+      "course_title": "Neural Networks and Deep Learning",
+      "course_url": "https://www.coursera.org/learn/neural-networks-deep-learning",
+      "source_record_id": "coursera_5413",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 60,
+      "query_skill": "Deep Learning",
+      "course_title": "Machine Learning: Theory and Hands-on Practice with Python Specialization",
+      "course_url": "https://www.coursera.org/specializations/machine-learnin-theory-and-hands-on-practice-with-pythong-cu",
+      "source_record_id": "coursera_2540",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 61,
+      "query_skill": "Deep Learning",
+      "course_title": "IBM AI Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ai-engineer",
+      "source_record_id": "coursera_5468",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 62,
+      "query_skill": "Apache Spark",
+      "course_title": "Use the Apache Spark Structured Streaming API with MongoDB",
+      "course_url": "https://www.coursera.org/projects/use-apache-spark-structured-streaming-api-mongodb",
+      "source_record_id": "coursera_4845",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 63,
+      "query_skill": "Apache Spark",
+      "course_title": "Machine Learning with Apache Spark",
+      "course_url": "https://www.coursera.org/learn/machine-learning-with-apache-spark",
+      "source_record_id": "coursera_3246",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 64,
+      "query_skill": "Apache Spark",
+      "course_title": "IBM Data Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-data-engineer",
+      "source_record_id": "coursera_1484",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 65,
+      "query_skill": "Apache Spark",
+      "course_title": "Distributed Computing with Spark SQL",
+      "course_url": "https://www.coursera.org/learn/spark-sql",
+      "source_record_id": "coursera_2306",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 66,
+      "query_skill": "Apache Spark",
+      "course_title": "Introduction to Big Data with Spark and Hadoop",
+      "course_url": "https://www.coursera.org/learn/introduction-to-big-data-with-spark-hadoop",
+      "source_record_id": "coursera_3099",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 4,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 67,
+      "query_skill": "Apache Spark",
+      "course_title": "Strategic Planning and Execution",
+      "course_url": "https://www.coursera.org/learn/uva-darden-strategic-planning-execution",
+      "source_record_id": "coursera_1262",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 68,
+      "query_skill": "Apache Spark",
+      "course_title": "NoSQL, Big Data, and Spark Foundations Specialization",
+      "course_url": "https://www.coursera.org/specializations/nosql-big-data-and-spark-foundations",
+      "source_record_id": "coursera_4606",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 69,
+      "query_skill": "Apache Spark",
+      "course_title": "Spark, Hadoop, and Snowflake for Data Engineering",
+      "course_url": "https://www.coursera.org/learn/spark-hadoop-snowflake-data-engineering",
+      "source_record_id": "coursera_4631",
+      "difficulty_level": "Advanced level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 70,
+      "query_skill": "React",
+      "course_title": "Meta React Native Specialization",
+      "course_url": "https://www.coursera.org/specializations/meta-react-native",
+      "source_record_id": "coursera_2715",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 71,
+      "query_skill": "React",
+      "course_title": "React Native",
+      "course_url": "https://www.coursera.org/learn/react-native-course",
+      "source_record_id": "coursera_2139",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3,
+        "dense": 2,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 72,
+      "query_skill": "React",
+      "course_title": "Meta iOS Developer Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/meta-ios-developer",
+      "source_record_id": "coursera_2716",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 73,
+      "query_skill": "React",
+      "course_title": "Meta Android Developer Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/meta-android-developer",
+      "source_record_id": "coursera_2717",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 74,
+      "query_skill": "React",
+      "course_title": "Forensic Accounting and Fraud Examination",
+      "course_url": "https://www.coursera.org/learn/forensic-accounting",
+      "source_record_id": "coursera_709",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 75,
+      "query_skill": "React",
+      "course_title": "Advanced React",
+      "course_url": "https://www.coursera.org/learn/advanced-react",
+      "source_record_id": "coursera_2982",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 5,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 76,
+      "query_skill": "React",
+      "course_title": "Developing Front-End Apps with React",
+      "course_url": "https://www.coursera.org/learn/developing-frontend-apps-with-react",
+      "source_record_id": "coursera_2961",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 77,
+      "query_skill": "React",
+      "course_title": "React Basics",
+      "course_url": "https://www.coursera.org/learn/react-basics",
+      "source_record_id": "coursera_2918",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 78,
+      "query_skill": "Java",
+      "course_title": "Java Built in Data Structures",
+      "course_url": "https://www.coursera.org/projects/java-built-in-data-structures",
+      "source_record_id": "coursera_6535",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 79,
+      "query_skill": "Java",
+      "course_title": "Introduction to Java",
+      "course_url": "https://www.coursera.org/learn/java-introduction",
+      "source_record_id": "coursera_1520",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3,
+        "dense": 3,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 80,
+      "query_skill": "Java",
+      "course_title": "Introduction to Java and Object-Oriented Programming",
+      "course_url": "https://www.coursera.org/learn/java-object-oriented-programming",
+      "source_record_id": "coursera_1578",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 81,
+      "query_skill": "Java",
+      "course_title": "Orienta\u00e7\u00e3o a Objetos com Java",
+      "course_url": "https://www.coursera.org/learn/orientacao-a-objetos-com-java",
+      "source_record_id": "coursera_1933",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 82,
+      "query_skill": "Java",
+      "course_title": "Mastering Excel Essentials to Enhance Business Value",
+      "course_url": "https://www.coursera.org/learn/illinois-tech-mastering-excel-essentials-to-enhance-business-value",
+      "source_record_id": "coursera_754",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 83,
+      "query_skill": "Java",
+      "course_title": "Fundamentals of Java Programming",
+      "course_url": "https://www.coursera.org/learn/fundamentals-of-java-programming",
+      "source_record_id": "coursera_5444",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 84,
+      "query_skill": "Java",
+      "course_title": "Core Java Specialization",
+      "course_url": "https://www.coursera.org/specializations/core-java",
+      "source_record_id": "coursera_2863",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 85,
+      "query_skill": "Java",
+      "course_title": "Java Programming and Software Engineering Fundamentals Specialization",
+      "course_url": "https://www.coursera.org/specializations/java-programming",
+      "source_record_id": "coursera_5219",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 86,
+      "query_skill": "Power BI",
+      "course_title": "Microsoft Power BI Data Analyst Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/microsoft-power-bi-data-analyst",
+      "source_record_id": "coursera_2418",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "dense": 2,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 87,
+      "query_skill": "Power BI",
+      "course_title": "HR Analytics- Build an HR dashboard using Power BI",
+      "course_url": "https://www.coursera.org/projects/hr-analytics-build-hr-dashboard-using-power-bi",
+      "source_record_id": "coursera_2637",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "dense": 4,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 88,
+      "query_skill": "Power BI",
+      "course_title": "Data Modeling in Power BI",
+      "course_url": "https://www.coursera.org/learn/data-modeling-in-power-bi",
+      "source_record_id": "coursera_2955",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 89,
+      "query_skill": "Power BI",
+      "course_title": "Microsoft Power Platform Fundamentals",
+      "course_url": "https://www.coursera.org/learn/microsoft-power-platform-fundamentals",
+      "source_record_id": "coursera_4562",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 90,
+      "query_skill": "Power BI",
+      "course_title": "Deploy and Maintain Power BI Assets and Capstone project",
+      "course_url": "https://www.coursera.org/learn/deploy-and-maintain-power-bi-assets-and-capstone-project",
+      "source_record_id": "coursera_6608",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 91,
+      "query_skill": "Power BI",
+      "course_title": "Fractal Data Science  Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/fractal-data-science",
+      "source_record_id": "coursera_7564",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 92,
+      "query_skill": "Power BI",
+      "course_title": "Extract, Transform and Load Data in Power BI",
+      "course_url": "https://www.coursera.org/learn/extract-transform-and-load-data-in-power-bi",
+      "source_record_id": "coursera_2909",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 93,
+      "query_skill": "Data Analysis",
+      "course_title": "Managing Data Analysis",
+      "course_url": "https://www.coursera.org/learn/managing-data-analysis",
+      "source_record_id": "coursera_7545",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 1,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 94,
+      "query_skill": "Data Analysis",
+      "course_title": "Data Analysis with R Specialization",
+      "course_url": "https://www.coursera.org/specializations/statistics",
+      "source_record_id": "coursera_1511",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 95,
+      "query_skill": "Data Analysis",
+      "course_title": "Exploratory Data Analysis With Python and Pandas",
+      "course_url": "https://www.coursera.org/projects/exploratory-data-analysis-python-pandas",
+      "source_record_id": "coursera_2518",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 96,
+      "query_skill": "Data Analysis",
+      "course_title": "Data Analysis and Interpretation Specialization",
+      "course_url": "https://www.coursera.org/specializations/data-analysis",
+      "source_record_id": "coursera_7582",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "dense": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 97,
+      "query_skill": "Data Analysis",
+      "course_title": "Data Analysis with R",
+      "course_url": "https://www.coursera.org/learn/data-analysis-with-r",
+      "source_record_id": "coursera_2122",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 3,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 98,
+      "query_skill": "Data Analysis",
+      "course_title": "Population Health: Responsible Data Analysis",
+      "course_url": "https://www.coursera.org/learn/responsible-data-analysis",
+      "source_record_id": "coursera_3506",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 99,
+      "query_skill": "Data Analysis",
+      "course_title": "Data Analysis and Presentation Skills: the PwC Approach Specialization",
+      "course_url": "https://www.coursera.org/specializations/pwc-analytics",
+      "source_record_id": "coursera_7596",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 100,
+      "query_skill": "Data Analysis",
+      "course_title": "Introduction to Data Analytics",
+      "course_url": "https://www.coursera.org/learn/data-analytics-introduction",
+      "source_record_id": "coursera_1341",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 101,
+      "query_skill": "Azure",
+      "course_title": "Exam Prep AZ-104: Microsoft Azure Administrator Associate Specialization",
+      "course_url": "https://www.coursera.org/specializations/exam-prep-az-104-microsoft-azure-administrator-associate",
+      "source_record_id": "coursera_4619",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 1,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 102,
+      "query_skill": "Azure",
+      "course_title": "Microsoft Azure Data Engineering Associate (DP-203) Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/microsoft-azure-dp-203-data-engineering",
+      "source_record_id": "coursera_1706",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 103,
+      "query_skill": "Azure",
+      "course_title": "Microsoft Azure Developer Associate (AZ-204) Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/azure-developer-associate",
+      "source_record_id": "coursera_1771",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 104,
+      "query_skill": "Azure",
+      "course_title": "Monitoring and Backup in Azure",
+      "course_url": "https://www.coursera.org/learn/monitoring-backup-in-azure",
+      "source_record_id": "coursera_4890",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 105,
+      "query_skill": "Azure",
+      "course_title": "Azure Network Engineer: AZ-700 Exam Prep & Certification Specialization",
+      "course_url": "https://www.coursera.org/specializations/az700-exam-prep-and-certification",
+      "source_record_id": "coursera_5184",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 3,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 106,
+      "query_skill": "Azure",
+      "course_title": "Manage Identities and Governance in Azure",
+      "course_url": "https://www.coursera.org/learn/manage-identities-and-governance-in-azure",
+      "source_record_id": "coursera_4809",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 107,
+      "query_skill": "Azure",
+      "course_title": "Compute Resources in Azure",
+      "course_url": "https://www.coursera.org/learn/compute-resources-in-azure",
+      "source_record_id": "coursera_4830",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 108,
+      "query_skill": "Azure",
+      "course_title": "Sustainability Analyst Fundamentals Specialization",
+      "course_url": "https://www.coursera.org/specializations/sustainability-analyst",
+      "source_record_id": "coursera_6654",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 109,
+      "query_skill": "Git",
+      "course_title": "Getting Started with Git and GitHub",
+      "course_url": "https://www.coursera.org/learn/getting-started-with-git-and-github",
+      "source_record_id": "coursera_1628",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 110,
+      "query_skill": "Git",
+      "course_title": "Introduction to Git and GitHub",
+      "course_url": "https://www.coursera.org/learn/introduction-git-github",
+      "source_record_id": "coursera_4529",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 111,
+      "query_skill": "Git",
+      "course_title": "Version Control with Git",
+      "course_url": "https://www.coursera.org/learn/version-control-with-git",
+      "source_record_id": "coursera_2052",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 112,
+      "query_skill": "Git",
+      "course_title": "IBM DevOps and Software Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+      "source_record_id": "coursera_1440",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 113,
+      "query_skill": "Git",
+      "course_title": "International Business Specialization",
+      "course_url": "https://www.coursera.org/specializations/international-business",
+      "source_record_id": "coursera_503",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 114,
+      "query_skill": "Git",
+      "course_title": "International Business Context",
+      "course_url": "https://www.coursera.org/learn/international-business-context",
+      "source_record_id": "coursera_711",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 115,
+      "query_skill": "Git",
+      "course_title": "Manejo del enfermo semicr\u00edtico y cr\u00edtico por COVID-19",
+      "course_url": "https://www.coursera.org/learn/covid-19-esp",
+      "source_record_id": "coursera_4203",
+      "difficulty_level": "Advanced level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 116,
+      "query_skill": "Git",
+      "course_title": "Telehealth Best Practices and Uses",
+      "course_url": "https://www.coursera.org/learn/telehealth-best-practices-uses",
+      "source_record_id": "coursera_4017",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 117,
+      "query_skill": "Git",
+      "course_title": "International Business Operations",
+      "course_url": "https://www.coursera.org/learn/international-business-operations",
+      "source_record_id": "coursera_717",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 118,
+      "query_skill": "Git",
+      "course_title": "Applied Software Engineering Fundamentals Specialization",
+      "course_url": "https://www.coursera.org/specializations/software-engineering-fundamentals",
+      "source_record_id": "coursera_7681",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 119,
+      "query_skill": "Git",
+      "course_title": "International Humanitarian Law in Theory and Practice",
+      "course_url": "https://www.coursera.org/learn/international-humanitarian-law",
+      "source_record_id": "coursera_7695",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 120,
+      "query_skill": "Git",
+      "course_title": "IBM Back-End Development Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-backend-development",
+      "source_record_id": "coursera_7663",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 121,
+      "query_skill": "Git",
+      "course_title": "IBM Full Stack Software Developer Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-full-stack-cloud-developer",
+      "source_record_id": "coursera_4352",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 122,
+      "query_skill": "Cybersecurity",
+      "course_title": "Becoming a Cybersecurity Consultant",
+      "course_url": "https://www.coursera.org/learn/becoming-a-cybersecurity-consultant",
+      "source_record_id": "coursera_4691",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 123,
+      "query_skill": "Cybersecurity",
+      "course_title": "Cybersecurity Foundations for Risk Management",
+      "course_url": "https://www.coursera.org/learn/cybersecurity-foundations-for-risk-management",
+      "source_record_id": "coursera_5005",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 124,
+      "query_skill": "Cybersecurity",
+      "course_title": "The Foundations of Cybersecurity",
+      "course_url": "https://www.coursera.org/learn/foundations-cybersecurity",
+      "source_record_id": "coursera_4503",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 125,
+      "query_skill": "Cybersecurity",
+      "course_title": "The GRC Approach to Managing Cybersecurity",
+      "course_url": "https://www.coursera.org/learn/grc-approach-to-managing-cybersecurity",
+      "source_record_id": "coursera_4681",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 126,
+      "query_skill": "Cybersecurity",
+      "course_title": "Foundations of Cybersecurity",
+      "course_url": "https://www.coursera.org/learn/foundations-of-cybersecurity",
+      "source_record_id": "coursera_4280",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 4,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 127,
+      "query_skill": "Cybersecurity",
+      "course_title": "IBM and ISC2 Cybersecurity Specialist Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-isc2-cybersecurity-specialist",
+      "source_record_id": "coursera_7386",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 128,
+      "query_skill": "Cybersecurity",
+      "course_title": "Introduction to Cybersecurity Careers",
+      "course_url": "https://www.coursera.org/learn/introduction-to-cybersecurity-careers",
+      "source_record_id": "coursera_3226",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 129,
+      "query_skill": "Cybersecurity",
+      "course_title": "Software Development Lifecycle Specialization",
+      "course_url": "https://www.coursera.org/specializations/software-development-lifecycle",
+      "source_record_id": "coursera_2900",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 130,
+      "query_skill": "Data Warehouse",
+      "course_title": "Data Warehouse Concepts, Design, and Data Integration",
+      "course_url": "https://www.coursera.org/learn/dwdesign",
+      "source_record_id": "coursera_4774",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 131,
+      "query_skill": "Data Warehouse",
+      "course_title": "Design and Build a Data Warehouse for Business Intelligence Implementation",
+      "course_url": "https://www.coursera.org/learn/data-warehouse-bi-building",
+      "source_record_id": "coursera_920",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "dense": 1,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 132,
+      "query_skill": "Data Warehouse",
+      "course_title": "IBM Data Warehouse Engineer Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/data-warehouse-engineering",
+      "source_record_id": "coursera_1689",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 133,
+      "query_skill": "Data Warehouse",
+      "course_title": "Talend Data Integration Certification Preparation training",
+      "course_url": "https://www.coursera.org/learn/talend-di-dev-cert-prep",
+      "source_record_id": "coursera_4488",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 134,
+      "query_skill": "Data Warehouse",
+      "course_title": "Data Warehousing for Business Intelligence Specialization",
+      "course_url": "https://www.coursera.org/specializations/data-warehousing",
+      "source_record_id": "coursera_1878",
+      "difficulty_level": "Advanced level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 135,
+      "query_skill": "Data Warehouse",
+      "course_title": "Analitik Data Google Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/analitik-data-google",
+      "source_record_id": "coursera_2535",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 136,
+      "query_skill": "Data Warehouse",
+      "course_title": "Introduction to Data Analytics",
+      "course_url": "https://www.coursera.org/learn/data-analytics-introduction",
+      "source_record_id": "coursera_1341",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 137,
+      "query_skill": "Node.js",
+      "course_title": "AWS Elastic Beanstalk: Build & Deploy a Node.js RESTful API",
+      "course_url": "https://www.coursera.org/projects/nodejs-api-aws-elastic-beanstalk",
+      "source_record_id": "coursera_5138",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 1,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 138,
+      "query_skill": "Node.js",
+      "course_title": "Developing Cloud Apps with Node.js and React",
+      "course_url": "https://www.coursera.org/learn/node-js",
+      "source_record_id": "coursera_2180",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "dense": 4,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 139,
+      "query_skill": "Node.js",
+      "course_title": "IBM Back-end JavaScript Developer Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/backend-javascript-developer",
+      "source_record_id": "coursera_1494",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 140,
+      "query_skill": "Node.js",
+      "course_title": "Learning MEAN Stack by Building Real world Application Specialization",
+      "course_url": "https://www.coursera.org/specializations/mean-stack",
+      "source_record_id": "coursera_2133",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 141,
+      "query_skill": "Node.js",
+      "course_title": "JavaScript Security Part 3",
+      "course_url": "https://www.coursera.org/learn/javascript-security-part-3",
+      "source_record_id": "coursera_4552",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 142,
+      "query_skill": "Node.js",
+      "course_title": "Connected Planning for Business Transformation Specialization",
+      "course_url": "https://www.coursera.org/specializations/anaplan-connected-planning-business-transformation",
+      "source_record_id": "coursera_662",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 143,
+      "query_skill": "Node.js",
+      "course_title": "JavaScript Programming with React, Node & MongoDB Specialization",
+      "course_url": "https://www.coursera.org/specializations/javascript-programming-with-react-node-mongodb",
+      "source_record_id": "coursera_2729",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 144,
+      "query_skill": "Node.js",
+      "course_title": "Cloud Application Development Foundations Specialization",
+      "course_url": "https://www.coursera.org/specializations/ibm-cloud-application-development-foundations",
+      "source_record_id": "coursera_5187",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 145,
+      "query_skill": "Tableau",
+      "course_title": "Tableau Business Intelligence Analyst  Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/tableau-business-intelligence-analyst",
+      "source_record_id": "coursera_510",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 146,
+      "query_skill": "Tableau",
+      "course_title": "Data Visualization with Tableau Specialization",
+      "course_url": "https://www.coursera.org/specializations/data-visualization",
+      "source_record_id": "coursera_1715",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 147,
+      "query_skill": "Tableau",
+      "course_title": "Data Visualization and Communication with Tableau",
+      "course_url": "https://www.coursera.org/learn/analytics-tableau",
+      "source_record_id": "coursera_2283",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 148,
+      "query_skill": "Tableau",
+      "course_title": "AWS DynamoDB Fundamentals",
+      "course_url": "https://www.coursera.org/learn/aws-dynamodb-fundamentals",
+      "source_record_id": "coursera_4840",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 149,
+      "query_skill": "Tableau",
+      "course_title": "Introduction to EdTech",
+      "course_url": "https://www.coursera.org/learn/introduction-to-edtech",
+      "source_record_id": "coursera_7608",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 150,
+      "query_skill": "Tableau",
+      "course_title": "Getting There and Going Beyond",
+      "course_url": "https://www.coursera.org/learn/getting-there-and-going-beyond",
+      "source_record_id": "coursera_7132",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 4,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 151,
+      "query_skill": "Tableau",
+      "course_title": "Computational Thinking for K-12 Educators: Abstraction, Methods, and Lists",
+      "course_url": "https://www.coursera.org/learn/block-programming-k12-educators-abstraction-methods",
+      "source_record_id": "coursera_8363",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 152,
+      "query_skill": "Tableau",
+      "course_title": "Excel to MySQL: Analytic Techniques for Business Specialization",
+      "course_url": "https://www.coursera.org/specializations/excel-mysql",
+      "source_record_id": "coursera_2876",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 153,
+      "query_skill": "Linux",
+      "course_title": "Files and directories in the Linux filesystem",
+      "course_url": "https://www.coursera.org/projects/files-directories-linux-filesystem",
+      "source_record_id": "coursera_5046",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 154,
+      "query_skill": "Linux",
+      "course_title": "Operating Systems Fundamentals",
+      "course_url": "https://www.coursera.org/learn/akamai-operating-systems",
+      "source_record_id": "coursera_4549",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 155,
+      "query_skill": "Linux",
+      "course_title": "Hands-on Introduction to Linux Commands and Shell Scripting",
+      "course_url": "https://www.coursera.org/learn/hands-on-introduction-to-linux-commands-and-shell-scripting",
+      "source_record_id": "coursera_1789",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 156,
+      "query_skill": "Linux",
+      "course_title": "Fundamentals of Red Hat Enterprise Linux",
+      "course_url": "https://www.coursera.org/learn/fundamentals-of-red-hat-enterprise-linux",
+      "source_record_id": "coursera_4653",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 157,
+      "query_skill": "Linux",
+      "course_title": "Linux Fundamentals",
+      "course_url": "https://www.coursera.org/learn/linux-fundamentals",
+      "source_record_id": "coursera_2137",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 2,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 158,
+      "query_skill": "Linux",
+      "course_title": "Linux OS",
+      "course_url": "https://www.coursera.org/learn/illinois-tech-linux-os",
+      "source_record_id": "coursera_4506",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 159,
+      "query_skill": "Linux",
+      "course_title": "Linux Server Management and Security",
+      "course_url": "https://www.coursera.org/learn/linux-server-management-security",
+      "source_record_id": "coursera_4832",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 160,
+      "query_skill": "Linux",
+      "course_title": "Linux: I/O Redirection for DevOps",
+      "course_url": "https://www.coursera.org/projects/rudi-hinds-linux-io-redirection-for-devops",
+      "source_record_id": "coursera_6433",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 161,
+      "query_skill": "Linux",
+      "course_title": "Learning Linux for LFCA Certification Specialization",
+      "course_url": "https://www.coursera.org/specializations/linux-for-lfca-certification",
+      "source_record_id": "coursera_4611",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 162,
+      "query_skill": "C++",
+      "course_title": "C++ Decision Programming",
+      "course_url": "https://www.coursera.org/projects/cpp-decision-programming",
+      "source_record_id": "coursera_5928",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 163,
+      "query_skill": "C++",
+      "course_title": "C++ Data Structures in the STL",
+      "course_url": "https://www.coursera.org/projects/cpp-data-structures-in-the-stl",
+      "source_record_id": "coursera_6320",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "dense": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 164,
+      "query_skill": "C++",
+      "course_title": "Programming in C++: A Hands-on Introduction Specialization",
+      "course_url": "https://www.coursera.org/specializations/hands-on-cpp",
+      "source_record_id": "coursera_1473",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "dense": 4,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 165,
+      "query_skill": "C++",
+      "course_title": "C++ Programming for Unreal Game Development Specialization",
+      "course_url": "https://www.coursera.org/specializations/cplusplusunrealgamedevelopment",
+      "source_record_id": "coursera_1949",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 166,
+      "query_skill": "C++",
+      "course_title": "Coding for Everyone: C and C++ Specialization",
+      "course_url": "https://www.coursera.org/specializations/coding-for-everyone",
+      "source_record_id": "coursera_5505",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 167,
+      "query_skill": "C++",
+      "course_title": "\u7a0b\u5e8f\u8bbe\u8ba1\u4e0e\u7b97\u6cd5 Specialization",
+      "course_url": "https://www.coursera.org/specializations/biancheng-suanfa",
+      "source_record_id": "coursera_5330",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 168,
+      "query_skill": "C++",
+      "course_title": "Object Oriented Programming Specialization",
+      "course_url": "https://www.coursera.org/specializations/object-oriented-programming-s12n",
+      "source_record_id": "coursera_2861",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 169,
+      "query_skill": "C++",
+      "course_title": "Object-Oriented Data Structures in C++",
+      "course_url": "https://www.coursera.org/learn/cs-fundamentals-1",
+      "source_record_id": "coursera_2864",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 170,
+      "query_skill": "NoSQL",
+      "course_title": "Datos no tradicionales en repositorios NoSQL",
+      "course_url": "https://www.coursera.org/learn/datos-no-tradicionales-en-repositorios-nosql",
+      "source_record_id": "coursera_6539",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 171,
+      "query_skill": "NoSQL",
+      "course_title": "Introduction to NoSQL Databases",
+      "course_url": "https://www.coursera.org/learn/introduction-to-nosql-databases",
+      "source_record_id": "coursera_4640",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 172,
+      "query_skill": "NoSQL",
+      "course_title": "NoSQL, Big Data, and Spark Foundations Specialization",
+      "course_url": "https://www.coursera.org/specializations/nosql-big-data-and-spark-foundations",
+      "source_record_id": "coursera_1704",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 173,
+      "query_skill": "NoSQL",
+      "course_title": "Causes of Racial Inequity in Healthcare",
+      "course_url": "https://www.coursera.org/learn/causes-of-racial-inequity-in-healthcare",
+      "source_record_id": "coursera_3729",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 174,
+      "query_skill": "NoSQL",
+      "course_title": "An Overview of the U.S. Healthcare System",
+      "course_url": "https://www.coursera.org/learn/an-overview-of-the-us-healthcare-system",
+      "source_record_id": "coursera_3653",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 3,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 175,
+      "query_skill": "NoSQL",
+      "course_title": "Healthcare Marketplace",
+      "course_url": "https://www.coursera.org/learn/healthcare-marketplace",
+      "source_record_id": "coursera_3459",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 176,
+      "query_skill": "NoSQL",
+      "course_title": "Healthcare Organization Operations Specialization",
+      "course_url": "https://www.coursera.org/specializations/healthcare-organization-operations",
+      "source_record_id": "coursera_3423",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 177,
+      "query_skill": "NoSQL",
+      "course_title": "IBM Data Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-data-engineer",
+      "source_record_id": "coursera_4361",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 178,
+      "query_skill": "NoSQL",
+      "course_title": "Health Information Literacy for Data Analytics Specialization",
+      "course_url": "https://www.coursera.org/specializations/healthcare-information-literacy-data-analytics",
+      "source_record_id": "coursera_1862",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 179,
+      "query_skill": "Spring Boot",
+      "course_title": "Audit System with Spring Boot AOP",
+      "course_url": "https://www.coursera.org/projects/audit-system-with-spring-boot-aop",
+      "source_record_id": "coursera_5434",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 1,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 180,
+      "query_skill": "Spring Boot",
+      "course_title": "Scalable Microservices for Developers Specialization",
+      "course_url": "https://www.coursera.org/specializations/microservices",
+      "source_record_id": "coursera_1935",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "dense": 5,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 181,
+      "query_skill": "Spring Boot",
+      "course_title": "RESTful Microservices Performance Monitoring with Actuators",
+      "course_url": "https://www.coursera.org/projects/microservice-performance-monitoring-with-actuators",
+      "source_record_id": "coursera_5125",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 182,
+      "query_skill": "Spring Boot",
+      "course_title": "Building Scalable Java Microservices with Spring Boot and Spring Cloud",
+      "course_url": "https://www.coursera.org/learn/google-cloud-java-spring",
+      "source_record_id": "coursera_1874",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 183,
+      "query_skill": "Spring Boot",
+      "course_title": "Clean Data in SQL using MySQL Workbench",
+      "course_url": "https://www.coursera.org/projects/clean-data-sql-mysql-workbench",
+      "source_record_id": "coursera_4969",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 184,
+      "query_skill": "Spring Boot",
+      "course_title": "Spring Framework Specialization",
+      "course_url": "https://www.coursera.org/specializations/spring-framework",
+      "source_record_id": "coursera_3049",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 4,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 185,
+      "query_skill": "Spring Boot",
+      "course_title": "Privacy and Standardisation Specialization",
+      "course_url": "https://www.coursera.org/specializations/privacy",
+      "source_record_id": "coursera_3348",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 186,
+      "query_skill": "TensorFlow",
+      "course_title": "TensorFlow 2 for Deep Learning Specialization",
+      "course_url": "https://www.coursera.org/specializations/tensorflow2-deeplearning",
+      "source_record_id": "coursera_1967",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "dense": 2,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 187,
+      "query_skill": "TensorFlow",
+      "course_title": "TensorFlow: Data and Deployment Specialization",
+      "course_url": "https://www.coursera.org/specializations/tensorflow-data-and-deployment",
+      "source_record_id": "coursera_1872",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "dense": 5,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 188,
+      "query_skill": "TensorFlow",
+      "course_title": "TensorFlow on Google Cloud",
+      "course_url": "https://www.coursera.org/learn/intro-tensorflow",
+      "source_record_id": "coursera_2329",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 189,
+      "query_skill": "TensorFlow",
+      "course_title": "Big Data Specialization",
+      "course_url": "https://www.coursera.org/specializations/big-data",
+      "source_record_id": "coursera_1805",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 4,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 190,
+      "query_skill": "TensorFlow",
+      "course_title": "Probabilistic Deep Learning with TensorFlow 2",
+      "course_url": "https://www.coursera.org/learn/probabilistic-deep-learning-with-tensorflow2",
+      "source_record_id": "coursera_5395",
+      "difficulty_level": "Advanced level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 191,
+      "query_skill": "PyTorch",
+      "course_title": "Introduction to Machine Learning",
+      "course_url": "https://www.coursera.org/learn/machine-learning-duke",
+      "source_record_id": "coursera_1465",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 192,
+      "query_skill": "PyTorch",
+      "course_title": "Data Science con Python e R Specialization",
+      "course_url": "https://www.coursera.org/specializations/data-science-con-python-e-r",
+      "source_record_id": "coursera_2509",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "dense": 1,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 193,
+      "query_skill": "PyTorch",
+      "course_title": "Deep Neural Networks with PyTorch",
+      "course_url": "https://www.coursera.org/learn/deep-neural-networks-with-pytorch",
+      "source_record_id": "coursera_2523",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 194,
+      "query_skill": "PyTorch",
+      "course_title": "How Google does Machine Learning en Espa\u00f1ol",
+      "course_url": "https://www.coursera.org/learn/google-machine-learning-es",
+      "source_record_id": "coursera_8143",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 195,
+      "query_skill": "PyTorch",
+      "course_title": "Personnel & Third-Party Security",
+      "course_url": "https://www.coursera.org/learn/internal-risk-mitigation",
+      "source_record_id": "coursera_5030",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 196,
+      "query_skill": "PyTorch",
+      "course_title": "Enfermedad respiratoria cr\u00f3nica. Asma - EPOC",
+      "course_url": "https://www.coursera.org/learn/enfermedad-respiratoria-cronica-asma-epoc",
+      "source_record_id": "coursera_3934",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 197,
+      "query_skill": "PyTorch",
+      "course_title": "\u00bfC\u00f3mo persuadir? Jugando con palabras, im\u00e1genes y n\u00fameros",
+      "course_url": "https://www.coursera.org/learn/como-persuadir",
+      "source_record_id": "coursera_242",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 198,
+      "query_skill": "PyTorch",
+      "course_title": "IBM AI Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ai-engineer",
+      "source_record_id": "coursera_5468",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 199,
+      "query_skill": "PyTorch",
+      "course_title": "La comunicaci\u00f3n laboral en el siglo XXI",
+      "course_url": "https://www.coursera.org/learn/comunicacion-trabajo",
+      "source_record_id": "coursera_6339",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 200,
+      "query_skill": "DevOps",
+      "course_title": "Introduction to DevOps",
+      "course_url": "https://www.coursera.org/learn/intro-to-devops",
+      "source_record_id": "coursera_1768",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2,
+        "dense": 2,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 201,
+      "query_skill": "DevOps",
+      "course_title": "IBM Applied DevOps Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-applied-devops-engineering",
+      "source_record_id": "coursera_1693",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 202,
+      "query_skill": "DevOps",
+      "course_title": "DevOps Culture and Mindset",
+      "course_url": "https://www.coursera.org/learn/devops-culture-and-mindset",
+      "source_record_id": "coursera_2238",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 203,
+      "query_skill": "DevOps",
+      "course_title": "Planification et Design de Syst\u00e8mes et Technologies d\u2019Assainissement",
+      "course_url": "https://www.coursera.org/learn/sanitation-fr",
+      "source_record_id": "coursera_7140",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 204,
+      "query_skill": "DevOps",
+      "course_title": "DevOps on AWS: Operate and Monitor",
+      "course_url": "https://www.coursera.org/learn/devops-aws-operate-monitor",
+      "source_record_id": "coursera_2331",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 205,
+      "query_skill": "DevOps",
+      "course_title": "DevOps on AWS Specialization",
+      "course_url": "https://www.coursera.org/specializations/aws-devops",
+      "source_record_id": "coursera_5485",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 206,
+      "query_skill": "DevOps",
+      "course_title": "DevOps, Cloud, and Agile Foundations Specialization",
+      "course_url": "https://www.coursera.org/specializations/devops-cloud-and-agile-foundations",
+      "source_record_id": "coursera_4489",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 207,
+      "query_skill": "DevOps",
+      "course_title": "IBM DevOps and Software Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+      "source_record_id": "coursera_5462",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 208,
+      "query_skill": "Microservices",
+      "course_title": "Application Development using Microservices and Serverless",
+      "course_url": "https://www.coursera.org/learn/applications-development-microservices-serverless-openshift",
+      "source_record_id": "coursera_1952",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 209,
+      "query_skill": "Microservices",
+      "course_title": "Scalable Microservices for Developers Specialization",
+      "course_url": "https://www.coursera.org/specializations/microservices",
+      "source_record_id": "coursera_1935",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 210,
+      "query_skill": "Microservices",
+      "course_title": "Deploying Microservices to Kubernetes using Azure DevOps",
+      "course_url": "https://www.coursera.org/learn/deploying-microservices-to-kubernetes-using-azure-devops",
+      "source_record_id": "coursera_5065",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 211,
+      "query_skill": "Microservices",
+      "course_title": "IBM Applied DevOps Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-applied-devops-engineering",
+      "source_record_id": "coursera_1693",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 212,
+      "query_skill": "Microservices",
+      "course_title": "Google UX Design (DE) Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/google-ux-design-de",
+      "source_record_id": "coursera_1737",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 213,
+      "query_skill": "Microservices",
+      "course_title": "Google UX Design Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/google-ux-design",
+      "source_record_id": "coursera_7385",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 4,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 214,
+      "query_skill": "Microservices",
+      "course_title": "User Experience Research and Design Specialization",
+      "course_url": "https://www.coursera.org/specializations/michiganux",
+      "source_record_id": "coursera_1740",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 5,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 215,
+      "query_skill": "Microservices",
+      "course_title": "IBM DevOps and Software Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+      "source_record_id": "coursera_5462",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 216,
+      "query_skill": "Microservices",
+      "course_title": "Bases de la conception Exp\u00e9rience Utilisateur (UX)",
+      "course_url": "https://www.coursera.org/learn/bases-de-la-conception-experience-utilisateur-ux",
+      "source_record_id": "coursera_1598",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 217,
+      "query_skill": "REST API",
+      "course_title": "Juniper Networks Automation Using Ansible and the REST API",
+      "course_url": "https://www.coursera.org/learn/juniper-automation-ansible-rest-api",
+      "source_record_id": "coursera_5143",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1,
+        "dense": 3,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 218,
+      "query_skill": "REST API",
+      "course_title": "Developing APIs with Google Cloud's Apigee API Platform Specialization",
+      "course_url": "https://www.coursera.org/specializations/apigee-api-gcp",
+      "source_record_id": "coursera_1865",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 3,
+        "dense": 2,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 219,
+      "query_skill": "REST API",
+      "course_title": "Introduction to Docker: Build Your Own Portfolio Site",
+      "course_url": "https://www.coursera.org/projects/introduction-to-docker-build-portfolio-site",
+      "source_record_id": "coursera_5017",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 4,
+        "dense": 5,
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 220,
+      "query_skill": "REST API",
+      "course_title": "Azure: create a REST API using NodeJS Serverless Functions",
+      "course_url": "https://www.coursera.org/projects/azure-create-a-rest-api-using-nodejs-serverless-functions",
+      "source_record_id": "coursera_5003",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 221,
+      "query_skill": "REST API",
+      "course_title": "Orchestrating Whole Classroom Discussion",
+      "course_url": "https://www.coursera.org/learn/classdiscussion",
+      "source_record_id": "coursera_8214",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 222,
+      "query_skill": "REST API",
+      "course_title": "Application Development using Microservices and Serverless",
+      "course_url": "https://www.coursera.org/learn/applications-development-microservices-serverless-openshift",
+      "source_record_id": "coursera_3101",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 223,
+      "query_skill": "CI/CD",
+      "course_title": "Continuous Integration and Continuous Delivery (CI/CD)",
+      "course_url": "https://www.coursera.org/learn/continuous-integration-and-continuous-delivery-ci-cd",
+      "source_record_id": "coursera_2221",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 224,
+      "query_skill": "CI/CD",
+      "course_title": "IBM Applied DevOps Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/ibm-applied-devops-engineering",
+      "source_record_id": "coursera_1693",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 225,
+      "query_skill": "CI/CD",
+      "course_title": "Image Processing for Engineering and Science Specialization",
+      "course_url": "https://www.coursera.org/specializations/image-processing",
+      "source_record_id": "coursera_6656",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 3,
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 226,
+      "query_skill": "CI/CD",
+      "course_title": "Introduction to Image Processing",
+      "course_url": "https://www.coursera.org/learn/introduction-image-processing",
+      "source_record_id": "coursera_2351",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense",
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 227,
+      "query_skill": "CI/CD",
+      "course_title": "IBM DevOps and Software Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+      "source_record_id": "coursera_5462",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 228,
+      "query_skill": "CI/CD",
+      "course_title": "Fundamentals of Digital Image and Video Processing",
+      "course_url": "https://www.coursera.org/learn/digital",
+      "source_record_id": "coursera_2174",
+      "difficulty_level": "All levels",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 229,
+      "query_skill": "CI/CD",
+      "course_title": "Introduction to Computer Vision and Image Processing",
+      "course_url": "https://www.coursera.org/learn/introduction-computer-vision-watson-opencv",
+      "source_record_id": "coursera_5547",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 230,
+      "query_skill": "Pandas",
+      "course_title": "Python and Pandas for Data Engineering",
+      "course_url": "https://www.coursera.org/learn/python-and-pandas-for-data-engineering-duke",
+      "source_record_id": "coursera_1468",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 231,
+      "query_skill": "Pandas",
+      "course_title": "Exploratory Data Analysis With Python and Pandas",
+      "course_url": "https://www.coursera.org/projects/exploratory-data-analysis-python-pandas",
+      "source_record_id": "coursera_2518",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "tfidf"
+      ],
+      "retriever_ranks": {
+        "tfidf": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 232,
+      "query_skill": "Pandas",
+      "course_title": "Introduction to Data Science in Python",
+      "course_url": "https://www.coursera.org/learn/python-data-analysis",
+      "source_record_id": "coursera_1586",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "tfidf",
+        "tfidf",
+        "tfidf",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "tfidf": 5,
+        "hybrid": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 233,
+      "query_skill": "Pandas",
+      "course_title": "Create Conditional Survey Forms using Zoho Forms",
+      "course_url": "https://www.coursera.org/projects/create-conditional-survey-forms-using-zoho-forms",
+      "source_record_id": "coursera_6540",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 1
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 234,
+      "query_skill": "Pandas",
+      "course_title": "Microsoft Windows OS",
+      "course_url": "https://www.coursera.org/learn/illinois-tech-microsoft-windows-os",
+      "source_record_id": "coursera_4456",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 235,
+      "query_skill": "Pandas",
+      "course_title": "Cloud Computing Specialization",
+      "course_url": "https://www.coursera.org/specializations/cloud-computing",
+      "source_record_id": "coursera_1606",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "dense",
+        "dense",
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "dense": 4,
+        "hybrid": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 236,
+      "query_skill": "Pandas",
+      "course_title": "Computing for Cancer Informatics",
+      "course_url": "https://www.coursera.org/learn/computing-for-cancer-informatics",
+      "source_record_id": "coursera_4803",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "dense"
+      ],
+      "retriever_ranks": {
+        "dense": 5
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 237,
+      "query_skill": "Pandas",
+      "course_title": "Computer Forensics Specialization",
+      "course_url": "https://www.coursera.org/specializations/computerforensics",
+      "source_record_id": "coursera_1619",
+      "difficulty_level": "Intermediate level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 2
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 238,
+      "query_skill": "Pandas",
+      "course_title": "IBM DevOps and Software Engineering Professional Certificate",
+      "course_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+      "source_record_id": "coursera_5462",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 3
+      },
+      "human_label": null
+    },
+    {
+      "pair_id": 239,
+      "query_skill": "Pandas",
+      "course_title": "Expressway to Data Science: Python Programming Specialization",
+      "course_url": "https://www.coursera.org/specializations/python-programming-data-science",
+      "source_record_id": "coursera_7755",
+      "difficulty_level": "Beginner level",
+      "retrieved_by": [
+        "hybrid"
+      ],
+      "retriever_ranks": {
+        "hybrid": 4
+      },
+      "human_label": null
+    }
+  ]
+}
