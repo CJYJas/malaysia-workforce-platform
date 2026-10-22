@@ -1,0 +1,7 @@
+{
+  "course_results_limit": 6,
+  "minimum_title_keyword_length": 3,
+  "source_repository": "https://github.com/CJYJas/malaysia-workforce-platform",
+  "source_ref": "HEAD",
+  "ai_enabled": false
+}
