@@ -20,7 +20,22 @@ The **Malaysia Tech Workforce Intelligence Platform** bridges Malaysian tech job
 
 ---
 
-## 3. Key Features
+## 3. Raw Datasets & Data Provenance
+
+The platform relies strictly on verifiable, publicly audited datasets without fabricated numbers or synthetic filler. All four source datasets were inspected in read-only mode and validated for schema integrity:
+
+| Dataset | Kaggle Source & Link | Local File | Total Records | Role in Platform |
+| :--- | :--- | :--- | :--- | :--- |
+| **JobStreet Malaysia Postings** | [`azraimohamad/jobstreet-all-job-dataset`](https://www.kaggle.com/datasets/azraimohamad/jobstreet-all-job-dataset) | `data/jobstreet_all_job_dataset.csv` | 69,024 postings | **Primary Job Market Dataset**: Cleaned and deduplicated into 63,852 records to compute empirical Malaysian tech skill demand, temporal trends, and role profiles. |
+| **Coursera Course Catalog** | [`elvinrustam/coursera-dataset`](https://www.kaggle.com/datasets/elvinrustam/coursera-dataset) | `data/CourseraDataset-Clean.csv` | 8,370 courses | **Primary Learning Pathway Dataset**: Source of authentic courses, verified URLs, ratings, and skills gained. Indexed into 384-d semantic embeddings for hybrid course retrieval. |
+| **IT Skills Taxonomy** | [`meerawks/it-skills-from-jobs`](https://www.kaggle.com/datasets/meerawks/it-skills-from-jobs) | `data/JobsDatasetProcessed.csv` | 3,000 postings | **Skill Taxonomy & Normalization Reference**: Apache 2.0 licensed seed dictionary used to construct `data/skills_taxonomy.json` and map surface aliases to canonical skills. |
+| **Techsalerator Sample** | [`techsalerator/job-posting-data-in-malaysia`](https://www.kaggle.com/datasets/techsalerator/job-posting-data-in-malaysia) | `data/Job Posting.csv` | 9,919 postings | **Audited Baseline / Cross-Check**: Audited for Malaysian geographic coverage; confirmed 98.76% non-MY (global teaser), documenting why JobStreet is the primary dataset. |
+
+> Complete schema audits, data provenance, license analyses, and cleaning decisions are documented in **[document/DATASETS.md](file:///c:/Documents/Jasmine/XMUM_Hack/document/DATASETS.md)**.
+
+---
+
+## 4. Key Features
 
 1. **Empirical Tech Role Matching & Flexible Normalization**:
    * Requirements are derived dynamically from Malaysian job market data, not static hand-written checklists.
@@ -48,7 +63,7 @@ The **Malaysia Tech Workforce Intelligence Platform** bridges Malaysian tech job
 
 ---
 
-## 4. Local Setup & Quickstart
+## 5. Local Setup & Quickstart
 
 ### Prerequisites
 * Python 3.10+ (Python 3.11 recommended)
@@ -108,7 +123,7 @@ Interactive API documentation is accessible at:
 
 ---
 
-## 5. Empirical Benchmark & Audit Tools
+## 6. Empirical Benchmark & Audit Tools
 
 Audit search and retrieval performance with empirical data from 63,852 postings:
 ```bash
@@ -121,7 +136,7 @@ Outputs empirical metrics and side-by-side retrieval benchmarks directly to `dat
 
 ---
 
-## 6. RunPod Cloud Deployment
+## 7. RunPod Cloud Deployment
 
 The production deployment runs the FastAPI application on a low-cost CPU container pod, communicating with a serverless GPU worker running `Qwen2.5-7B-Instruct`:
 
@@ -133,7 +148,7 @@ For step-by-step setup, Network Volume configuration, and curl smoke tests, see 
 
 ---
 
-## 7. AI / ML Usage & Safety Transparency
+## 8. AI / ML Usage & Safety Transparency
 
 In compliance with hackathon and production ethics guidelines, the platform transparently discloses the exact role of AI models:
 
@@ -148,7 +163,7 @@ In compliance with hackathon and production ethics guidelines, the platform tran
 
 ---
 
-## 8. Performance Benchmarks
+## 9. Performance Benchmarks
 
 Directly measured empirical benchmarks (zero fabricated numbers) recorded in **[docs/BENCHMARKS.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/BENCHMARKS.md)**:
 
@@ -159,7 +174,7 @@ Directly measured empirical benchmarks (zero fabricated numbers) recorded in **[
 
 ---
 
-## 9. Documentation Index
+## 10. Documentation Index
 
 * **[document/API.md](file:///c:/Documents/Jasmine/XMUM_Hack/document/API.md)**: Comprehensive REST API endpoint reference with curl examples.
 * **[docs/RUNPOD.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/RUNPOD.md)**: RunPod deployment guide, vLLM worker setup, and pre-demo checklist.
