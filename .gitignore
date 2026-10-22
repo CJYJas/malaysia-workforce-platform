@@ -81,7 +81,6 @@ temp/
 
 # --- Internal Documentation & Specifications ---
 document/
-docs/
 
 # --- Large Dataset Files (> 100MB blocked by GitHub) ---
 # Raw 166MB JobStreet dataset (mount on RunPod Network Volume or download via bootstrap)
