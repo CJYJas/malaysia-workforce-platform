@@ -16,49 +16,7 @@ The **Malaysia Tech Workforce Intelligence Platform** bridges Malaysian tech job
 ---
 
 ## 2. Architecture Diagram
-
-```mermaid
-flowchart TD
-    subgraph ClientTier ["Frontend Tier (Replit)"]
-        UI["React Web Application\n(Replit Host)"]
-    end
-
-    subgraph RunPodPod ["FastAPI Application Pod (CPU Container, Port 8000)"]
-        API["FastAPI REST Router\n(/profile, /roles, /skills, /roadmap)"]
-        PDFParser["PDF Resume Ingestion\n(PyMuPDF / pypdf)"]
-        SkillEngine["Skill Extractor & Normalizer\n(91 Canonical Skills, 202 Aliases)"]
-        Matcher["Empirical Role Matcher\n(70% Skill Coverage + 30% TF-IDF Cosine)"]
-        GapAnalyzer["Skills Gap Analyzer\n(Core >=25%, Recommended 10-25%)"]
-        CourseRec["Course Recommender\n(8,370 Verified Coursera Records)"]
-        Retriever["Course Retriever Protocol\n• TF-IDF (Default)\n• Dense (all-MiniLM-L6-v2)\n• Hybrid RRF (k=60)"]
-        Guardrails["AI Safety & Fidelity Gate\n• PII Redaction (NRIC, Email, Phone)\n• Injection Defense\n• Factual Fidelity Guardrail\n• Banned Buzzword Filter"]
-    end
-
-    subgraph RunPodStorage ["RunPod Network Volume (/workspace/data)"]
-        ParquetData[("processed_jobs.parquet\n(63,852 rows, 1,553 target roles)")]
-        Embeddings[("coursera_embeddings.npy\n(8,370 x 384 vectors)")]
-        HFCache[("HuggingFace Model Cache")]
-    end
-
-    subgraph RunPodServerless ["RunPod Serverless Worker (GPU)"]
-        vLLMWorker["vLLM Engine (Qwen2.5-7B-Instruct)\n• OpenAI-compatible API\n• Scale to Zero when idle\n• Temperature 0.0"]
-    end
-
-    UI -->|HTTPS REST| API
-    API --> PDFParser
-    API --> SkillEngine
-    API --> Matcher
-    API --> GapAnalyzer
-    API --> CourseRec
-    CourseRec --> Retriever
-    API --> Guardrails
-
-    FastAPI <-->|Mount: DATA_ROOT| ParquetData
-    FastAPI <-->|Mount: DATA_ROOT| Embeddings
-    FastAPI <-->|Mount: DATA_ROOT| HFCache
-
-    Guardrails -->|Bearer Auth / Capped Retries\nCold-Start Handling| vLLMWorker
-```
+<img width="8192" height="6476" alt="RunPod Career Skills Matching Architecture-2026-10-22-043419" src="https://github.com/user-attachments/assets/cb9c043d-96e1-42a0-a052-681a778c4488" />
 
 ---
 
