@@ -10,37 +10,7 @@
 ---
 
 ## 1. System Architecture
-
-```mermaid
-flowchart TD
-    subgraph ClientLayer ["Client / Frontend Tier"]
-        Replit["Replit Web Client\n(Browser / React Frontend)"]
-    end
-
-    subgraph RunPodInfra ["RunPod Cloud Infrastructure"]
-        subgraph CPUPod ["RunPod CPU Pod ($0.02/hr)"]
-            FastAPI["FastAPI Application\n(Port 8000, 0.0.0.0)"]
-            Parser["PDF Resume Parser\n(PyMuPDF / pypdf)"]
-            Retriever["Course Retriever\n(TF-IDF / Dense / Hybrid RRF)"]
-            Guardrail["Factual Fidelity Guardrail\n& Injection Filter"]
-        end
-
-        subgraph Storage ["RunPod Network Volume"]
-            NetVol[("Network Volume: /workspace/data\n• processed_jobs.parquet\n• coursera_embeddings.npy\n• HuggingFace cache")]
-        end
-
-        subgraph ServerlessGPU ["RunPod Serverless Worker (GPU)"]
-            vLLM["vLLM Engine\nQwen2.5-7B-Instruct\n(Scales to Zero when idle)"]
-        end
-    end
-
-    Replit -->|HTTPS / REST API| FastAPI
-    FastAPI --> Parser
-    FastAPI --> Retriever
-    FastAPI --> Guardrail
-    FastAPI <-->|Mount: DATA_ROOT| NetVol
-    Guardrail -->|OpenAI Route (httpx)\nBearer Auth / Capped Retries| vLLM
-```
+<img width="1828" height="1652" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/20f5d91a-5f82-43f5-93f8-07d44b2657a0" />
 
 > [!IMPORTANT]
 > **Strict CPU/GPU Separation:**  
