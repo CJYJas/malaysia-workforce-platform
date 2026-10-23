@@ -158,19 +158,24 @@ The platform relies strictly on verifiable, publicly audited datasets without fa
 3. **Start the API adapter and web development server**:
    Open two terminal tabs:
 
-   * **Terminal 1 — API Snapshot Adapter (Port 8080)**:
+   * **Terminal 1 — API Snapshot Adapter (Port 5000)**:
      ```bash
      pnpm --filter @workspace/api-server run dev
      ```
-     *Serves `/api/workforce` and `/api/journey` endpoints.*
+     *Serves `/api/workforce` and `/api/journey` endpoints on `http://localhost:5000`.*
 
-   * **Terminal 2 — FutureReady MY Web App (Port 21728 / 5173)**:
+   * **Terminal 2 — FutureReady MY Web App (Port 5173)**:
      ```bash
-     PORT=21728 BASE_PATH=/ pnpm --filter @workspace/workforce run dev
+     pnpm --filter @workspace/workforce run dev
      ```
-     *Accessible at `http://localhost:21728` (or your configured `PORT`).*
+     *Accessible at `http://localhost:5173`.*
 
-4. **Run frontend verification test suites**:
+4. **Build production bundles**:
+   ```bash
+   pnpm -r --if-present run build
+   ```
+
+5. **Run frontend verification test suites**:
    ```bash
    # Profile storage & journey state tests (Node test runner)
    node --test scripts/test-profile-storage.mjs
