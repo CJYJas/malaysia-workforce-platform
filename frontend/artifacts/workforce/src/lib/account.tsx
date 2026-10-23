@@ -13,6 +13,8 @@ interface AccountContextValue {
   user: AccountUser | null;
   loading: boolean;
   error: string | null;
+  guestMode: boolean;
+  setGuestMode: (val: boolean) => void;
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
@@ -24,6 +26,23 @@ export function AccountProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AccountUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [guestMode, setGuestModeState] = useState<boolean>(() => {
+    try {
+      return typeof window !== "undefined" && window.sessionStorage.getItem("futureready_guest") === "true";
+    } catch {
+      return false;
+    }
+  });
+
+  const setGuestMode = useCallback((val: boolean) => {
+    try {
+      if (val) window.sessionStorage.setItem("futureready_guest", "true");
+      else window.sessionStorage.removeItem("futureready_guest");
+    } catch {
+      // ignore
+    }
+    setGuestModeState(val);
+  }, []);
 
   const restore = useCallback(async () => {
     try {
@@ -61,22 +80,25 @@ export function AccountProvider({ children }: { children: ReactNode }) {
   const login = useCallback(async (email: string, password: string) => {
     const account = await signIn(email, password);
     setUser(account);
+    setGuestMode(false);
     setError(null);
-  }, []);
+  }, [setGuestMode]);
 
   const register = useCallback(async (email: string, password: string) => {
     const account = await registerAccount(email, password);
     setUser(account);
+    setGuestMode(false);
     setError(null);
-  }, []);
+  }, [setGuestMode]);
 
   const logout = useCallback(async () => {
     await signOut();
     setUser(null);
-  }, []);
+    setGuestMode(false);
+  }, [setGuestMode]);
 
   return (
-    <AccountContext.Provider value={{ user, loading, error, login, register, logout }}>
+    <AccountContext.Provider value={{ user, loading, error, guestMode, setGuestMode, login, register, logout }}>
       {children}
     </AccountContext.Provider>
   );

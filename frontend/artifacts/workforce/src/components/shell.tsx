@@ -124,6 +124,12 @@ export function Shell({ children }: { children: ReactNode }) {
         </div>
       </aside>
       <div className="fieldnotes-layout">
+        {account.guestMode && !account.user && (
+          <div className="bg-primary/10 border-b border-primary/20 px-4 py-2 text-xs text-center flex items-center justify-center gap-2">
+            <span className="text-muted-foreground">Guest Preview Mode:</span>
+            <Link href="/signup" className="font-semibold text-primary underline underline-offset-2">Create an account to permanently sync your resume analyses & learning roadmaps</Link>
+          </div>
+        )}
         <header className="fieldnotes-top">
           <div className="fieldnotes-top-heading">
             <p>FutureReady MY <span aria-hidden="true">/</span> Malaysia</p>
@@ -134,14 +140,18 @@ export function Shell({ children }: { children: ReactNode }) {
             <div className="fieldnotes-profile-menu">
               <button type="button" className="fieldnotes-profile-button" aria-haspopup="menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(value => !value)} data-testid="button-profile-menu">
                 <span className="fieldnotes-profile-avatar" aria-hidden="true">{avatar}</span>
-                <span className="fieldnotes-profile-name">{firstName || "Your profile"}</span>
+                <span className="fieldnotes-profile-name">{account.user ? account.user.email.split("@")[0] : firstName || (account.guestMode ? "Guest" : "Your profile")}</span>
                 <ChevronDown size={15} aria-hidden="true" />
               </button>
               {menuOpen && <div className="fieldnotes-profile-dropdown" role="menu">
                 <Link href="/profile" role="menuitem" data-testid="menu-profile"><UserRound size={16} /> View or edit profile</Link>
-                <Link href="/account" role="menuitem" data-testid="menu-account"><UserRound size={16} /> {account.user ? account.user.email : "Sign in or create account"}</Link>
-                <p role="note">{account.user ? "Learning progress syncs to your account. Profile and pathway calculations remain separate from assessed proficiency." : profile ? "Your answers are saved in this browser. Sign in to sync pathway completion." : "No profile saved yet. Your answers stay in this browser."}</p>
-                {account.user && <button type="button" role="menuitem" onClick={() => { void account.logout(); }} data-testid="menu-signout">Sign out</button>}
+                <Link href="/account" role="menuitem" data-testid="menu-account"><UserRound size={16} /> {account.user ? `Account (${account.user.email})` : "Sign in or create account"}</Link>
+                <p role="note">{account.user ? "Learning progress syncs to your account. Profile and pathway calculations remain separate from assessed proficiency." : profile ? "Your answers are saved in this browser. Sign in to sync pathway completion." : "Guest mode. Sign up to save your learning roadmaps."}</p>
+                {account.user ? (
+                  <button type="button" role="menuitem" onClick={() => { void account.logout(); }} data-testid="menu-signout">Sign out</button>
+                ) : (
+                  <Link href="/signup" role="menuitem">Sign up now</Link>
+                )}
               </div>}
             </div>
             <button type="button" className="fieldnotes-mobile-menu" aria-label={mobileOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileOpen} onClick={() => setMobileOpen(value => !value)} data-testid="button-mobile-navigation">{mobileOpen ? <X size={19} /> : <Menu size={19} />}</button>

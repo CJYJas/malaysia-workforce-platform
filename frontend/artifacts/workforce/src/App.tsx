@@ -20,7 +20,7 @@ import { JourneyProgress, JourneyGate } from '@/components/journey-flow-ui';
 import { GoalsPage, ScenariosPage } from '@/pages/journey-lenses';
 import { ResumeParserPage } from '@/pages/resume-parser';
 import { AccountPage } from '@/pages/account';
-import { AccountProvider } from '@/lib/account';
+import { AccountProvider, useAccount } from '@/lib/account';
 import {
   Route,
   Switch,
@@ -34,7 +34,32 @@ const queryClient = new QueryClient();
 
 function Router() {
   const [location] = useLocation();
+  const { user, loading, guestMode } = useAccount();
+
+  // Standalone full-page auth flow outside the dashboard shell
+  if (location === "/account" || location === "/login" || location === "/signup") {
+    return <AccountPage initialMode={location === "/login" ? "login" : "register"} />;
+  }
+
+  // Session verification loading splash
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+          <p className="text-sm text-muted-foreground font-medium">Loading FutureReady MY...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Require sign up / sign in before accessing platform features (AI parser, dashboard, pathways)
+  if (!user && !guestMode) {
+    return <AccountPage initialMode="register" />;
+  }
+
   const showProgress = ["/profile", "/radar", "/skills-radar", "/matches", "/role-matches", "/pathway"].includes(location);
+
   return (
     // The application shell persists across the connected career journey.
     <JourneyProvider><JourneyFlowProvider><Shell>
@@ -60,7 +85,6 @@ function Router() {
         <Route path="/compare" component={Compare} />
         <Route path="/courses" component={Courses} />
         <Route path="/methodology" component={MethodologyPage} />
-        <Route path="/account" component={AccountPage} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>

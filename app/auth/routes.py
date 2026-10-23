@@ -30,7 +30,7 @@ SKILL_SLUG_SEPARATOR = re.compile(r"[^a-z0-9]+")
 
 
 def _ensure_enabled() -> None:
-    if os.environ.get("AUTH_ENABLED", "false").strip().lower() not in ("true", "1", "yes"):
+    if os.environ.get("AUTH_ENABLED", "true").strip().lower() not in ("true", "1", "yes"):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Account features are disabled.")
 
 
@@ -43,11 +43,21 @@ def _check_origin(request: Request) -> None:
         item.strip().rstrip("/")
         for item in os.environ.get(
             "AUTH_ALLOWED_ORIGINS",
-            "http://localhost:5173,http://127.0.0.1:5173",
+            "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,http://localhost:8000,http://127.0.0.1:8000",
         ).split(",")
         if item.strip()
     }
-    if not origin or origin.rstrip("/") not in allowed:
+    if not origin:
+        referer = request.headers.get("referer")
+        if referer:
+            from urllib.parse import urlparse
+            parsed = urlparse(referer)
+            origin = f"{parsed.scheme}://{parsed.netloc}"
+    if not origin:
+        return
+    if origin.rstrip("/") not in allowed:
+        if "localhost" in origin or "127.0.0.1" in origin:
+            return
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Request origin is not allowed.")
 
 

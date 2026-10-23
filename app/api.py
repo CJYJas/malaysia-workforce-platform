@@ -835,3 +835,18 @@ async def generate_roadmap_from_resume(
     )
 
 
+# ==============================================================================
+# AUTH & PERSISTENT LEARNING PROGRESS EXTENSION
+# ==============================================================================
+try:
+    from app.auth.persistence import initialize_sqlite_schema
+    from app.auth.routes import router as account_router
+    app.include_router(account_router)
+    app.router.add_event_handler("startup", initialize_sqlite_schema)
+    initialize_sqlite_schema()
+    logger.info("Auth & account routes successfully mounted on main API app.")
+except Exception as exc:
+    logger.warning(f"Could not initialize auth routes: {exc}")
+
+
+

@@ -12,10 +12,8 @@ from sqlalchemy.orm import Session, sessionmaker
 def get_engine() -> Engine:
     database_url = os.environ.get("DATABASE_URL", "").strip()
     if not database_url:
-        raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="Account storage is not configured.",
-        )
+        database_url = "sqlite+pysqlite:///./local_dev.db"
+
     if database_url.startswith("postgres://"):
         database_url = "postgresql+psycopg://" + database_url[len("postgres://"):]
     elif database_url.startswith("postgresql://"):
@@ -41,7 +39,7 @@ def get_db() -> Generator[Session, None, None]:
 
 
 def initialize_sqlite_schema() -> None:
-    database_url = os.environ.get("DATABASE_URL", "").strip()
+    database_url = os.environ.get("DATABASE_URL", "").strip() or "sqlite+pysqlite:///./local_dev.db"
     if not database_url.lower().startswith("sqlite"):
         return
 
