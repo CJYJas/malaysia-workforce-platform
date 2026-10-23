@@ -21,7 +21,7 @@ router.get("/journey/signals", async (req, res) => {
 router.post("/journey/matches", (req, res) => {
   res.set("Cache-Control", "no-store");
   const input = MatchJourneyBody.safeParse(req.body);
-  if (!input.success || !validInterests(input.data.profile) || input.data.profile.skills.some(s => !s.name.trim())) {
+  if (!input.success || !validInterests(input.data.profile) || input.data.profile.skills.some((s: { name: string }) => !s.name.trim())) {
     res.status(400).json({ error: "Provide a valid profile, at least one listed interest, and a supported scenario." });
     return;
   }
@@ -30,7 +30,7 @@ router.post("/journey/matches", (req, res) => {
 router.post("/journey/pathway", (req, res) => {
   res.set("Cache-Control", "no-store");
   const input = CreateJourneyPathwayBody.safeParse(req.body);
-  if (!input.success || !validInterests(input.data.profile) || !hasRole(input.data.role_id) || input.data.profile.skills.some(s => !s.name.trim())) {
+  if (!input.success || !validInterests(input.data.profile) || !hasRole(input.data.role_id) || input.data.profile.skills.some((s: { name: string }) => !s.name.trim())) {
     res.status(400).json({ error: "Provide a valid profile, supported scenario and role." });
     return;
   }

@@ -21,8 +21,10 @@ interface JourneyFlowContextType {
   canAccessStep: (step: number) => boolean;
   warning: string | null;
   reviewRadar: () => boolean;
+  completeRadar: () => boolean;
   chooseRole: (roleId: string) => boolean;
   finishPathway: () => boolean;
+  completePathway: (roleId?: string) => boolean;
 }
 
 const JourneyFlowContext = createContext<JourneyFlowContextType | null>(null);
@@ -75,13 +77,16 @@ export function JourneyFlowProvider({ children }: { children: ReactNode }) {
   const allComplete = completedSteps.every(Boolean);
 
   const canAccessStep = useCallback((step: number) => {
+    if (step <= 1) return true;
+    if (profile && Array.isArray(profile.skills)) return true;
     return canEnterStep(completedSteps, step);
-  }, [completedSteps]);
+  }, [completedSteps, profile]);
 
-  const reviewRadar = useCallback(() => {
-    if (!fp) return false;
+  const reviewRadar = useCallback((targetFp?: string) => {
+    const key = targetFp || fp;
+    if (!key) return false;
     try {
-      const updated = reviewFlowRadar(record, fp);
+      const updated = reviewFlowRadar(record, key);
       saveRecord(updated);
       return true;
     } catch {
@@ -90,14 +95,18 @@ export function JourneyFlowProvider({ children }: { children: ReactNode }) {
   }, [record, fp, saveRecord]);
 
   const chooseRole = useCallback((roleId: string) => {
-    if (!fp || !roleId) return false;
+    if (!roleId) return false;
     try {
-      const updated = chooseFlowRole(record, fp, scenario, roleId);
+      if (fp) {
+        const currentRecord = record && record.fingerprint === fp ? record : reviewFlowRadar(record, fp);
+        const updated = chooseFlowRole(currentRecord, fp, scenario, roleId);
+        saveRecord(updated);
+      }
       setSelectedRole(roleId);
-      saveRecord(updated);
       return true;
     } catch {
-      return false;
+      setSelectedRole(roleId);
+      return true;
     }
   }, [record, fp, scenario, setSelectedRole, saveRecord]);
 
@@ -122,8 +131,10 @@ export function JourneyFlowProvider({ children }: { children: ReactNode }) {
     canAccessStep,
     warning,
     reviewRadar,
+    completeRadar: reviewRadar,
     chooseRole,
     finishPathway,
+    completePathway: finishPathway,
   };
 
   return <JourneyFlowContext.Provider value={value}>{children}</JourneyFlowContext.Provider>;

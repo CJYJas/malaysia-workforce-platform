@@ -1,5 +1,11 @@
 {
   "name": "@workspace/api-client-react",
   "version": "0.0.1",
-  "main": "index.ts"
+  "main": "index.ts",
+  "dependencies": {
+    "@tanstack/react-query": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "catalog:"
+  }
 }

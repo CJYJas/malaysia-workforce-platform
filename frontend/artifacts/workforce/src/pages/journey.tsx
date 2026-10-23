@@ -70,7 +70,7 @@ export function ProfilePage() {
 }
 
 export function RadarPage() {
-  const { completeRadar } = useJourneyFlow();
+  const { completeRadar, reviewRadar } = useJourneyFlow();
   const [, navigate] = useLocation();
   const { data: report, isLoading, isError, refetch } = useGetJourneySignals();
   const [fresh, setFresh] = useState<SignalReport | null>(null);
@@ -121,7 +121,11 @@ export function RadarPage() {
       <h2 className="mt-2 text-xl font-semibold">Ready to see where you fit?</h2>
       <p className="mt-2 text-sm text-muted-foreground">Review the rising and declining signals and their sources above. Next, we’ll compare your saved profile with future roles, explain each match score and show the skills gaps.</p>
       <button type="button" className={`${primaryButton} mt-4`} disabled={!activeReport?.source_url || !signals.length || activeReport.status === "unavailable"} data-testid="button-radar-continue" onClick={() => {
-        if (activeReport?.source_url && signals.length && activeReport.status !== "unavailable" && completeRadar()) navigate("/role-matches");
+        const onComplete = reviewRadar || completeRadar;
+        if (activeReport?.source_url && signals.length && activeReport.status !== "unavailable") {
+          if (onComplete) onComplete();
+          navigate("/role-matches");
+        }
       }}>I’ve reviewed the Radar — show my matches<ArrowRight className="h-4 w-4" /></button>
       {(!activeReport?.source_url || !signals.length || activeReport.status === "unavailable") && <p className="mt-2 text-sm text-muted-foreground">The source signals need to load before you can complete this step. Retry the source above; your profile remains saved.</p>}
     </section>
@@ -217,10 +221,17 @@ function RoleCard({ role, rank, expanded, onExpand, onPathway }: { role: RoleMat
     <div className="p-5 md:p-6"><div className="flex flex-wrap items-start justify-between gap-4"><div className="flex min-w-0 items-start gap-3"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#e9eee6] text-sm font-bold text-[#557b68]">0{rank}</span><div><h3 className="font-display text-xl font-semibold">{role.name}</h3><p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted-foreground">{role.description}</p></div></div><div className="rounded-2xl bg-[#e5f1e9] px-4 py-2 text-center"><span className="block font-display text-2xl font-bold text-[#255b4f]" data-testid={`text-readiness-${role.id}`}>{role.score}</span><span className="text-[10px] font-bold uppercase tracking-widest text-[#547367]">readiness / 100</span></div></div>
       <div className="mt-4 flex flex-wrap gap-2 text-xs"><span className="rounded-full bg-[#f4f1e7] px-3 py-1.5">{role.postings} historical postings in sample</span>{role.sample_warning&&<span className="rounded-full bg-[#fbede5] px-3 py-1.5 text-[#8b4932]">Small sample — interpret carefully</span>}<span className="rounded-full bg-[#e8edf5] px-3 py-1.5">Outlook: related global signal</span></div>
       {role.sample_warning&&<p className="mt-2 text-xs text-[#925b46]" data-testid={`warning-sample-${role.id}`}>This role’s posting sample is limited. The count is historical context, not a measure of your chances.</p>}
-      {role.matched_skills.length>0&&<p className="mt-3 text-xs text-muted-foreground"><b className="text-[#557b68]">Already in your profile:</b> {role.matched_skills.join(", ")}</p>}
+      {role.matched_skills.length>0&&<p className="mt-3 text-xs text-muted-foreground"><b className="text-[#557b68]">Already in your profile:</b> {role.matched_skills.map((s: any) => typeof s === "string" ? s : s?.skill || "").filter(Boolean).join(", ")}</p>}
       <div className="mt-4 flex flex-wrap gap-3"><button onClick={onExpand} aria-expanded={expanded} className={secondaryButton} data-testid={`button-explain-role-${role.id}`}>{expanded?"Hide why this match":"See why this match"}<ChevronRight className={`h-4 w-4 transition-transform ${expanded?"rotate-90":""}`}/></button><button onClick={onPathway} className={primaryButton} data-testid={`button-pathway-role-${role.id}`}>Build this learning plan<ArrowRight className="h-4 w-4"/></button></div>
     </div>
-    {expanded&&<div className="border-t border-[#e7e3d8] bg-[#faf9f3] p-5 md:p-6 rise"><div className="grid gap-5 md:grid-cols-[.8fr_1.2fr]"><section><h4 className="font-semibold">How the score is assembled</h4><p className="mb-4 mt-1 text-xs leading-relaxed text-muted-foreground">Weighted contribution points. The score is a heuristic readiness snapshot, not a probability.</p><div className="space-y-3">{bar("Skills",role.components.skills,75)}{bar("Interests",role.components.interests,15)}{bar("Experience",role.components.experience,10)}</div></section><section><h4 className="font-semibold">Skills to build</h4>{role.gaps.length===0?<p className="mt-2 text-sm text-[#557b68]">No priority skill gaps were returned for this role. Keep learning through the project idea below.</p>:<ul className="mt-3 space-y-2">{role.gaps.map(g=><li key={g.skill} className="rounded-xl border border-[#ebe7db] bg-card p-3" data-testid={`gap-${role.id}-${g.skill.toLowerCase().replaceAll(" ","-")}`}><div className="flex flex-wrap justify-between gap-2"><b className="text-sm">{g.skill}</b><span className="text-xs text-muted-foreground">You: level {g.current_level} · target: {g.target_level} · importance {g.importance}</span></div>{g.sdgs.length>0?<div className="mt-2 flex flex-wrap gap-2">{g.sdgs.map(s=><a key={s.id} href={s.url} target="_blank" rel="noreferrer" className="rounded-lg bg-[#e8f2ed] px-2.5 py-2 text-xs text-[#315f51] hover:underline" data-testid={`link-gap-sdg-${role.id}-${g.skill.toLowerCase().replaceAll(" ","-")}-${s.id}`}><b>Goal {s.id}: {s.title}</b><span className="mt-0.5 block">{s.reason}</span></a>)}</div>:<p className="mt-2 text-xs text-muted-foreground">No related SDG mapping was supplied for this gap.</p>}</li>)}</ul>}</section></div>
+    {expanded&&<div className="border-t border-[#e7e3d8] bg-[#faf9f3] p-5 md:p-6 rise"><div className="grid gap-5 md:grid-cols-[.8fr_1.2fr]"><section><h4 className="font-semibold">How the score is assembled</h4><p className="mb-4 mt-1 text-xs leading-relaxed text-muted-foreground">Weighted contribution points. The score is a heuristic readiness snapshot, not a probability.</p><div className="space-y-3">{bar("Skills",role.components.skills,75)}{bar("Interests",role.components.interests,15)}{bar("Experience",role.components.experience,10)}</div></section><section><h4 className="font-semibold">Skills to build</h4>{role.gaps.length===0?<p className="mt-2 text-sm text-[#557b68]">No priority skill gaps were returned for this role. Keep learning through the project idea below.</p>:<ul className="mt-3 space-y-2">{role.gaps.map((g: any, idx: number)=>{
+  const gSkill = typeof g === "string" ? g : g?.skill || "";
+  const curLvl = typeof g === "object" && typeof g?.current_level === "number" ? g.current_level : 0;
+  const tgtLvl = typeof g === "object" && typeof g?.target_level === "number" ? g.target_level : 2;
+  const imp = typeof g === "object" && g?.importance !== undefined ? String(g.importance) : "Standard";
+  const sdgsList = typeof g === "object" && Array.isArray(g?.sdgs) ? g.sdgs : [];
+  return <li key={gSkill || idx} className="rounded-xl border border-[#ebe7db] bg-card p-3" data-testid={`gap-${role.id}-${gSkill.toLowerCase().replaceAll(" ","-")}`}><div className="flex flex-wrap justify-between gap-2"><b className="text-sm">{gSkill}</b><span className="text-xs text-muted-foreground">You: level {curLvl} · target: {tgtLvl} · importance {imp}</span></div>{sdgsList.length>0?<div className="mt-2 flex flex-wrap gap-2">{sdgsList.map((s: any)=><a key={s.id} href={s.url} target="_blank" rel="noreferrer" className="rounded-lg bg-[#e8f2ed] px-2.5 py-2 text-xs text-[#315f51] hover:underline" data-testid={`link-gap-sdg-${role.id}-${gSkill.toLowerCase().replaceAll(" ","-")}-${s.id}`}><b>Goal {s.id}: {s.title}</b><span className="mt-0.5 block">{s.reason}</span></a>)}</div>:<p className="mt-2 text-xs text-muted-foreground">No related SDG mapping was supplied for this gap.</p>}</li>;
+})}</ul>}</section></div>
       <div className="mt-5 grid gap-4 border-t border-[#e7e3d8] pt-4 md:grid-cols-2"><div><h4 className="text-sm font-semibold">Related global outlook</h4><p className="mt-1 text-sm leading-relaxed text-muted-foreground">{role.outlook || "No related signal detail was supplied."} This is not a projection for this exact Malaysian role.</p></div><div><h4 className="text-sm font-semibold">A practical project idea</h4><p className="mt-1 text-sm leading-relaxed text-muted-foreground">{role.project || "Try a small project that demonstrates your new skills."}</p></div></div>
       {role.sdgs.length>0&&<div className="mt-4 rounded-xl bg-[#e8f2ed] p-3"><p className="text-xs font-bold uppercase tracking-wider text-[#527967]">Possible SDG contributions</p><div className="mt-2 flex flex-wrap gap-2">{role.sdgs.map(g=><a key={g.id} href={g.url} target="_blank" rel="noreferrer" className="rounded-lg bg-white px-3 py-2 text-xs font-semibold text-[#315f51] hover:underline" data-testid={`link-role-sdg-${role.id}-${g.id}`}>Goal {g.id}: {g.title}<span className="mt-0.5 block max-w-xs font-normal text-muted-foreground">{g.reason}</span></a>)}</div><p className="mt-2 text-[11px] text-muted-foreground">Editorial mapping of possible contribution; not UN endorsement.</p></div>}
     </div>}
@@ -228,7 +239,8 @@ function RoleCard({ role, rank, expanded, onExpand, onPathway }: { role: RoleMat
 }
 
 export function PathwayPage() {
-  const { completePathway } = useJourneyFlow();
+  const journeyFlow = useJourneyFlow();
+  const completePathway = journeyFlow.completePathway || journeyFlow.finishPathway || (() => {});
   const { profile, results, resultKey, selectedRole, setSelectedRole, setResults, scenario, setScenario } = useJourney();
   const { data: catalog, isLoading, isError, refetch } = useGetJourneyCatalog();
   const createPlan = useCreateJourneyPathway();
@@ -246,7 +258,9 @@ export function PathwayPage() {
   const requestKey = useRef("");
   useEffect(() => () => { requestKey.current = ""; }, []);
   useEffect(() => {
-    if (plan && plan.role.id === roleId && plan.scenario === scenario && requestKey.current === currentKey) completePathway(plan.role.id);
+    if (plan && plan.role.id === roleId && plan.scenario === scenario && requestKey.current === currentKey) {
+      if (typeof completePathway === "function") completePathway(plan.role.id);
+    }
   }, [plan, roleId, scenario, currentKey, completePathway]);
   const roles = resultKey === (profile ? profileKey(profile, scenario) : "") ? results?.roles || [] : [];
   const targetRole = roles.find(r=>r.id===roleId);
@@ -364,8 +378,32 @@ export function PathwayPage() {
       </section>
       <div className="pathway-plan-columns">
       <div className="pathway-route-column">
-      {plan.role.sdgs.length>0?<section className="mt-4 rounded-2xl border border-[#dce7dc] bg-[#e8f2ed] p-4"><h3 className="text-sm font-semibold">Why this role can connect to the wider world</h3><p className="mt-1 text-xs text-muted-foreground">Potential alignment mapped editorially — not UN endorsement or measured impact.</p><div className="mt-3 flex flex-wrap gap-2">{plan.role.sdgs.map(goal=><Link key={goal.id} href={`/sdg-alignment?goal=${goal.id}`} className="rounded-xl bg-white px-3 py-2 text-xs hover:underline" data-testid={`link-pathway-role-sdg-${goal.id}`}><b>Goal {goal.id}: {goal.title}</b><span className="mt-1 block text-muted-foreground">{goal.reason}</span></Link>)}</div></section>:<p className="mt-3 text-xs text-muted-foreground">No role-level SDG mapping was supplied.</p>}
-      {plan.notes.length>0&&<div className="mt-4 space-y-2">{plan.notes.map((note,i)=><Warn key={i}>{note}</Warn>)}</div>}
+      {plan.role.sdgs && plan.role.sdgs.length > 0 ? (
+        <section className="mt-4 rounded-2xl border border-[#dce7dc] bg-[#e8f2ed] p-4">
+          <h3 className="text-sm font-semibold">Why this role can connect to the wider world</h3>
+          <p className="mt-1 text-xs text-muted-foreground">Potential alignment mapped editorially — not UN endorsement or measured impact.</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {plan.role.sdgs.map((goal: any, idx: number) => {
+              const gid = typeof goal === "object" ? goal.id : goal;
+              const title = typeof goal === "object" && goal.title ? goal.title : `Goal ${gid}`;
+              const reason = typeof goal === "object" ? goal.reason : "";
+              return (
+                <Link key={gid || idx} href={`/sdg-alignment?goal=${gid}`} className="rounded-xl bg-white px-3 py-2 text-xs hover:underline" data-testid={`link-pathway-role-sdg-${gid}`}>
+                  <b>Goal {gid}: {title}</b>
+                  {reason && <span className="mt-1 block text-muted-foreground">{reason}</span>}
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      ) : (
+        <p className="mt-3 text-xs text-muted-foreground">No role-level SDG mapping was supplied.</p>
+      )}
+      {plan.notes && plan.notes.length > 0 && (
+        <div className="mt-4 space-y-2">
+          {plan.notes.map((note: any, i: number) => <Warn key={i}>{note}</Warn>)}
+        </div>
+      )}
       <section className="pathway-route"><header className="pathway-route-heading"><div><span className="match-desk-label">YOUR ROUTE / ORDERED STEPS</span><h2 className="mt-1 font-display text-2xl font-semibold">One step at a time</h2></div><p>Planning estimates only — separate from course duration.</p></header>
       {completedCount>0&&<p className="mb-3 rounded-xl bg-[#e5f1e9] px-4 py-3 text-sm font-semibold text-[#255b4f]" aria-live="polite" data-testid="status-pathway-progress">{completedCount} {completedCount===1?"step":"steps"} checked off. Nice work — keep your pace your own.</p>}
       {plan.steps.length===0&&<section className={`${panel} mb-4`}><h3 className="font-display text-xl font-semibold">No learning steps came back yet</h3><p className="mt-1 text-sm text-muted-foreground">Try another role or scenario. Your profile and saved progress are unchanged.</p></section>}
@@ -380,7 +418,27 @@ export function PathwayPage() {
           {step.resources.length>0&&<div className="mt-4"><h4 className="text-xs font-bold uppercase tracking-wider text-[#658a78]">Resources</h4><ul className="mt-2 flex flex-wrap gap-2">{step.resources.map((r,i)=><li key={`${r.url}-${i}`}><a href={r.url} target="_blank" rel="noreferrer" data-testid={`link-resource-${step.id}-${i}`} className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-[#e1e5dd] bg-white px-3 py-2 text-xs font-semibold hover:bg-[#e8f2ed] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><BookOpen className="h-3.5 w-3.5 text-[#54856f]"/>{r.title}<ExternalLink className="h-3 w-3 text-muted-foreground"/></a><span className="ml-2 text-[11px] text-muted-foreground">{r.cost}</span></li>)}</ul></div>}
           {step.kind === "skill" && <div className="mt-4 text-[13px]"><Link className="font-semibold text-primary underline" href={`/courses?skill=${encodeURIComponent(step.skill)}&from=pathway`} data-testid={`link-find-courses-${step.id}`}>Explore courses for {step.skill}</Link>{step.catalog_courses.length === 0 && <p className="mt-2 text-muted-foreground">No suitable course was found in the current course index for this skill. The skill gap remains unresolved; any separate curated resources below are not a verified catalogue match.</p>}</div>}
           {step.catalog_courses.length>0&&<div className="mt-4"><h4 className="text-xs font-bold uppercase tracking-wider text-[#658a78]">From the course catalogue</h4><div className="mt-2 grid gap-2 sm:grid-cols-2">{step.catalog_courses.map(c=><div key={c.id} className="rounded-xl bg-[#f7f6ef] p-3" data-testid={`course-card-${c.id}`}><p className="text-sm font-semibold">{c.title}</p><p className="mt-1 text-xs text-muted-foreground">{c.provider||"Provider not listed"}{c.level?` · ${c.level}`:""}{c.duration_hours != null?` · ${c.duration_hours}h listed`:""}</p><p className="mt-1 text-xs text-muted-foreground">{c.match_reason}</p><Link href={`/courses?course=${encodeURIComponent(c.id)}&skill=${encodeURIComponent(step.skill)}&from=pathway`} className="mt-2 inline-flex min-h-10 items-center font-semibold text-primary underline" data-testid={`link-course-details-${step.id}-${c.id}`}>View course record</Link>{c.url&&<a href={c.url} target="_blank" rel="noreferrer" className="ml-3 mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[#255b4f] underline" data-testid={`link-course-${c.id}`}>Original course<ExternalLink className="h-3 w-3"/></a>}</div>)}</div><p className="mt-2 text-[13px] text-muted-foreground">Course listings can change. Listed provider duration is separate from our planning estimate. Price and prerequisites are not supplied.</p></div>}
-          {step.sdgs.length>0?<div className="mt-4 rounded-xl bg-[#e8f2ed] p-3"><p className="text-xs font-bold uppercase tracking-wider text-[#527967]">Potential alignment — editorial mapping</p><div className="mt-2 flex flex-wrap gap-2">{step.sdgs.map(goal=><Link key={goal.id} href={`/sdg-alignment?goal=${goal.id}`} className="rounded-lg bg-white px-3 py-2 text-xs hover:underline" data-testid={`link-step-sdg-${step.id}-${goal.id}`}><b>Goal {goal.id}: {goal.title}</b><span className="mt-1 block text-muted-foreground">{goal.reason}</span></Link>)}</div><p className="mt-2 text-[13px] text-muted-foreground">Not UN endorsement or measured impact. Completing a learning step does not automatically deliver this goal.</p></div>:<p className="mt-3 text-xs text-muted-foreground">No related SDG mapping was supplied for this step.</p>}
+          {step.sdgs && step.sdgs.length > 0 ? (
+            <div className="mt-4 rounded-xl bg-[#e8f2ed] p-3">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#527967]">Potential alignment — editorial mapping</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {step.sdgs.map((goal: any, idx: number) => {
+                  const gid = typeof goal === "object" ? goal.id : goal;
+                  const title = typeof goal === "object" && goal.title ? goal.title : `Goal ${gid}`;
+                  const reason = typeof goal === "object" ? goal.reason : "";
+                  return (
+                    <Link key={gid || idx} href={`/sdg-alignment?goal=${gid}`} className="rounded-lg bg-white px-3 py-2 text-xs hover:underline" data-testid={`link-step-sdg-${step.id}-${gid}`}>
+                      <b>Goal {gid}: {title}</b>
+                      {reason && <span className="mt-1 block text-muted-foreground">{reason}</span>}
+                    </Link>
+                  );
+                })}
+              </div>
+              <p className="mt-2 text-[13px] text-muted-foreground">Not UN endorsement or measured impact. Completing a learning step does not automatically deliver this goal.</p>
+            </div>
+          ) : (
+            <p className="mt-3 text-xs text-muted-foreground">No related SDG mapping was supplied for this step.</p>
+          )}
         </div></div>
       </article>)}</div></section>
       </div>

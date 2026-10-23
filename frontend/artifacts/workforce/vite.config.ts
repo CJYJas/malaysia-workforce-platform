@@ -59,10 +59,32 @@ export default defineConfig({
     fs: {
       strict: true,
     },
+    proxy: {
+      '/api/py': {
+        target: process.env.BACKEND_API_URL || 'http://127.0.0.1:8000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/py/, ''),
+      },
+      '/api': {
+        target: process.env.API_SERVER_URL || 'http://127.0.0.1:5000',
+        changeOrigin: true,
+      },
+    },
   },
   preview: {
     port,
     host: '0.0.0.0',
     allowedHosts: true,
+    proxy: {
+      '/api/py': {
+        target: process.env.BACKEND_API_URL || 'http://localhost:8000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/py/, ''),
+      },
+      '/api': {
+        target: process.env.API_SERVER_URL || 'http://localhost:5000',
+        changeOrigin: true,
+      },
+    },
   },
 });

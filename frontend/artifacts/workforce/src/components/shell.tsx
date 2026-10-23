@@ -4,7 +4,7 @@ import { useGetWorkforceOverview } from "@workspace/api-client-react";
 import {
   Archive, BookOpen, ChevronDown, Compass, GitCompareArrows,
   Goal, LayoutDashboard, Menu, Radar, Route,
-  UserRound, X, BriefcaseBusiness, Lightbulb, Check, LockKeyhole,
+  UserRound, X, BriefcaseBusiness, Lightbulb, Check, LockKeyhole, FileText,
 } from "lucide-react";
 import { fmtDate } from "@/lib/format";
 import { useJourney } from "@/lib/journey";
@@ -12,12 +12,14 @@ import { useJourneyFlow } from "@/lib/journey-flow";
 
 const NAV = [
   { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
+  { href: "/resume", label: "AI Resume Parser", icon: FileText },
   { href: "/profile", label: "Profile", icon: UserRound, step: 1 },
   { href: "/skills-radar", label: "Future Skills Radar", icon: Radar, step: 2 },
   { href: "/role-matches", label: "Role matches", icon: Compass, step: 3 },
   { href: "/pathway", label: "Learning pathway", icon: Route, step: 4 },
 ];
 const MORE = [
+  { href: "/resume", label: "AI Resume Parser", icon: FileText },
   { href: "/courses", label: "Courses", icon: BookOpen },
   { href: "/sdg-alignment", label: "SDG Impact", icon: Goal },
   { href: "/roles", label: "Role Explorer", icon: BriefcaseBusiness },
@@ -27,6 +29,7 @@ const MORE = [
 ];
 const routeTitles: Record<string, string> = {
   "/": "Overview", "/dashboard": "Overview", "/profile": "My Profile",
+  "/resume": "AI Resume Parser", "/parser": "AI Resume Parser",
   "/radar": "Future Skills Radar", "/skills-radar": "Future Skills Radar",
   "/roles": "Role Explorer", "/matches": "Role Matches",
   "/role-matches": "Role Matches", "/pathway": "Learning Pathway",

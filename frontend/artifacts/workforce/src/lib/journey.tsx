@@ -37,7 +37,7 @@ interface JourneyContextType {
   setScenario: (scenario: string) => void;
   results: any;
   resultKey: string;
-  setResults: (results: any, key?: string) => void;
+  setResults: (results: any, profileOrKey?: any, scenario?: string) => void;
   saveProfile: (profile: any, details?: ProfileDetails) => void;
   reset: () => void;
 }
@@ -95,20 +95,36 @@ export function JourneyProvider({ children }: { children: ReactNode }) {
     } catch {}
   }, []);
 
-  const setResults = useCallback((res: any, key?: string) => {
+  const setResults = useCallback((res: any, profileOrKey?: any, sc?: string) => {
     setResultsState(res);
-    if (key !== undefined) {
-      setResultKeyState(key);
+    if (typeof profileOrKey === "string") {
+      setResultKeyState(profileOrKey);
+    } else if (profileOrKey && typeof profileOrKey === "object") {
+      setResultKeyState(profileKey(profileOrKey, sc || scenario || "balanced"));
+    } else {
+      setResultKeyState("");
     }
-  }, []);
+  }, [scenario]);
 
   const saveProfile = useCallback((newProfile: any, newDetails?: ProfileDetails) => {
     const detailsToSave = newDetails || profileDetails;
+    const sanitizedProfile = newProfile ? {
+      ...newProfile,
+      skills: (newProfile.skills || []).map((s: any) => ({
+        name: typeof s?.name === "string"
+          ? s.name.trim()
+          : (typeof s?.name?.skill === "string"
+              ? s.name.skill.trim()
+              : (typeof s?.skill === "string" ? s.skill.trim() : String(s?.name || ""))),
+        level: typeof s?.level === "number" && s.level > 0 ? s.level : 2,
+      })).filter((s: any) => s.name),
+    } : newProfile;
+
     try {
       if (typeof window !== "undefined") {
-        writeSavedProfile(window.localStorage, newProfile, detailsToSave);
+        writeSavedProfile(window.localStorage, sanitizedProfile, detailsToSave);
       }
-      setProfileState(newProfile);
+      setProfileState(sanitizedProfile);
       setProfileDetailsState(detailsToSave);
       setStorageError(null);
     } catch (err: any) {

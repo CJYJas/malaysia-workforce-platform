@@ -45,7 +45,7 @@ The platform relies strictly on verifiable, publicly audited datasets without fa
 | **IT Skills Taxonomy** | [`meerawks/it-skills-from-jobs`](https://www.kaggle.com/datasets/meerawks/it-skills-from-jobs) | `data/JobsDatasetProcessed.csv` | 3,000 postings | **Skill Taxonomy & Normalization Reference**: Apache 2.0 licensed seed dictionary used to construct `data/skills_taxonomy.json` and map surface aliases to canonical skills. |
 | **Techsalerator Sample** | [`techsalerator/job-posting-data-in-malaysia`](https://www.kaggle.com/datasets/techsalerator/job-posting-data-in-malaysia) | `data/Job Posting.csv` | 9,919 postings | **Audited Baseline / Cross-Check**: Audited for Malaysian geographic coverage; confirmed 98.76% non-MY (global teaser), documenting why JobStreet is the primary dataset. |
 
-> Complete schema audits, data provenance, license analyses, and cleaning decisions are documented in **[document/DATASETS.md](file:///c:/Documents/Jasmine/XMUM_Hack/document/DATASETS.md)**.
+> Complete schema audits, data provenance, license analyses, and cleaning decisions are documented in **[docs/DATASETS.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/DATASETS.md)**.
 
 ---
 
@@ -59,6 +59,7 @@ The platform relies strictly on verifiable, publicly audited datasets without fa
    * **Stage 4 — Actionable Learning Pathway (`/pathway`)**: Ordered sequence of curriculum steps mapping identified skill gaps to authentic Coursera courses with estimated study hours, interactive status tracking (*Not started*, *In progress*, *Completed*), and downloadable JSON career plans.
 
 2. **Workforce Intelligence & Exploration Tools**:
+   * **AI Resume Parser & Skill Gap Analyzer (`/resume`, `/parser`)**: Drag-and-drop PDF resume analysis powered by RunPod / vLLM. Automatically extracts canonical tech skills, verifies Malaysian market matches, and generates role-specific skill gap breakdowns with course recommendations.
    * **Role Explorer & Detail Views (`/roles`, `/roles/:roleId`)**: Deep-dive into empirical Malaysian tech roles, top required skills, sample cautionary indicators, and linked courses.
    * **Side-by-Side Role Comparison (`/compare`)**: Compare two tech roles simultaneously across skill share percentages, common overlap, and unique prerequisites, with CSV export.
    * **Coursera Course Directory (`/courses`)**: Searchable and filterable catalog of verified Coursera courses indexed to canonical tech skills.
@@ -155,33 +156,42 @@ The platform relies strictly on verifiable, publicly audited datasets without fa
    pnpm run typecheck
    ```
 
-3. **Start the API adapter and web development server**:
-   Open two terminal tabs:
+3. **Start the API servers and web development client**:
+   Open separate terminal tabs:
 
    * **Terminal 1 — API Snapshot Adapter (Port 5000)**:
      ```bash
      pnpm --filter @workspace/api-server run dev
      ```
-     *Serves `/api/workforce` and `/api/journey` endpoints on `http://localhost:5000`.*
+     *Serves `/api/workforce` and `/api/journey` snapshot endpoints on `http://localhost:5000`.*
 
    * **Terminal 2 — FutureReady MY Web App (Port 5173)**:
      ```bash
      pnpm --filter @workspace/workforce run dev
      ```
-     *Accessible at `http://localhost:5173`.*
+     *Accessible at `http://localhost:5173`. Automatically proxies `/api` calls to port 5000 and `/api/py` calls to port 8000 via Vite.*
 
-4. **Build production bundles**:
+   * **Terminal 3 (Optional) — FastAPI Intelligence Engine (Port 8000)**:
+     ```bash
+     uvicorn app.api:app --host 0.0.0.0 --port 8000 --reload
+     ```
+     *Provides RunPod/vLLM resume analysis, hybrid course retrieval, and real-time gap modeling.*
+
+4. **Full-Stack Connection Architecture**:
+   * **Seamless Reverse Proxy**: The frontend development server (`vite.config.ts`) includes built-in proxying to eliminate CORS barriers:
+     * `/api/*` $\to$ Express Snapshot Adapter (`http://127.0.0.1:5000`)
+     * `/api/py/*` $\to$ FastAPI Intelligence API (`http://127.0.0.1:8000`)
+   * **Reactive Client Query Layer (`@workspace/api-client-react`)**: Powered by TanStack Query for asynchronous fetching, smart caching, automatic retries, and clean optimistic state handling across all 4 journey stages.
+
+5. **Build production bundles**:
    ```bash
    pnpm -r --if-present run build
    ```
 
-5. **Run frontend verification test suites**:
+6. **Run frontend verification test suites**:
    ```bash
-   # Profile storage & journey state tests (Node test runner)
-   node --test scripts/test-profile-storage.mjs
-   node --test scripts/test-journey-flow.mjs
-   node --test scripts/test-match-view.mjs
-   node --test scripts/test-learning-progress.mjs scripts/test-course-catalog.mjs
+   # 52 unit & integration state/model tests across profile, flow, matching, & plan summary
+   pnpm --filter @workspace/scripts exec tsx --test test-profile-storage.mjs test-journey-flow.mjs test-match-view.mjs test-course-catalog.mjs test-plan-summary.mjs test-learning-progress.mjs
 
    # Snapshot contract & journey API verification (Python)
    python scripts/test-workforce.py
@@ -246,11 +256,12 @@ Directly measured empirical benchmarks (zero fabricated numbers) recorded in **[
 ## 10. Documentation Index
 
 ### Core Architecture & Backend
-* **[document/API.md](file:///c:/Documents/Jasmine/XMUM_Hack/document/API.md)**: Comprehensive FastAPI REST API endpoint reference with curl examples.
+* **[docs/API.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/API.md)**: Comprehensive FastAPI REST API endpoint reference with curl examples.
 * **[docs/RUNPOD.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/RUNPOD.md)**: RunPod deployment guide, vLLM worker setup, and pre-demo checklist.
 * **[docs/BENCHMARKS.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/BENCHMARKS.md)**: Empirical latency, memory, and throughput benchmarks.
-* **[document/DATASETS.md](file:///c:/Documents/Jasmine/XMUM_Hack/document/DATASETS.md)**: Dataset provenance, licensing, and schema verification.
-* **[document/Agents.md](file:///c:/Documents/Jasmine/XMUM_Hack/document/Agents.md)**: Platform rules, engineering constraints, and verification checklist.
+* **[docs/DATASETS.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/DATASETS.md)**: Dataset provenance, licensing, and schema verification.
+* **[docs/Agents.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/Agents.md)**: Platform rules, engineering constraints, and verification checklist.
+* **[docs/PLAN.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/PLAN.md)**: Milestone execution plan and technical specifications.
 
 ### FutureReady MY Frontend Workspace
 * **[frontend/README.md](file:///c:/Documents/Jasmine/XMUM_Hack/frontend/README.md)**: Frontend workspace overview and quickstart instructions.

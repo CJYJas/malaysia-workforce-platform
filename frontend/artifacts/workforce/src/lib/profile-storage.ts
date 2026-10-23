@@ -67,9 +67,14 @@ export function parseProfileDetails(raw: any): ProfileDetails {
     throw new Error("Invalid current status.");
   }
 
-  const education_level = typeof raw.education_level === "string" ? raw.education_level.trim() : (raw.education_level === undefined ? "" : (() => { throw new Error("Invalid education"); })());
-  if (education_level && !EDUCATION_LEVELS.includes(education_level as any)) {
-    throw new Error("Invalid education level.");
+  let education_level = typeof raw.education_level === "string" ? raw.education_level.trim() : (raw.education_level === undefined ? "" : (() => { throw new Error("Invalid education level"); })());
+  if (education_level) {
+    const match = EDUCATION_LEVELS.find(l => l.toLowerCase() === education_level.toLowerCase());
+    if (match) {
+      education_level = match;
+    } else {
+      throw new Error(`Invalid education level: ${education_level}`);
+    }
   }
 
   const field_of_study = typeof raw.field_of_study === "string" ? raw.field_of_study.trim() : (raw.field_of_study === undefined ? "" : (() => { throw new Error("Invalid field of study"); })());
@@ -153,15 +158,28 @@ export function decodeSavedProfile(raw: string | null): { value: any; details: P
     return { value: null, details: emptyProfileDetails(), error: "Invalid profile version or structure." };
   }
 
-  // Validate core skills
+  // Validate and sanitize core skills
   if (!Array.isArray(parsed.profile.skills)) {
     return { value: null, details: emptyProfileDetails(), error: "Profile skills must be an array." };
   }
+  const cleanSkills: Array<{ name: string; level: number }> = [];
   for (const s of parsed.profile.skills) {
-    if (!s || typeof s !== "object" || typeof s.name !== "string" || typeof s.level !== "number" || s.level <= 0) {
-      return { value: null, details: emptyProfileDetails(), error: "Profile contains invalid skills." };
+    if (!s || typeof s !== "object" || Array.isArray(s)) {
+      return { value: null, details: emptyProfileDetails(), error: "Malformed skill in profile." };
     }
+    const rawName = typeof s.name === "string"
+      ? s.name.trim()
+      : (typeof s.name?.skill === "string"
+          ? s.name.skill.trim()
+          : (typeof s.skill === "string" ? s.skill.trim() : String(s.name || "")));
+    const cleanName = rawName.trim();
+    if (!cleanName) {
+      return { value: null, details: emptyProfileDetails(), error: "Skill name cannot be empty." };
+    }
+    const cleanLevel = typeof s.level === "number" && s.level > 0 ? s.level : 2;
+    cleanSkills.push({ name: cleanName, level: cleanLevel });
   }
+  parsed.profile.skills = cleanSkills;
 
   let details = emptyProfileDetails();
   let detailsError: string | null = null;

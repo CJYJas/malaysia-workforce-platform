@@ -109,8 +109,8 @@ export function visibleMatches(
     if (bEv === "unavailable" && aEv !== "unavailable") return -1;
 
     if (sort === "skills") {
-      const aDistinct = new Set(a.matched_skills || []).size;
-      const bDistinct = new Set(b.matched_skills || []).size;
+      const aDistinct = new Set((a.matched_skills || []).map((s: any) => typeof s === "string" ? s : s?.skill || "")).size;
+      const bDistinct = new Set((b.matched_skills || []).map((s: any) => typeof s === "string" ? s : s?.skill || "")).size;
       if (bDistinct !== aDistinct) return bDistinct - aDistinct;
     } else if (sort === "interests") {
       const aInt = a.components?.interests ?? 0;

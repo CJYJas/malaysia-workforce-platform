@@ -81,7 +81,7 @@ function RoleDemand({ role }: { role: RoleMatch }) {
 
 function MatchBreakdown({ role, profile, catalog }: { role: RoleMatch; profile: JourneyProfile; catalog: JourneyCatalog }) {
   const assessed = useMemo(() => recognisedAssessment(profile, catalog), [profile, catalog]);
-  const fullyMatched = new Set(role.matched_skills.map((name) => name.trim().toLowerCase()));
+  const fullyMatched = new Set((role.matched_skills || []).map((name: any) => (typeof name === "string" ? name : name?.skill || "").trim().toLowerCase()));
   const methods = catalog.methodology;
   const points = [
     { name: "Skills", actual: role.components.skills, max: methods.skill_points },
@@ -127,30 +127,39 @@ function MatchBreakdown({ role, profile, catalog }: { role: RoleMatch; profile: 
         {role.gaps.length ? (
           <>
             <div className="mr-skill-list">
-              {role.gaps.map((gap) => (
-                <div className="mr-skill-line" key={gap.skill}>
-                  <span>
-                    <strong>{gap.skill}</strong>
-                    <span className="mr-target-note"> · {gap.current_level <= 0 ? "Not recorded in profile" : `Current level ${gap.current_level}`} → target level {gap.target_level}</span>
-                  </span>
-                  <span className="mr-level">Scenario weight {Number.isFinite(gap.importance) ? gap.importance.toFixed(1) : "—"}</span>
-                </div>
-              ))}
+              {role.gaps.map((gap: any, idx: number) => {
+                const gSkill = typeof gap === "string" ? gap : gap?.skill || "";
+                const curLvl = typeof gap === "object" && typeof gap?.current_level === "number" ? gap.current_level : 0;
+                const tgtLvl = typeof gap === "object" && typeof gap?.target_level === "number" ? gap.target_level : 2;
+                const imp = typeof gap === "object" && gap?.importance !== undefined ? (Number.isFinite(gap.importance) ? gap.importance.toFixed(1) : String(gap.importance)) : "—";
+                return (
+                  <div className="mr-skill-line" key={gSkill || idx}>
+                    <span>
+                      <strong>{gSkill}</strong>
+                      <span className="mr-target-note"> · {curLvl <= 0 ? "Not recorded in profile" : `Current level ${curLvl}`} → target level {tgtLvl}</span>
+                    </span>
+                    <span className="mr-level">Importance {imp}</span>
+                  </div>
+                );
+              })}
             </div>
             <p className="mr-target-note">The target is an editorial planning benchmark, not an employer requirement. Scenario weight is relative importance within this top-10 match list—not the share of postings requiring the skill. Unrecorded profile skills are not assumed to be absent.</p>
           </>
         ) : <p className="mr-small-note">No development gaps were returned for this role under the configured target.</p>}
       </section>
       <RoleDemand role={role} />
-      <SdgPills links={role.sdgs} />
-      {role.gaps.some((gap) => gap.sdgs.length > 0) && (
+      <SdgPills links={role.sdgs || []} />
+      {role.gaps.some((gap: any) => gap?.sdgs && gap.sdgs.length > 0) && (
         <div className="mr-demand">
           <h3>Development areas and SDG links</h3>
-          {role.gaps.filter((gap) => gap.sdgs.length > 0).map((gap) => (
-            <div key={gap.skill} className="mr-skill-line">
-              <span>{gap.skill}</span><SdgPills links={gap.sdgs} />
-            </div>
-          ))}
+          {role.gaps.filter((gap: any) => gap?.sdgs && gap.sdgs.length > 0).map((gap: any, idx: number) => {
+            const gSkill = typeof gap === "string" ? gap : gap?.skill || "";
+            return (
+              <div key={gSkill || idx} className="mr-skill-line">
+                <span>{gSkill}</span><SdgPills links={gap.sdgs} />
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
@@ -307,11 +316,26 @@ export function MatchResultsView({
                 <div className="mr-card-data">
                   <div>
                     <div className="mr-data-label">Fully matched skills</div>
-                    {role.matched_skills.length ? <div className="mr-chip-row">{role.matched_skills.map((skill) => <span className="mr-chip" key={skill}>{skill}</span>)}</div> : <span className="mr-small-note">No skills met the configured working-level target in this profile.</span>}
+                    {role.matched_skills.length ? (
+                      <div className="mr-chip-row">
+                        {role.matched_skills.map((skill: any, idx: number) => {
+                          const name = typeof skill === "string" ? skill : skill?.skill || "";
+                          return <span className="mr-chip" key={name || idx}>{name}</span>;
+                        })}
+                      </div>
+                    ) : <span className="mr-small-note">No skills met the configured working-level target in this profile.</span>}
                   </div>
                   <div>
                     <div className="mr-data-label">Development areas</div>
-                    {role.gaps.length ? <div className="mr-chip-row">{role.gaps.slice(0, 6).map((gap) => <span className="mr-chip mr-chip-gap" key={gap.skill}>{gap.skill}</span>)}{role.gaps.length > 6 && <span className="mr-chip">+{role.gaps.length - 6} more</span>}</div> : <span className="mr-small-note">No gaps returned</span>}
+                    {role.gaps.length ? (
+                      <div className="mr-chip-row">
+                        {role.gaps.slice(0, 6).map((gap: any, idx: number) => {
+                          const name = typeof gap === "string" ? gap : gap?.skill || "";
+                          return <span className="mr-chip mr-chip-gap" key={name || idx}>{name}</span>;
+                        })}
+                        {role.gaps.length > 6 && <span className="mr-chip">+{role.gaps.length - 6} more</span>}
+                      </div>
+                    ) : <span className="mr-small-note">No gaps returned</span>}
                   </div>
                 </div>
                 <div className="mr-card-bottom">

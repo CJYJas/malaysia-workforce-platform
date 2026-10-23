@@ -99,7 +99,48 @@ export function summaryMatchesScope(
   );
 }
 
-export function readSummaryProgress(summary: PlanSummary, progressRaw: string | null): LearningProgress {
+export function readLearningProgress(
+  raw: string | null,
+  steps: Array<{ id: string }>,
+): Record<string, LearningStatus> {
+  if (raw === null || raw === undefined) return {};
+  let parsed: any;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("Malformed progress JSON.");
+  }
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+    throw new Error("Progress must be an object.");
+  }
+
+  const stepIds = new Set(steps.map((s) => s.id));
+  const result: Record<string, LearningStatus> = {};
+
+  for (const [k, v] of Object.entries(parsed)) {
+    let status: LearningStatus;
+    if (v === true) {
+      status = "completed";
+    } else if (v === false) {
+      status = "not_started";
+    } else if (v === "completed" || v === "in_progress" || v === "not_started") {
+      status = v;
+    } else {
+      throw new Error(`Invalid progress status for ${k}: ${v}`);
+    }
+
+    if (stepIds.has(k)) {
+      result[k] = status;
+    }
+  }
+
+  return result;
+}
+
+export function readSummaryProgress(
+  summary: PlanSummary,
+  progressRaw: string | null,
+): LearningProgress {
   if (progressRaw === null || progressRaw === undefined) {
     const nextSkill = summary.skillSteps[0]?.skill || null;
     return {
@@ -120,33 +161,43 @@ export function readSummaryProgress(summary: PlanSummary, progressRaw: string | 
     throw new Error("Progress must be an object.");
   }
 
-  for (const [k, v] of Object.entries(parsed)) {
-    if (typeof v !== "boolean") {
-      throw new Error(`Progress value for ${k} must be boolean.`);
-    }
-  }
+  const completedIds = new Set<string>();
+  const inProgressIds = new Set<string>();
+  const stepIds = new Set(summary.stepIds);
 
-  const completedStepIds = new Set<string>();
-  for (const id of summary.stepIds) {
-    if (parsed[id] === true) {
-      completedStepIds.add(id);
+  for (const [k, v] of Object.entries(parsed)) {
+    let status: LearningStatus;
+    if (v === true) {
+      status = "completed";
+    } else if (v === false) {
+      status = "not_started";
+    } else if (v === "completed" || v === "in_progress" || v === "not_started") {
+      status = v;
+    } else {
+      throw new Error(`Invalid progress status for ${k}: ${v}`);
+    }
+
+    if (stepIds.has(k)) {
+      if (status === "completed") {
+        completedIds.add(k);
+      } else if (status === "in_progress") {
+        inProgressIds.add(k);
+      }
     }
   }
 
   let nextSkill: string | null = null;
   for (const ss of summary.skillSteps) {
-    if (!completedStepIds.has(ss.id)) {
+    if (!completedIds.has(ss.id)) {
       nextSkill = ss.skill;
       break;
     }
   }
 
   return {
-    completed: completedStepIds.size,
-    inProgress: 0,
+    completed: completedIds.size,
+    inProgress: inProgressIds.size,
     total: summary.stepIds.length,
     nextSkill,
   };
 }
-
-export const readLearningProgress = readSummaryProgress;

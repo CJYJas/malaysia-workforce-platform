@@ -34,7 +34,6 @@ env.bak/
 venv.bak/
 
 # --- Testing, Profiling & Coverage ---
-tests/
 .pytest_cache/
 .coverage
 .coverage.*
@@ -79,8 +78,6 @@ scratch/
 tmp/
 temp/
 
-# --- Internal Documentation & Specifications ---
-document/
 
 # --- Large Dataset Files (> 100MB blocked by GitHub) ---
 # Raw 166MB JobStreet dataset (mount on RunPod Network Volume or download via bootstrap)

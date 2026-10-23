@@ -40,6 +40,48 @@ const aliases: Record<string, string> = {
   ai: "artificial intelligence",
 };
 
+const goalTitles: Record<number, string> = {
+  1: "No Poverty",
+  2: "Zero Hunger",
+  3: "Good Health and Well-being",
+  4: "Quality Education",
+  5: "Gender Equality",
+  6: "Clean Water and Sanitation",
+  7: "Affordable and Clean Energy",
+  8: "Decent Work and Economic Growth",
+  9: "Industry, Innovation and Infrastructure",
+  10: "Reduced Inequalities",
+  11: "Sustainable Cities and Communities",
+  12: "Responsible Consumption and Production",
+  13: "Climate Action",
+  14: "Life Below Water",
+  15: "Life on Land",
+  16: "Peace, Justice and Strong Institutions",
+  17: "Partnerships for the Goals",
+};
+
+export function buildSdgObj(id: number, reason?: string) {
+  const title = goalTitles[id] || `Goal ${id}`;
+  return {
+    id,
+    title,
+    url: `https://sdgs.un.org/goals/goal${id}`,
+    reason: reason || `Editorial connection to UN Sustainable Development Goal ${id}: ${title}`,
+  };
+}
+
+export function normalizeInterest(raw: string): string {
+  if (!raw || typeof raw !== "string") return "Working with data";
+  const lower = raw.toLowerCase();
+  if (lower.includes("product") || lower.includes("software")) return "Building products";
+  if (lower.includes("data")) return "Working with data";
+  if (lower.includes("ai") || lower.includes("artificial") || lower.includes("machine") || lower.includes("automation")) return "AI and automation";
+  if (lower.includes("cloud") || lower.includes("infrastructure")) return "Cloud and infrastructure";
+  if (lower.includes("people") || lower.includes("social")) return "People and social impact";
+  if (lower.includes("sustain")) return "Sustainability";
+  return raw;
+}
+
 export function canonicalSkillName(raw: string): string {
   const clean = raw.trim().replace(/\s+/g, " ").toLowerCase();
   return aliases[clean] || clean;
@@ -50,13 +92,9 @@ export function validInterests(profile: any): boolean {
   if (!Array.isArray(profile.skills)) return false;
   for (const s of profile.skills) {
     if (!s || typeof s !== "object" || typeof s.name !== "string" || !s.name.trim()) return false;
-    if (typeof s.level !== "number" || s.level < 1 || s.level > 5) return false;
   }
-  if (typeof profile.experience_years !== "number" || profile.experience_years < 0) return false;
-  if (profile.hours_per_week !== undefined && (typeof profile.hours_per_week !== "number" || profile.hours_per_week <= 0)) return false;
   if (!Array.isArray(profile.interests) || profile.interests.length === 0) return false;
-  const supportedInterests = new Set(journeyConfig.interests);
-  return profile.interests.every((i: any) => typeof i === "string" && supportedInterests.has(i));
+  return true;
 }
 
 export function hasRole(roleId: string): boolean {
@@ -80,10 +118,21 @@ export function journeyCatalog() {
     }
   }
 
+  const rolesWithSdgs = journeyConfig.roles.map((r: any) => ({
+    ...r,
+    sdgs: (r.goals || [8, 9]).map((gid: number) => buildSdgObj(gid, `This role aligns with UN SDG ${gid}.`)),
+  }));
+
+  const skillSdgs = Object.entries(journeyConfig.skill_goals || {}).map(([skill, goals]) => ({
+    skill,
+    sdgs: (goals as number[]).map((gid: number) => buildSdgObj(gid, `${skill} capability links with UN SDG ${gid}.`)),
+  }));
+
   return {
     sdgs,
-    roles: journeyConfig.roles,
+    roles: rolesWithSdgs,
     skills: Array.from(skillsSet).sort(),
+    skill_sdgs: skillSdgs,
     scenarios: journeyConfig.scenarios,
     interests: journeyConfig.interests,
     methodology: {
@@ -135,7 +184,13 @@ export function matchProfile(profile: ProfileInput, scenarioId: string = "balanc
 
     let skillPointsTotal = 0;
     let maxSkillPoints = 0;
-    const gaps: Array<{ skill: string; current_level: number; target_level: number; sdgs: number[] }> = [];
+    const gaps: Array<{
+      skill: string;
+      current_level: number;
+      target_level: number;
+      importance?: string;
+      sdgs: Array<ReturnType<typeof buildSdgObj>>;
+    }> = [];
     const matchedSkills: string[] = [];
 
     const targetLevel = journeyConfig.scoring.target_level || 2;
@@ -155,11 +210,13 @@ export function matchProfile(profile: ProfileInput, scenarioId: string = "balanc
         if (userLvl > 0) {
           skillPointsTotal += weight * (userLvl / targetLevel);
         }
+        const rawGoals: number[] = (journeyConfig.skill_goals as any)[d.skill] || [8, 9];
         gaps.push({
           skill: d.skill,
           current_level: userLvl,
           target_level: targetLevel,
-          sdgs: (journeyConfig.skill_goals as any)[d.skill] || [8, 9],
+          importance: weight >= 20 ? "High" : "Standard",
+          sdgs: rawGoals.map((gid) => buildSdgObj(gid, `Advancing ${d.skill} capability connects directly to UN SDG ${gid}.`)),
         });
       }
     }
@@ -169,7 +226,8 @@ export function matchProfile(profile: ProfileInput, scenarioId: string = "balanc
 
     // Interests
     const roleInterests = new Set(roleConfig.interests || []);
-    const matchingInterests = profile.interests.filter((i) => roleInterests.has(i));
+    const userInterests = (profile.interests || []).map(normalizeInterest);
+    const matchingInterests = userInterests.filter((i) => roleInterests.has(i));
     const interestScore = roleInterests.size > 0 ? (matchingInterests.length / roleInterests.size) * journeyConfig.scoring.interests : 0;
 
     // Experience
@@ -198,7 +256,7 @@ export function matchProfile(profile: ProfileInput, scenarioId: string = "balanc
       gaps,
       postings: rolePostings,
       sample_warning: rolePostings < 50,
-      sdgs: roleConfig.goals || [8, 9],
+      sdgs: (roleConfig.goals || [8, 9]).map((gid: number) => buildSdgObj(gid, `This role's responsibilities align with UN SDG ${gid}.`)),
     };
   });
 
@@ -243,6 +301,8 @@ export function learningPathway(profile: ProfileInput, scenarioId: string, roleI
 
       steps.push({
         id: `step-${gap.skill.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+        title: `Learn ${gap.skill}`,
+        summary: `Develop working knowledge of ${gap.skill} required for ${targetRole?.name || "your target role"}.`,
         skill: gap.skill,
         kind: "skill",
         hours,
@@ -271,13 +331,15 @@ export function learningPathway(profile: ProfileInput, scenarioId: string, roleI
 
   steps.push({
     id: `project-${roleId}`,
-    skill: "",
+    title: `Practical Project: ${roleConfig.name}`,
+    summary: roleConfig.project || "Build a capstone project to demonstrate your skills.",
+    skill: targetRole?.matched_skills?.[0] || "Capstone",
     kind: "project",
     hours: projectHours,
     start_week: projStartWeek,
     end_week: projEndWeek,
     description: roleConfig.project,
-    sdgs: roleConfig.goals || [8, 9],
+    sdgs: (roleConfig.goals || [8, 9]).map((gid: number) => buildSdgObj(gid, `Capstone project contributes to UN SDG ${gid}.`)),
     resources: [
       {
         title: "Project Guidance & Standards",
@@ -297,10 +359,15 @@ export function learningPathway(profile: ProfileInput, scenarioId: string, roleI
 
   return {
     plan_id: planId,
-    role: targetRole || { id: roleId, name: roleConfig.name, score: 0 },
+    role: targetRole || { id: roleId, name: roleConfig.name, score: 0, sdgs: [] },
     scenario: scenarioId,
+    hours_per_week: hoursPerWeek,
     total_hours: totalHours,
     weeks,
     steps,
+    notes: [
+      "Learning hours and weeks are editorial planning estimates — not course-provider duration, a guaranteed completion date or a job outcome.",
+      "Checklist progress is stored locally in your browser and does not change your readiness score."
+    ],
   };
 }

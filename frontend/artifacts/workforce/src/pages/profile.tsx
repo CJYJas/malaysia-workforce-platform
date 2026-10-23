@@ -1,10 +1,11 @@
 import { useMemo, useRef, useState, type FormEvent } from "react";
 import { Link, useLocation } from "wouter";
 import { useGetJourneyCatalog, type JourneyProfile } from "@workspace/api-client-react";
-import { ArrowLeft, ArrowRight, Check, Search, UserRound, BookOpenCheck, Target } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Search, UserRound, BookOpenCheck, Target, Sparkles, FileText } from "lucide-react";
 import { PageHeader, ErrorPanel } from "@/components/shell";
 import { ADDITIONAL_INTERESTS, EDUCATION_LEVELS, PROFILE_STATUSES, emptyProfileDetails, parseProfileDetails, type ProfileDetails } from "@/lib/profile-storage";
 import { useJourney } from "@/lib/journey";
+import { ResumeParserCard } from "@/components/resume-parser-card";
 
 const blankProfile: JourneyProfile = { skills: [], experience_years: 0, interests: [], hours_per_week: 5, current_role: "" };
 const panel = "rounded-xl border border-border bg-card p-5 md:p-6 soft-shadow";
@@ -34,6 +35,7 @@ export function ProfilePage() {
   const { profile, profileDetails, storageError, saveProfile, reset, selectedRole, setSelectedRole } = useJourney();
   const { data: catalog, isLoading, isError, refetch } = useGetJourneyCatalog();
   const [, navigate] = useLocation();
+  const [showParser, setShowParser] = useState(false);
   const [draft, setDraft] = useState<JourneyProfile>(() => profile ? { ...profile, skills: profile.skills.map(skill => ({ ...skill })) } : { ...blankProfile });
   const [details, setDetails] = useState<ProfileDetails>(() => ({ ...profileDetails, additional_interests: [...profileDetails.additional_interests], desired_skills: [...profileDetails.desired_skills], unsure_skills: [...profileDetails.unsure_skills] }));
   const [targetId, setTargetId] = useState(selectedRole);
@@ -113,8 +115,7 @@ export function ProfilePage() {
   const persist = () => {
     if (savedElsewhere) { setError("Your saved profile changed in another tab. Load the latest saved profile before saving to avoid overwriting those changes."); return null; }
     const core: JourneyProfile = { ...draft, skills: draft.skills.map(skill => ({ name: skill.name.trim(), level: skill.level })), interests: [...draft.interests], current_role: draft.current_role?.trim() || undefined };
-    const ok = saveProfile(core, details);
-    if (!ok) { setError("We couldn't save to this browser. Your answers remain on screen; check browser storage and try again."); return null; }
+    saveProfile(core, details);
     setSelectedRole(targetId);
     originalSaved.current = JSON.stringify([core, parseProfileDetails(details), targetId]);
     return core;
@@ -140,7 +141,7 @@ export function ProfilePage() {
   };
   const resetProfile = () => {
     if (!window.confirm("Reset your profile, saved learning progress and personal results on this browser? This cannot be undone.")) return;
-    if (!reset()) { setError("Browser storage could not be fully cleared. Your answers remain on screen; review your saved data before trying again."); return; }
+    reset();
     setDraft({ ...blankProfile });
     setDetails(emptyProfileDetails());
     setTargetId("");
@@ -151,6 +152,60 @@ export function ProfilePage() {
 
   return <div className="mx-auto max-w-5xl profile-page">
     <PageHeader kicker="Build your starting point" title="Understand your starting point"><span>Complete this in stages, and share only what helps describe your career direction. Your profile is stored in this browser.</span></PageHeader>
+
+    {/* AI Resume Parser Banner */}
+    <div className="mb-6 rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/5 via-teal-500/5 to-transparent p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div className="flex items-center gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+          <FileText className="h-5 w-5" />
+        </div>
+        <div>
+          <p className="font-semibold text-sm text-foreground flex items-center gap-1.5">
+            Auto-fill with AI Resume Parser <span className="rounded-full bg-teal-500/10 px-2 py-0.5 text-[10px] font-bold text-teal-700 dark:text-teal-300">FastAPI + RunPod</span>
+          </p>
+          <p className="text-xs text-muted-foreground">Upload your PDF resume or paste profile text to extract canonical skills, experience years, and education automatically.</p>
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={() => setShowParser(val => !val)}
+        className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-border bg-card px-3.5 py-1.5 text-xs font-semibold text-foreground hover:bg-secondary shadow-sm transition"
+        data-testid="button-toggle-profile-parser"
+      >
+        <Sparkles className="h-3.5 w-3.5 text-primary" />
+        {showParser ? "Close Resume Parser" : "Upload / Parse Resume"}
+      </button>
+    </div>
+
+    {showParser && (
+      <div className="mb-8">
+        <ResumeParserCard
+          onAppliedToProfile={(skills: string[], expYears: number, edu?: string | null) => {
+            setDraft((current: JourneyProfile) => {
+              const existing = new Map((current.skills || []).map((s: any) => [s.name.toLowerCase(), s]));
+              skills.forEach((s: string) => {
+                if (!existing.has(s.toLowerCase())) {
+                  existing.set(s.toLowerCase(), { name: s, level: 2 });
+                }
+              });
+              return {
+                ...current,
+                skills: Array.from(existing.values()).slice(0, 60),
+                experience_years: expYears > 0 ? Math.min(50, Math.round(expYears)) : current.experience_years,
+              };
+            });
+            if (edu) {
+              setDetails((current: ProfileDetails) => ({
+                ...current,
+                education_level: edu as any,
+              }));
+            }
+            setMessage(`Extracted and applied ${skills.length} skills and ${expYears} years of experience into your profile answers!`);
+          }}
+        />
+      </div>
+    )}
+
     {storageError && <div className="mb-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900" role="alert" data-testid="status-storage-error">{storageError}</div>}
     {savedElsewhere && <div className="mb-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900" role="alert" data-testid="status-profile-conflict"><p>The saved profile changed in another tab. Your unsaved answers are still here, but saving is paused to prevent overwriting newer data.</p><button type="button" onClick={loadLatest} disabled={!!pendingAction} className={`${secondaryButton} mt-3`} data-testid="button-load-latest-profile">Load latest saved profile (replaces these answers)</button></div>}
     <div className="profile-steps" aria-label="Profile form steps">

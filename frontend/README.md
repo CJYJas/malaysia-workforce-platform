@@ -21,6 +21,10 @@ pnpm --filter @workspace/api-server run dev
 
 # Terminal 2 — FutureReady MY Frontend (http://localhost:5173)
 pnpm --filter @workspace/workforce run dev
+
+# (Optional) Terminal 3 — Python FastAPI Intelligence Engine (http://localhost:8000)
+# From repo root:
+uvicorn app.api:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 To build all production bundles:
@@ -29,18 +33,17 @@ To build all production bundles:
 pnpm -r --if-present run build
 ```
 
-The adapter serves `/api/workforce` and `/api/journey`; the frontend connects via same-origin/configured API routes. Default ports (`5173` for web, `5000` for API) and base paths (`/`) are automatically applied without requiring manual environment variables.
+### Backend & Frontend Connection
+- **Vite Proxy Layer (`vite.config.ts`)**: In development, Vite automatically proxies `/api` requests to the API Snapshot Adapter (`http://127.0.0.1:5000`) and `/api/py` requests to the Python FastAPI backend (`http://127.0.0.1:8000`), preventing CORS friction.
+- **Client Query Layer (`@workspace/api-client-react`)**: TanStack Query hooks handle real-time fetching, caching, deduplication, and error recovery across all views (Market Overview, Demand Radar, Role Matches, Learning Pathways, and Course Catalog).
+- **Default Ports**: `5173` for web frontend, `5000` for API adapter snapshot service, `8000` for Python FastAPI intelligence engine. Override via `API_SERVER_URL` and `BACKEND_API_URL` environment variables if needed.
 
 ## Verification & Tests
 
-Run the client-side state and data model verification suites:
+Run all 52 client-side state and data model verification suites:
 
 ```sh
-node --test scripts/test-profile-storage.mjs
-node --test scripts/test-journey-flow.mjs
-node --test scripts/test-match-view.mjs
-node --test scripts/test-course-catalog.mjs
-node --test scripts/test-plan-summary.mjs
+pnpm --filter @workspace/scripts exec tsx --test test-profile-storage.mjs test-journey-flow.mjs test-match-view.mjs test-course-catalog.mjs test-plan-summary.mjs test-learning-progress.mjs
 ```
 
 When the API server is running on port 5000, you can also run the Python contract verification tests:

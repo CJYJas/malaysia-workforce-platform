@@ -2,7 +2,7 @@
 type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 export const modules: ModuleMap = {
   "./components/mockups/workforce-after/Updated.tsx": () => import("../components/mockups/workforce-after/Updated.tsx"),
+  "./components/mockups/workforce-dashboard-baseline/Current.tsx": () => import("../components/mockups/workforce-dashboard-baseline/Current.tsx"),
   "./components/mockups/workforce-atlas/RoleAtlas.tsx": () => import("../components/mockups/workforce-atlas/RoleAtlas.tsx"),
-  "./components/mockups/workforce-before/Current.tsx": () => import("../components/mockups/workforce-before/Current.tsx"),
-  "./components/mockups/workforce-dashboard-baseline/Current.tsx": () => import("../components/mockups/workforce-dashboard-baseline/Current.tsx")
+  "./components/mockups/workforce-before/Current.tsx": () => import("../components/mockups/workforce-before/Current.tsx")
 };

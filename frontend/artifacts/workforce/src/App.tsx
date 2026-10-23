@@ -18,6 +18,7 @@ import { JourneyProvider, useJourney } from '@/lib/journey';
 import { JourneyFlowProvider, useJourneyFlow } from '@/lib/journey-flow';
 import { JourneyProgress, JourneyGate } from '@/components/journey-flow-ui';
 import { GoalsPage, ScenariosPage } from '@/pages/journey-lenses';
+import { ResumeParserPage } from '@/pages/resume-parser';
 import {
   Route,
   Switch,
@@ -40,6 +41,8 @@ function Router() {
       <Switch>
         <Route path="/" component={HomePage} />
         <Route path="/dashboard" component={HomePage} />
+        <Route path="/resume" component={ResumeParserPage} />
+        <Route path="/parser" component={ResumeParserPage} />
         <Route path="/profile" component={ProfilePage} />
         <Route path="/radar"><JourneyStage step={2}><RadarPage /></JourneyStage></Route>
         <Route path="/skills-radar"><JourneyStage step={2}><RadarPage /></JourneyStage></Route>

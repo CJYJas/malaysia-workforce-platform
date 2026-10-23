@@ -3,9 +3,9 @@ import { Link, useLocation, useSearch } from "wouter";
 import { useGetJourneyCatalog, useMatchJourney, type RoleMatch } from "@workspace/api-client-react";
 import { PageHeader, ErrorPanel } from "@/components/shell";
 import { ScenarioPicker } from "@/components/journey-ui";
-import { useJourney, profileKey } from "@/lib/journey";
-import { useJourneyFlow } from "@/lib/journey-flow";
-import { roleEvidence } from "@/lib/match-view-model";
+import { useJourney, profileKey } from "../lib/journey";
+import { useJourneyFlow } from "../lib/journey-flow";
+import { roleEvidence } from "../lib/match-view-model";
 import { MatchResultsView } from "@/components/match-results";
 
 export function MatchesPage() {
@@ -24,7 +24,7 @@ export function MatchesPage() {
   const [pendingKey, setPendingKey] = useState<string | null>(null);
   const [failure, setFailure] = useState<{ key: string; message: string } | null>(null);
   const pending = pendingKey === key;
-  const error = failure?.key === key ? failure.message : null;
+  const error = failure && failure.key === key ? failure.message : null;
 
   useEffect(() => {
     mounted.current = true;
@@ -39,8 +39,7 @@ export function MatchesPage() {
     try {
       const response = await mutation.mutateAsync({ data: { profile: input.profile, scenario: input.scenario } });
       if (!isCurrent()) return;
-      if (response.scenario !== input.scenario) throw new Error("Unexpected scenario in response");
-      context.current.setResults(response, input.profile, input.scenario);
+      context.current.setResults(response, input.key);
     } catch {
       if (isCurrent()) setFailure({ key: input.key, message: "We couldn’t load matches for your current profile and scenario. Your saved profile and learning checklist are unchanged. Try again." });
     } finally {
