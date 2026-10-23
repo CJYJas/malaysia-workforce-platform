@@ -13,6 +13,8 @@ import { PLAN_SUMMARY_KEY, summarisePlan, readLearningProgress as readProgress, 
 import { MalaysianRadar } from "@/components/malaysian-radar";
 import { RadarGroup } from "@/components/radar-group";
 import { DashboardTools } from "@/components/dashboard-tools";
+import { useAccount } from "@/lib/account";
+import { getAccountLessons, saveAccountLesson, saveAccountProfile } from "@/lib/account-api";
 
 const panel = "rounded-[22px] border border-[#e7e3d8] bg-card p-5 md:p-6 soft-shadow";
 const primaryButton = "inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#173a37] px-5 py-2.5 text-sm font-semibold text-[#fffaf0] transition hover:bg-[#28564e] active:scale-[.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d7785b] disabled:cursor-not-allowed disabled:opacity-55";
@@ -242,6 +244,7 @@ export function PathwayPage() {
   const journeyFlow = useJourneyFlow();
   const completePathway = journeyFlow.completePathway || journeyFlow.finishPathway || (() => {});
   const { profile, results, resultKey, selectedRole, setSelectedRole, setResults, scenario, setScenario } = useJourney();
+  const { user, loading: accountLoading } = useAccount();
   const { data: catalog, isLoading, isError, refetch } = useGetJourneyCatalog();
   const createPlan = useCreateJourneyPathway();
   const match = useMatchJourney();
@@ -256,6 +259,8 @@ export function PathwayPage() {
   const roleId = urlRole || selectedRole || (resultKey === (profile ? profileKey(profile, scenario) : "") ? results?.roles[0]?.id : "") || "";
   const currentKey = profile ? `${profileKey(profile, scenario)}:${roleId}` : "";
   const requestKey = useRef("");
+  const hydratedPlanRef = useRef("");
+  const previousAccountRef = useRef<string | null>(null);
   useEffect(() => () => { requestKey.current = ""; }, []);
   useEffect(() => {
     if (plan && plan.role.id === roleId && plan.scenario === scenario && requestKey.current === currentKey) {
@@ -284,6 +289,7 @@ export function PathwayPage() {
   }, [profile, scenario, urlRole, selectedRole, resultKey, results, match.mutateAsync, setResults, setSelectedRole]);
   useEffect(() => {
     setPlan(null); setChecks({}); setError(""); requestKey.current = "";
+    hydratedPlanRef.current = "";
   }, [currentKey]);
   const loadPlan = async () => {
     if (!profile || !roleId) return;
@@ -295,7 +301,7 @@ export function PathwayPage() {
       setStorageWarning("");
       try {
         const saved = localStorage.getItem(`my-next-chapter.progress.${created.plan_id}`);
-        setChecks(readProgress(saved, created.steps));
+        setChecks(user || accountLoading ? {} : readProgress(saved, created.steps));
       } catch { setChecks({}); setStorageWarning("Progress storage is unavailable. Step completion will last only while this page stays open."); }
       try {
         localStorage.setItem(PLAN_SUMMARY_KEY, JSON.stringify(summarisePlan(created, flowFingerprint(profile))));
@@ -305,6 +311,52 @@ export function PathwayPage() {
   loadPlanRef.current = loadPlan;
   useEffect(() => {
     if (!plan) return;
+    if (!user) {
+      if (previousAccountRef.current) {
+        previousAccountRef.current = null;
+        try {
+          const saved = localStorage.getItem(`my-next-chapter.progress.${plan.plan_id}`);
+          setChecks(readProgress(saved, plan.steps));
+          setStorageWarning("");
+        } catch {
+          setChecks({});
+          setStorageWarning("Guest progress could not be read from this browser.");
+        }
+      }
+      return;
+    }
+    const hydrationKey = `${user.id}:${plan.plan_id}`;
+    if (hydratedPlanRef.current === hydrationKey) return;
+    previousAccountRef.current = user.id;
+    hydratedPlanRef.current = hydrationKey;
+    let cancelled = false;
+    void (async () => {
+      try {
+        const profileSync = await saveAccountProfile({
+          target_role: plan.role.name,
+          skills: profile?.skills || [],
+          experience_years: profile?.experience_years ?? null,
+          education: profile?.education ?? null,
+        });
+        const lessons = await getAccountLessons();
+        if (cancelled) return;
+        const saved = Object.fromEntries(lessons.map((item) => [item.item_id, item.status]));
+        setChecks(readProgress(JSON.stringify(saved), plan.steps));
+        setStorageWarning(profileSync.roadmap_error
+          ? `Account progress synced, but the roadmap could not be updated: ${profileSync.roadmap_error}`
+          : "");
+      } catch (err) {
+        if (!cancelled) {
+          setStorageWarning(err instanceof Error
+            ? `Account progress could not be loaded or synced: ${err.message}`
+            : "Account progress could not be loaded or synced.");
+        }
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [user, plan, profile]);
+  useEffect(() => {
+    if (!plan || user) return;
     const sync = (event: StorageEvent) => {
       if (event.key !== `my-next-chapter.progress.${plan.plan_id}` && event.key !== null) return;
       try { setChecks(readProgress(event.newValue, plan.steps)); setStorageWarning(""); }
@@ -312,7 +364,7 @@ export function PathwayPage() {
     };
     window.addEventListener("storage", sync);
     return () => window.removeEventListener("storage", sync);
-  }, [plan]);
+  }, [plan, user]);
   const autoPlanKey = useRef("");
   useEffect(() => {
     if (!profile || !roleId || plan || autoPlanKey.current === currentKey) return;
@@ -343,12 +395,41 @@ export function PathwayPage() {
     }
     await loadPlan();
   };
-  const setStepStatus = (id: string, status: LearningStatus) => {
-    if (!plan?.steps.some(step => step.id === id)) return;
+  const setStepStatus = async (id: string, status: LearningStatus) => {
+    const step = plan?.steps.find(item => item.id === id);
+    if (!plan || !step) return;
     const updated = { ...stepProgress, [id]: status };
     setChecks(updated);
-    if (plan) try { localStorage.setItem(`my-next-chapter.progress.${plan.plan_id}`, JSON.stringify(updated)); setStorageWarning(""); }
-    catch { setStorageWarning("We couldn’t save progress in this browser. Your change remains visible until you leave this page."); }
+    if (user) {
+      try {
+        const profileSync = await saveAccountProfile({
+          target_role: plan.role.name,
+          skills: profile?.skills || [],
+          experience_years: profile?.experience_years ?? null,
+          education: profile?.education ?? null,
+        });
+        const lessonSync = await saveAccountLesson(id, {
+          status,
+          item_type: "pathway_step",
+          title: step.title,
+        });
+        const roadmapError = lessonSync.roadmap_error || profileSync.roadmap_error;
+        setStorageWarning(roadmapError
+          ? `Progress is saved to your account, but the roadmap could not be updated: ${roadmapError}`
+          : "");
+      } catch (err) {
+        setStorageWarning(err instanceof Error
+          ? `Progress is visible here but could not be saved to your account: ${err.message}`
+          : "Progress is visible here but could not be saved to your account.");
+      }
+      return;
+    }
+    try {
+      localStorage.setItem(`my-next-chapter.progress.${plan.plan_id}`, JSON.stringify(updated));
+      setStorageWarning("");
+    } catch {
+      setStorageWarning("We couldn’t save progress in this browser. Your change remains visible until you leave this page.");
+    }
   };
   const toggleStep = (id: string) => setStepStatus(id, checks[id] ? "not_started" : "completed");
   const download = () => {

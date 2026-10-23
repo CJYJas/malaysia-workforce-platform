@@ -50,4 +50,4 @@ No Malaysian availability, price, teaching language, accessibility, current rati
 2. **After review: live FastAPI integration and role matching.** Obtain the backend URL through environment configuration, verify its actual OpenAPI and CORS/auth contract, add profile entry and explainable scores/gaps. Never log profile text. Scores are not hiring probabilities.
 3. **After review: personalized learning pathways.** Integrate the real roadmap endpoint, show unresolved gaps, retrieval evidence, ordering limitations and documented SDG rationale when returned.
 
-The existing Python backend is unchanged. This first milestone intentionally stops before implementing the entire application.
+This file records the frontend dataset-inspection milestone. The current account API and its local setup are documented in [ACCOUNT_EXTENSION.md](../../docs/ACCOUNT_EXTENSION.md).

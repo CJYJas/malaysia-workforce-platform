@@ -2,8 +2,8 @@
 
 **Project:** Malaysia Tech Workforce Intelligence Platform (Hackathon MVP)  
 **Date of Inspection:** 2026-10-22  
-**Reproducible Inspection Script:** [`scripts/inspect_datasets.py`](file:///c:/Documents/Jasmine/XMUM_Hack/scripts/inspect_datasets.py)  
-**Inspection Output Data:** [`scripts/inspection_results.json`](file:///c:/Documents/Jasmine/XMUM_Hack/scripts/inspection_results.json)  
+**Reproducible Inspection Script:** [`scripts/inspect_datasets.py`](../scripts/inspect_datasets.py)  
+**Inspection Output Data:** [`scripts/inspection_results.json`](../scripts/inspection_results.json)  
 
 ---
 

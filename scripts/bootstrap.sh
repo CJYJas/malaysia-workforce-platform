@@ -66,4 +66,4 @@ HOST="0.0.0.0"
 echo "[4/4] Bootstrap phase complete. Starting FastAPI server on http://${HOST}:${PORT}..."
 echo "========================================================================"
 
-exec uvicorn app.api:app --host "$HOST" --port "$PORT"
+exec uvicorn app.extension_entrypoint:app --host "$HOST" --port "$PORT"

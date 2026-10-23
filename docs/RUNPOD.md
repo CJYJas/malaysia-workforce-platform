@@ -70,7 +70,7 @@ Per official RunPod documentation ([docs.runpod.io/serverless/endpoints/openai-c
 1. In the RunPod Console, navigate to **Pods** $\to$ **Deploy**.
 2. Select **CPU Instances** (e.g., 2 vCPU, 4–8 GB RAM).
 3. Configure the container:
-   * **Container Image:** Built from this repository's [Dockerfile](file:///c:/Documents/Jasmine/XMUM_Hack/Dockerfile) (e.g. `your-dockerhub/malaysia-workforce:latest`).
+   * **Container Image:** Built from this repository's [Dockerfile](../Dockerfile) (e.g. `your-dockerhub/malaysia-workforce:latest`).
    * **Expose HTTP Ports:** `8000`
    * **Volume Mount Path:** `/workspace/data` (attach the `workforce-data` network volume created in Step 1).
 4. Set **Environment Variables** in Pod Settings:
@@ -84,7 +84,7 @@ Per official RunPod documentation ([docs.runpod.io/serverless/endpoints/openai-c
    CORS_ORIGINS=["https://replit.com","https://*.replit.dev"]
    RETRIEVER=tfidf
    ```
-5. Click **Deploy Pod**. The container will run [scripts/bootstrap.sh](file:///c:/Documents/Jasmine/XMUM_Hack/scripts/bootstrap.sh) automatically to initialize datasets and start Uvicorn.
+5. Click **Deploy Pod**. The container will run [scripts/bootstrap.sh](../scripts/bootstrap.sh) automatically to initialize datasets and start Uvicorn.
 
 ---
 

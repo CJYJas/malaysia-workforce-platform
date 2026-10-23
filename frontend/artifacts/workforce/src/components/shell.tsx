@@ -9,6 +9,7 @@ import {
 import { fmtDate } from "@/lib/format";
 import { useJourney } from "@/lib/journey";
 import { useJourneyFlow } from "@/lib/journey-flow";
+import { useAccount } from "@/lib/account";
 
 const NAV = [
   { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
@@ -54,6 +55,7 @@ export function SnapshotStatus() {
 export function Shell({ children }: { children: ReactNode }) {
   const [loc] = useLocation();
   const { profile, profileDetails } = useJourney();
+  const account = useAccount();
   const flow = useJourneyFlow();
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -137,7 +139,9 @@ export function Shell({ children }: { children: ReactNode }) {
               </button>
               {menuOpen && <div className="fieldnotes-profile-dropdown" role="menu">
                 <Link href="/profile" role="menuitem" data-testid="menu-profile"><UserRound size={16} /> View or edit profile</Link>
-                <p role="note">{profile ? "Your answers are saved in this browser. Matching is sent only when you request analysis." : "No profile saved yet. Your answers stay in this browser."}</p>
+                <Link href="/account" role="menuitem" data-testid="menu-account"><UserRound size={16} /> {account.user ? account.user.email : "Sign in or create account"}</Link>
+                <p role="note">{account.user ? "Learning progress syncs to your account. Profile and pathway calculations remain separate from assessed proficiency." : profile ? "Your answers are saved in this browser. Sign in to sync pathway completion." : "No profile saved yet. Your answers stay in this browser."}</p>
+                {account.user && <button type="button" role="menuitem" onClick={() => { void account.logout(); }} data-testid="menu-signout">Sign out</button>}
               </div>}
             </div>
             <button type="button" className="fieldnotes-mobile-menu" aria-label={mobileOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileOpen} onClick={() => setMobileOpen(value => !value)} data-testid="button-mobile-navigation">{mobileOpen ? <X size={19} /> : <Menu size={19} />}</button>

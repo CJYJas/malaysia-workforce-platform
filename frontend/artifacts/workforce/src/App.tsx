@@ -19,6 +19,8 @@ import { JourneyFlowProvider, useJourneyFlow } from '@/lib/journey-flow';
 import { JourneyProgress, JourneyGate } from '@/components/journey-flow-ui';
 import { GoalsPage, ScenariosPage } from '@/pages/journey-lenses';
 import { ResumeParserPage } from '@/pages/resume-parser';
+import { AccountPage } from '@/pages/account';
+import { AccountProvider } from '@/lib/account';
 import {
   Route,
   Switch,
@@ -58,6 +60,7 @@ function Router() {
         <Route path="/compare" component={Compare} />
         <Route path="/courses" component={Courses} />
         <Route path="/methodology" component={MethodologyPage} />
+        <Route path="/account" component={AccountPage} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>
@@ -90,9 +93,11 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-          <Router />
-        </WouterRouter>
+        <AccountProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+            <Router />
+          </WouterRouter>
+        </AccountProvider>
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>

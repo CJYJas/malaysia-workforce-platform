@@ -3,7 +3,7 @@
 **Platform:** Malaysia Tech Workforce Intelligence Platform (Hackathon MVP)  
 **Backend:** FastAPI hosted on RunPod (port 8000 default)  
 **Frontend Contract:** RESTful JSON endpoints for Replit-hosted UI  
-**Governing Rules:** Binding engineering constraints from [`document/Agents.md`](file:///c:/Documents/Jasmine/XMUM_Hack/document/Agents.md)  
+**Governing Rules:** Binding engineering constraints from [`Agents.md`](./Agents.md)  
 **Status:** Phase 0 Completed; Phase 1–5 Proposed for User Approval  
 
 ---

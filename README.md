@@ -8,7 +8,7 @@
 [![Vite](https://img.shields.io/badge/Vite-6-646cff.svg)](https://vite.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8.svg)](https://tailwindcss.com/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Backend Tests: 105 Passed](https://img.shields.io/badge/backend%20tests-105%20passed-brightgreen.svg)]()
+[![Backend Tests](https://img.shields.io/badge/backend%20tests-CI-blue.svg)]()
 [![RunPod Cloud](https://img.shields.io/badge/RunPod-Serverless%20vLLM-purple.svg)](https://runpod.io)
 
 ---
@@ -21,6 +21,8 @@ The platform comprises two primary layers:
 1. **High-Performance Python/FastAPI Backend**: Statistical market intelligence engine, multi-tier role normalizer, hybrid semantic course retriever (`all-MiniLM-L6-v2` via CPU ONNX Runtime + RRF), and RunPod Serverless vLLM worker (`Qwen/Qwen2.5-7B-Instruct`) with strict factual fidelity guardrails.
 2. **FutureReady MY Interactive Web Frontend**: A modern web client and adapter workspace (`frontend/`) built with React 19, TypeScript, Tailwind CSS, TanStack Query, and Radix UI primitives. It provides an explainable 4-stage career journey, interactive role exploration, skill-gap analysis, uncertainty scenario planning, and learning progress tracking.
 
+Account registration, server-side learning progress, and evidence-qualified roadmap reconciliation are documented in [docs/ACCOUNT_EXTENSION.md](./docs/ACCOUNT_EXTENSION.md). Account routes are disabled by default and are mounted by the standard Docker bootstrap through `app.extension_entrypoint:app`.
+
 ---
 
 ## 2. Architecture Diagram & System Design
@@ -28,7 +30,7 @@ The platform comprises two primary layers:
 <img width="8192" height="6476" alt="RunPod Career Skills Matching Architecture-2026-10-22-043419" src="https://github.com/user-attachments/assets/cb9c043d-96e1-42a0-a052-681a778c4488" />
 
 ### Full-Stack Architecture
-* **Frontend Web Application (`@workspace/workforce`)**: React 19 Single-Page Application (SPA) with responsive desktop sidebar and mobile navigation drawers, versioned client-side profile storage (`localStorage`), interactive charts, and accessible Radix UI components.
+* **Frontend Web Application (`@workspace/workforce`)**: React 19 Single-Page Application (SPA) with responsive desktop sidebar and mobile navigation drawers, versioned client-side profile storage (`localStorage`), interactive charts, and accessible Radix UI components. When accounts are enabled and a user signs in, selected profile fields and pathway progress can also be synchronized to PostgreSQL.
 * **API Adapter & Snapshot Server (`@workspace/api-server`)**: Express-based Node.js service providing read-only snapshot data and contract validation via OpenAPI and Zod schemas, mounted under `/api/workforce` and `/api/journey`.
 * **Backend Intelligence API (`app.api:app`)**: FastAPI service running asynchronous RunPod Serverless vLLM extraction, ONNX CPU hybrid retrieval, and deterministic role normalization.
 
@@ -45,7 +47,7 @@ The platform relies strictly on verifiable, publicly audited datasets without fa
 | **IT Skills Taxonomy** | [`meerawks/it-skills-from-jobs`](https://www.kaggle.com/datasets/meerawks/it-skills-from-jobs) | `data/JobsDatasetProcessed.csv` | 3,000 postings | **Skill Taxonomy & Normalization Reference**: Apache 2.0 licensed seed dictionary used to construct `data/skills_taxonomy.json` and map surface aliases to canonical skills. |
 | **Techsalerator Sample** | [`techsalerator/job-posting-data-in-malaysia`](https://www.kaggle.com/datasets/techsalerator/job-posting-data-in-malaysia) | `data/Job Posting.csv` | 9,919 postings | **Audited Baseline / Cross-Check**: Audited for Malaysian geographic coverage; confirmed 98.76% non-MY (global teaser), documenting why JobStreet is the primary dataset. |
 
-> Complete schema audits, data provenance, license analyses, and cleaning decisions are documented in **[docs/DATASETS.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/DATASETS.md)**.
+> Complete schema audits, data provenance, license analyses, and cleaning decisions are documented in **[docs/DATASETS.md](./docs/DATASETS.md)**.
 
 ---
 
@@ -53,7 +55,7 @@ The platform relies strictly on verifiable, publicly audited datasets without fa
 
 ### A. FutureReady MY Frontend Experience
 1. **Guided 4-Stage Personal Career Journey**:
-   * **Stage 1 — Profile Intake (`/profile`)**: Structured 3-part intake (*About you*, *Your skills*, *Your direction*) with assessed proficiencies (*Beginner*, *Working*, *Confident*, or *Not sure*). Full support for zero-skill newcomers, non-destructive editing, and 100% browser-local persistence (no PII transmission or account requirement).
+   * **Stage 1 — Profile Intake (`/profile`)**: Structured 3-part intake (*About you*, *Your skills*, *Your direction*) with self-reported proficiencies (*Beginner*, *Working*, *Confident*, or *Not sure*). Full support for zero-skill newcomers and non-destructive editing. Browser-local storage is the default; accounts synchronize selected fields for signed-in users when they use a learning pathway.
    * **Stage 2 — Future Skills Radar (`/radar`, `/skills-radar`)**: Source-backed technology outlook signals categorized into rising/declining skills, mapped against real Malaysian market demand and UN SDG goals.
    * **Stage 3 — Explainable Role Matching (`/matches`, `/role-matches`)**: Transparent 100-point alignment formula (**75 pts skills + 15 pts interests + 10 pts experience**). Highlights matched skills vs. developmental gaps, with clear disclaimers (*readiness alignment, not a hiring guarantee*).
    * **Stage 4 — Actionable Learning Pathway (`/pathway`)**: Ordered sequence of curriculum steps mapping identified skill gaps to authentic Coursera courses with estimated study hours, interactive status tracking (*Not started*, *In progress*, *Completed*), and downloadable JSON career plans.
@@ -132,14 +134,29 @@ The platform relies strictly on verifiable, publicly audited datasets without fa
    ```bash
    python -m pytest tests -v
    ```
-   *Current test suite: **105 passed in ~48 seconds (100% pass rate across 15 test suites)**.*
 
 6. **Start local FastAPI server**:
    ```bash
-   uvicorn app.api:app --host 0.0.0.0 --port 8000 --reload
+   uvicorn app.extension_entrypoint:app --host 0.0.0.0 --port 8000 --reload
    ```
    * Interactive Swagger UI: `http://localhost:8000/docs`
    * ReDoc: `http://localhost:8000/redoc`
+
+### Local account API (Windows PowerShell)
+
+For local-only account testing, use SQLite; PostgreSQL remains the production database and requires the manual migrations described in [docs/ACCOUNT_EXTENSION.md](./docs/ACCOUNT_EXTENSION.md).
+
+```powershell
+$env:DATABASE_URL = "sqlite+pysqlite:///./local_dev.db"
+$env:AUTH_ENABLED = "true"
+$env:AUTH_SIGNING_KEY = (python -c "import secrets; print(secrets.token_urlsafe(48))")
+$env:AUTH_COOKIE_SECURE = "false"
+$env:AUTH_ALLOWED_ORIGINS = "http://localhost:5173,http://127.0.0.1:5173,http://127.0.0.1:8000"
+$env:CORS_ORIGINS = '["http://localhost:5173","http://127.0.0.1:5173","http://127.0.0.1:8000"]'
+python -m uvicorn app.extension_entrypoint:app --host 127.0.0.1 --port 8000 --reload
+```
+
+SQLite account tables are created automatically when this entrypoint starts. Account routes require an allowlisted `Origin`; authenticated write requests also require the `X-CSRF-Token` returned by registration/login. Swagger UI at `/docs` does not automatically add the CSRF header, so set it for authenticated mutations; requests made with `curl` or PowerShell must provide the `Origin` header explicitly.
 
 ---
 
@@ -173,7 +190,7 @@ The platform relies strictly on verifiable, publicly audited datasets without fa
 
    * **Terminal 3 (Optional) — FastAPI Intelligence Engine (Port 8000)**:
      ```bash
-     uvicorn app.api:app --host 0.0.0.0 --port 8000 --reload
+     uvicorn app.extension_entrypoint:app --host 0.0.0.0 --port 8000 --reload
      ```
      *Provides RunPod/vLLM resume analysis, hybrid course retrieval, and real-time gap modeling.*
 
@@ -190,7 +207,7 @@ The platform relies strictly on verifiable, publicly audited datasets without fa
 
 6. **Run frontend verification test suites**:
    ```bash
-   # 52 unit & integration state/model tests across profile, flow, matching, & plan summary
+   # Client-side state and data-model tests across profile, flow, matching, and plan summary
    pnpm --filter @workspace/scripts exec tsx --test test-profile-storage.mjs test-journey-flow.mjs test-match-view.mjs test-course-catalog.mjs test-plan-summary.mjs test-learning-progress.mjs
 
    # Snapshot contract & journey API verification (Python)
@@ -218,11 +235,11 @@ Outputs empirical metrics and side-by-side retrieval benchmarks directly to `dat
 
 The production deployment runs the FastAPI application on a low-cost CPU container pod, communicating with a serverless GPU worker running `Qwen2.5-7B-Instruct`:
 
-1. **Docker Container**: Build and deploy using the provided [Dockerfile](file:///c:/Documents/Jasmine/XMUM_Hack/Dockerfile).
-2. **Bootstrap Script**: Container automatically runs [scripts/bootstrap.sh](file:///c:/Documents/Jasmine/XMUM_Hack/scripts/bootstrap.sh) to mount Network Volume data and launch Uvicorn.
+1. **Docker Container**: Build and deploy using the provided [Dockerfile](./Dockerfile).
+2. **Bootstrap Script**: Container automatically runs [scripts/bootstrap.sh](./scripts/bootstrap.sh) to mount Network Volume data and launch Uvicorn.
 3. **vLLM Serverless Worker**: Configured with `Min Workers: 0` and `Idle Timeout: 60s` to scale to zero when idle, minimizing costs.
 
-For step-by-step setup, Network Volume configuration, and curl smoke tests, see **[docs/RUNPOD.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/RUNPOD.md)**.
+For step-by-step setup, Network Volume configuration, and curl smoke tests, see **[docs/RUNPOD.md](./docs/RUNPOD.md)**.
 
 ---
 
@@ -238,37 +255,36 @@ In compliance with hackathon and production ethics guidelines, the platform tran
 | **Course Retrieval** | `all-MiniLM-L6-v2` (ONNX CPU) & RRF | Hybrid dense + lexical ranking. Annotated with `match_signal` (`both`, `keyword`, `semantic`). Returns `[]` for non-existent courses (zero hallucinations). |
 | **Profile Parsing** | Open-Weight `Qwen2.5-7B-Instruct` | Extracts skills from text. **Post-extraction verification gate** discards any non-canonical or hallucinated skill. Falls back to dictionary extractor on error. |
 | **Executive Narration** | Open-Weight `Qwen2.5-7B-Instruct` | Summarizes deterministic facts. **Factual fidelity checker** verifies all numbers and entities exist in input data; rejects subjective buzzwords. |
-| **Frontend Privacy** | Local Browser Storage (`localStorage`) | User profiles, optional context, and learning checklist progress are stored locally on the client; zero PII persistence or background tracking. |
+| **Frontend Privacy** | Browser Storage; PostgreSQL accounts | Guest profiles and pathway checklists remain browser-local. When enabled, the account API persists selected profile fields and pathway-step statuses for signed-in users; no profile-text logging or background tracking is introduced. |
 
 ---
 
 ## 9. Performance Benchmarks
 
-Directly measured empirical benchmarks (zero fabricated numbers) recorded in **[docs/BENCHMARKS.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/BENCHMARKS.md)**:
+Directly measured empirical benchmarks (zero fabricated numbers) recorded in **[docs/BENCHMARKS.md](./docs/BENCHMARKS.md)**:
 
 * **Memory Usage**: ~185 MB steady-state RAM (runs comfortably on minimal CPU instances).
 * **Dense Course Retrieval Latency**: **6.9 ms** (vs 104 ms TF-IDF baseline).
 * **Profile Verification Latency**: **1.48 ms** end-to-end.
-* **Test Coverage**: **105 automated backend unit & integration tests + 52 frontend state/model & contract tests passing (100% pass rate)**.
+* **Automated checks**: Backend tests run with `python -m pytest tests -v`; GitHub Actions runs frontend typechecking, the account request contract test, and the documented client-side state/model tests. Test counts are reported by the test runners rather than hard-coded here.
 
 ---
 
 ## 10. Documentation Index
 
 ### Core Architecture & Backend
-* **[docs/API.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/API.md)**: Comprehensive FastAPI REST API endpoint reference with curl examples.
-* **[docs/RUNPOD.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/RUNPOD.md)**: RunPod deployment guide, vLLM worker setup, and pre-demo checklist.
-* **[docs/BENCHMARKS.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/BENCHMARKS.md)**: Empirical latency, memory, and throughput benchmarks.
-* **[docs/DATASETS.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/DATASETS.md)**: Dataset provenance, licensing, and schema verification.
-* **[docs/Agents.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/Agents.md)**: Platform rules, engineering constraints, and verification checklist.
-* **[docs/PLAN.md](file:///c:/Documents/Jasmine/XMUM_Hack/docs/PLAN.md)**: Milestone execution plan and technical specifications.
+* **[docs/API.md](./docs/API.md)**: Comprehensive FastAPI REST API endpoint reference with curl examples.
+* **[docs/RUNPOD.md](./docs/RUNPOD.md)**: RunPod deployment guide, vLLM worker setup, and pre-demo checklist.
+* **[docs/BENCHMARKS.md](./docs/BENCHMARKS.md)**: Empirical latency, memory, and throughput benchmarks.
+* **[docs/DATASETS.md](./docs/DATASETS.md)**: Dataset provenance, licensing, and schema verification.
+* **[docs/Agents.md](./docs/Agents.md)**: Platform rules, engineering constraints, and verification checklist.
+* **[docs/PLAN.md](./docs/PLAN.md)**: Milestone execution plan and technical specifications.
 
 ### FutureReady MY Frontend Workspace
-* **[frontend/README.md](file:///c:/Documents/Jasmine/XMUM_Hack/frontend/README.md)**: Frontend workspace overview and quickstart instructions.
-* **[frontend/docs/FRONTEND.md](file:///c:/Documents/Jasmine/XMUM_Hack/frontend/docs/FRONTEND.md)**: Frontend architecture, pnpm setup, and API adapter integration.
-* **[frontend/docs/JOURNEY.md](file:///c:/Documents/Jasmine/XMUM_Hack/frontend/docs/JOURNEY.md)**: 4-stage personal career journey, scoring logic, and privacy model.
-* **[frontend/docs/ROLE-MATCHES.md](file:///c:/Documents/Jasmine/XMUM_Hack/frontend/docs/ROLE-MATCHES.md)**: Role matching, evidence breakdown, and scenario weighting.
-* **[frontend/docs/COURSES-LEARNING.md](file:///c:/Documents/Jasmine/XMUM_Hack/frontend/docs/COURSES-LEARNING.md)**: Coursera indexing, hybrid retrieval, and progress tracking.
-* **[frontend/docs/MARKET-INTELLIGENCE.md](file:///c:/Documents/Jasmine/XMUM_Hack/frontend/docs/MARKET-INTELLIGENCE.md)**: Role Explorer, Malaysian tech skill demand, and methodology.
-* **[frontend/docs/VERIFICATION.md](file:///c:/Documents/Jasmine/XMUM_Hack/frontend/docs/VERIFICATION.md)**: Verification log across milestones, test suites, and browser checks.
-
+* **[frontend/README.md](./frontend/README.md)**: Frontend workspace overview and quickstart instructions.
+* **[frontend/docs/FRONTEND.md](./frontend/docs/FRONTEND.md)**: Frontend architecture, pnpm setup, and API adapter integration.
+* **[frontend/docs/JOURNEY.md](./frontend/docs/JOURNEY.md)**: 4-stage personal career journey, scoring logic, and privacy model.
+* **[frontend/docs/ROLE-MATCHES.md](./frontend/docs/ROLE-MATCHES.md)**: Role matching, evidence breakdown, and scenario weighting.
+* **[frontend/docs/COURSES-LEARNING.md](./frontend/docs/COURSES-LEARNING.md)**: Coursera indexing, hybrid retrieval, and progress tracking.
+* **[frontend/docs/MARKET-INTELLIGENCE.md](./frontend/docs/MARKET-INTELLIGENCE.md)**: Role Explorer, Malaysian tech skill demand, and methodology.
+* **[frontend/docs/VERIFICATION.md](./frontend/docs/VERIFICATION.md)**: Verification log across milestones, test suites, and browser checks.

@@ -3,7 +3,7 @@
 
 **Document Version:** 1.0.0  
 **Status:** Parts 1 to 4 Built & Verified (84/84 Tests Passing)  
-**Governing Rules:** Binding engineering constraints from [`document/Agents.md`](file:///c:/Documents/Jasmine/XMUM_Hack/document/Agents.md)  
+**Governing Rules:** Binding engineering constraints from [`Agents.md`](./Agents.md)  
 **Execution Protocol:** Build in 4 distinct parts, execute automated tests after each part, report after Part 4.
 
 ---
