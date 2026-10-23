@@ -1,0 +1,31 @@
+{
+  "scoring": { "skills": 75, "interests": 15, "experience": 10, "target_level": 2 },
+  "planning": { "new_skill_hours": 18, "improve_skill_hours": 9, "project_hours": 12 },
+  "interests": ["Building products", "Working with data", "AI and automation", "Cloud and infrastructure", "People and social impact", "Sustainability"],
+  "scenarios": [
+    { "id": "balanced", "title": "Steady transition", "description": "Use historical skill demand as the baseline. No additional emphasis on individual skills.", "boosts": {} },
+    { "id": "ai_acceleration", "title": "Faster AI adoption", "description": "What if AI adoption accelerates? Double the importance of AI/ML foundations, with extra emphasis on Python. This is a planning assumption, not a measured forecast.", "boosts": { "Artificial Intelligence": 2, "Machine Learning": 2, "Deep Learning": 2, "Natural Language Processing": 2, "Python": 1.5 } },
+    { "id": "human_centred", "title": "Human-centred transition", "description": "What if collaboration, interpretation and responsible delivery matter more? Double the importance of Agile, data analysis and visualisation. This is a planning assumption, not a measured forecast.", "boosts": { "Agile": 2, "Data Analysis": 2, "Data Visualization": 2, "Git": 1.5, "Statistics": 1.5 } }
+  ],
+  "roles": [
+    { "id": "software-developer", "name": "Software Engineer / Developer", "interests": ["Building products", "People and social impact"], "reference_years": 1, "goals": [8, 9, 10], "project": "Build an accessible, multilingual job-search tool and test it with people with different accessibility needs.", "outlook": "Related global WEF signal: Software and Application Developers are expected to grow. This is not a numeric Malaysian forecast." },
+    { "id": "data-engineer", "name": "Data Engineer", "interests": ["Working with data", "Cloud and infrastructure", "Sustainability"], "reference_years": 2, "goals": [9, 13], "project": "Create a reproducible pipeline for public energy-use data, including quality checks and a documented data dictionary.", "outlook": "Related global WEF signal: Big Data Specialists are expected to grow. Data Engineer is a related taxonomy mapping, not an exact source forecast." },
+    { "id": "data-scientist", "name": "Data Scientist", "interests": ["Working with data", "People and social impact", "Sustainability"], "reference_years": 2, "goals": [3, 13], "project": "Analyse public air-quality data, communicate uncertainty and explain how results could support healthier communities.", "outlook": "Related global WEF signal: Big Data Specialists are expected to grow. Data Scientist is a related taxonomy mapping, not an exact source forecast." },
+    { "id": "ai-engineer", "name": "Machine Learning / AI Engineer", "interests": ["AI and automation", "Building products", "People and social impact"], "reference_years": 2, "goals": [3, 9], "project": "Prototype an accessible public-health information classifier. Document bias, privacy limits and the need for human review; do not deploy it for diagnosis.", "outlook": "Related global WEF signal: AI and Machine Learning Specialists are expected to grow. This is not a numeric Malaysian forecast." },
+    { "id": "cloud-engineer", "name": "Cloud Engineer", "interests": ["Cloud and infrastructure", "Sustainability"], "reference_years": 1, "goals": [7, 9, 13], "project": "Deploy a small service with resource monitoring, right-sizing notes and an energy-efficiency improvement plan.", "outlook": "No direct Cloud Engineer forecast is established by the source. Explore this role using historical Malaysian skills and the infrastructure scenario, not an invented growth claim." }
+  ],
+  "foundation_order": ["HTML", "CSS", "JavaScript", "Python", "SQL", "Statistics", "Linux", "Git", "Data Analysis", "Machine Learning"],
+  "signal_source": {
+    "url": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/digest/",
+    "transport_url": "https://r.jina.ai/https://www.weforum.org/publications/the-future-of-jobs-report-2025/digest/",
+    "cache_hours": 6,
+    "minimum_refresh_seconds": 60,
+    "timeout_ms": 20000
+  },
+  "skill_goals": {
+    "JavaScript": [9, 10], "HTML": [9, 10], "CSS": [9, 10], "Java": [8, 9], "C#": [8, 9], "Git": [4, 9], "React": [9, 10], "Agile": [8, 17], "MySQL": [9, 16], ".NET": [8, 9],
+    "SQL": [9, 16], "ETL": [9, 13], "Python": [4, 9], "Data Warehousing": [9, 16], "Data Pipelines": [9, 13], "AWS": [7, 9], "Microsoft Azure": [7, 9], "Apache Spark": [9, 13], "Data Modeling": [9, 16], "Apache Hadoop": [9, 13],
+    "Machine Learning": [3, 9], "Statistics": [3, 16], "R": [3, 4], "Data Analysis": [3, 13], "Artificial Intelligence": [3, 9], "Power BI": [8, 13], "Data Visualization": [4, 13], "Deep Learning": [3, 9], "PyTorch": [3, 9], "TensorFlow": [3, 9], "Computer Vision": [3, 11], "Natural Language Processing": [4, 10],
+    "Google Cloud": [7, 9], "Terraform": [9, 13], "Linux": [4, 9], "Kubernetes": [9, 13], "Docker": [9, 13], "CI/CD": [8, 9], "Ansible": [9, 13]
+  }
+}

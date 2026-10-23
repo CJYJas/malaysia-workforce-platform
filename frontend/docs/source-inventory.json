@@ -1,0 +1,93 @@
+{
+  "source_repository": "https://github.com/CJYJas/malaysia-workforce-platform",
+  "source_commit": "b40acf01fcc50c15e4cacbc710ba1b0bc36b003b",
+  "csv_inventory": {
+    "CourseraDataset-Clean.csv": {
+      "rows": 8370,
+      "columns": [
+        "Course Title",
+        "Rating",
+        "Level",
+        "Schedule",
+        "What you will learn",
+        "Skill gain",
+        "Modules",
+        "Instructor",
+        "Offered By",
+        "Keyword",
+        "Course Url",
+        "Duration to complete (Approx.)",
+        "Number of Review"
+      ],
+      "encoding": "utf-8-sig"
+    },
+    "Job Posting.csv": {
+      "rows": 9919,
+      "columns": [
+        "Website Domain",
+        "Ticker",
+        "Job Opening Title",
+        "Job Opening URL",
+        "First Seen At",
+        "Last Seen At",
+        "Location",
+        "Location Data",
+        "Category",
+        "Seniority",
+        "Keywords",
+        "Description",
+        "Salary",
+        "Salary Data",
+        "Contract Types",
+        "Job Status",
+        "Job Language",
+        "Job Last Processed At",
+        "O*NET Code",
+        "O*NET Family",
+        "O*NET Occupation Name"
+      ],
+      "encoding": "latin-1"
+    },
+    "JobsDatasetProcessed.csv": {
+      "rows": 3000,
+      "columns": [
+        "ID",
+        "Query",
+        "Job Title",
+        "Description",
+        "IT Skills",
+        "Soft Skills",
+        "Education",
+        "Experience",
+        "Token Usage"
+      ],
+      "encoding": "utf-8-sig"
+    }
+  },
+  "thresholds": {
+    "minimum_postings": 30,
+    "sample_warning": 50
+  },
+  "source_metadata_counts": {
+    "raw_loaded": 69024,
+    "schema_validated": 69024,
+    "malformed_dropped": 0,
+    "malaysia_filtered": 68826,
+    "unknown_location_excluded": 198,
+    "deduplicated": 63852,
+    "duplicates_removed": 4974,
+    "final_processed_rows": 63852
+  },
+  "source_role_counts": {
+    "Software Engineer / Developer": 1326,
+    "Data Engineer": 104,
+    "Data Scientist": 56,
+    "Machine Learning / AI Engineer": 32,
+    "Cloud Engineer": 35,
+    "Other / Unassigned": 62299,
+    "target_roles_total": 1553
+  },
+  "distinct_dashboard_skills": 39,
+  "bounded_course_records": 228,
+  "output_bytes": 198067
+}
