@@ -1,63 +1,100 @@
-# 🇲🇾 FutureReady MY — Malaysia Tech Workforce Intelligence Platform
-### *Empirical Tech Career Analytics, Skill-Gap Remediation & AI Workforce Intelligence*
-
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-green.svg)](https://fastapi.tiangolo.com)
-[![React 19](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-6-646cff.svg)](https://vite.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8.svg)](https://tailwindcss.com/)
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Backend Tests](https://img.shields.io/badge/tests-110%20passed-brightgreen.svg)]()
-[![RunPod Cloud](https://img.shields.io/badge/RunPod-Serverless%20vLLM-purple.svg)](https://runpod.io)
-[![UN SDG Alignment](https://img.shields.io/badge/UN%20SDG-4%20|%208%20|%209-E5243B.svg)](https://sdgs.un.org/goals)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-RunPod%20Cloud-success.svg?style=for-the-badge&logo=rocket)](https://xvu8eu1rakfbfc-8000.proxy.runpod.net)
-
-> [!TIP]
-> ### 🌐 Live Cloud Deployment
-> * **Live URL**: [https://xvu8eu1rakfbfc-8000.proxy.runpod.net](https://xvu8eu1rakfbfc-8000.proxy.runpod.net)
-> * **Docker Hub Image**: `jasmine06/malaysia-workforce:latest`
-> * **Zero-Barrier Judge Preview**: Click **"Continue as Guest Preview"** on the sign-in screen to instantly evaluate the complete platform without registration!
+> [!IMPORTANT]
+> ## 📁 Submission Documents & Templates
+> **All required submission templates are in the Google Drive folder below. Download them before you start.**
 >
-> *Running low on RunPod credits or testing offline? See the [Local Setup Guide (Zero-Credit Mode)](#-running-locally-offline--zero-credit-mode) below.*
+> ### 👉 [**OPEN THE GOOGLE DRIVE FOLDER**](https://drive.google.com/drive/folders/1xw7c2aN8N-at8hPEULzkcU76e_FFb0Ef) 👈
 
 ---
 
-## 🏆 Project Executive Summary
+# FutureReady MY — Malaysia Tech Workforce Intelligence Platform
 
-The **Malaysia Tech Workforce Intelligence Platform (FutureReady MY)** is a full-stack, AI-powered career analytics and upskilling ecosystem designed to solve Malaysia’s tech talent mismatch. 
-
-Instead of relying on subjective advice or black-box generative AI hallucinations, FutureReady MY grounds every career recommendation, skill gap, and learning pathway in **empirical market evidence from 63,852 deduplicated Malaysian tech job postings (JobStreet 2023–2025)**, authenticated **Coursera curriculum catalogs (8,370 courses)**, and **United Nations Sustainable Development Goals (SDG 4, 8, 9)**.
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       FutureReady MY Ecosystem Architecture                 │
-├─────────────────────┬───────────────────────────┬───────────────────────────┤
-│ 1. AI RESUME PARSER │ 2. EMPIRICAL SKILL RADAR  │ 3. ACTIONABLE PATHWAY     │
-│  • PII Redaction    │  • 63,852 Postings Demand │  • Hybrid Course Search   │
-│  • Qwen 2.5-7B vLLM │  • WEF 2025-2030 Trends   │  • Persistent Checkpoints │
-│  • Canonical Normal │  • 100-Pt Heuristic Match │  • SDG Impact Alignment   │
-└─────────────────────┴───────────────────────────┴───────────────────────────┘
-```
+> An empirical, AI-assisted career analytics and upskilling ecosystem that grounds tech career transitions in 63,852 Malaysian job postings and traceable, verified learning pathways for students, job seekers, and career changers.
 
 ---
 
-## 🌟 Hackathon Highlights & Core Innovations
+## Team Information
 
-1. **Empirical Ground Truth (Zero Hallucinated Trends)**
-   * Market demand metrics, temporal distributions, and skill share ratios are calculated from real Malaysian postings, never invented by an LLM.
-2. **AI Resume Parser with Multi-Tier Skill Normalization**
-   * Upload PDF resumes for instant extraction using open-weight **Qwen2.5-7B-Instruct** (via RunPod Serverless vLLM) with automated PII redaction (NRIC, phone, email) and dictionary verification fallbacks.
-   * `RoleNormalizer` maps surface aliases (e.g., `data en` $\to$ `Data Engineer`, `swe` $\to$ `Software Engineer`) across canonical taxonomies.
-3. **Hybrid Semantic Course Retrieval (ONNX + RRF)**
-   * Dual-encoder semantic vector search (`all-MiniLM-L6-v2` via CPU ONNX Runtime) combined with lexical TF-IDF via **Reciprocal Rank Fusion ($k=60$)**, delivering a **57.1% reduction in zero-course gaps** while preventing hallucinated courses.
-4. **Transparent, Explainable 100-Point Matching Heuristic**
-   * Evaluates candidate fit via an auditable formula: **75 pts skills + 15 pts interests + 10 pts experience**. Every recommendation clearly delineates readiness vs. hiring odds.
-5. **Full User Authentication & Persistent Progress Tracking**
-   * Built-in security suite: Argon2id password hashing, CSRF protection, refresh session rotation, and persistent lesson progress mapped to verified evidence.
-   * Standalone, polished Sign Up / Sign In portal with a one-click **"Continue as Guest Preview"** for zero-barrier judge evaluation.
-6. **United Nations SDG Alignment**
-   * Maps skill remediation directly to **SDG 4 (Quality Education)**, **SDG 8 (Decent Work & Economic Growth)**, and **SDG 9 (Industry, Innovation & Infrastructure)**.
+| Field                  | Details                                     |
+| ---------------------- | ------------------------------------------- |
+| **Team Name**          | Powerstrangers                              |
+| **Team Domain**        | Domain 1 – Future-Ready Workforce Domain    |
+| **SDG Track (1–17)**   | SDG 4 — Quality Education *(Target 4.4, with secondary alignment to SDG 8 & SDG 9)* |
+| **Team Leader**        | Mak Jia Hng                                 |
+| **University**         | University of Malaya, University Tunku Abdul Rahman, Xiamen University Malaysia |
+| **Number of Members**  | 5                                           |
+
+## Links
+
+| Resource          | Link                                           |
+| ----------------- | ---------------------------------------------- |
+| GitHub Repository | https://github.com/CJYJas/malaysia-workforce-platform |
+| Live Demo         | https://xvu8eu1rakfbfc-8000.proxy.runpod.net   |
+| RunPod Endpoint   | https://api.runpod.ai/v2/vllm-qwen2-5-7b/openai/v1 |
+| Slide Deck        | https://drive.google.com/drive/folders/1xw7c2aN8N-at8hPEULzkcU76e_FFb0Ef |
+| Demo Video        | https://drive.google.com/drive/folders/1xw7c2aN8N-at8hPEULzkcU76e_FFb0Ef |
+
+---
+
+## Overview
+
+### Problem
+
+Malaysia’s technology job seekers, students, and career changers often make upskilling decisions using fragmented information, generic global trend reports, and oversized course catalogues that do not reflect actual local employer demand. This lack of transparency leads learners to spend time and money on mismatched courses without clear evidence of role readiness. This widening mismatch strains Malaysia’s digital economy and limits equitable career mobility for talent without established professional networks.
+
+### Solution
+
+FutureReady MY is an empirical, AI-assisted career analytics and upskilling ecosystem that grounds career transitions in 63,852 deduplicated Malaysian tech job postings and 8,370 authenticated Coursera courses. It provides privacy-first resume extraction (Qwen2.5-7B on RunPod vLLM), deterministic 100-point role-fit matching, and CPU-efficient hybrid semantic course retrieval (MiniLM ONNX + TF-IDF RRF), producing explainable, zero-hallucination learning roadmaps mapped directly to UN SDGs.
+
+### Key Features
+
+- **Empirical Market Evidence & Skills Radar** — Skill shares, demand shifts, and WEF 2025–2030 outlooks derived directly from 63,852 verified Malaysian job postings (zero hallucinated stats).
+- **Privacy-First AI Resume Parser** — Open-weight Qwen2.5-7B vLLM extraction with automated Malaysian PII redaction (NRIC, phone, email) and canonical dictionary fallbacks.
+- **Explainable 100-Point Role Matching** — Transparent, auditable candidate scoring (75% skill coverage, 15% interests, 10% experience) without black-box generative AI bias.
+- **Hybrid Semantic Course Retrieval** — Ultra-fast CPU ONNX dense vector search (`all-MiniLM-L6-v2`) combined with TF-IDF Reciprocal Rank Fusion ($k=60$) over 8,370 courses in <7 ms.
+- **Persistent Learning Pathways & Auth** — Argon2id session authentication, persistent checklist progress syncing, and exportable career dossiers.
+
+### Tech Stack
+
+| Layer         | Technology                   |
+| ------------- | ---------------------------- |
+| Frontend      | React 19, TypeScript, Vite 6, Tailwind CSS v4, Radix UI, TanStack Query |
+| Backend       | Python 3.11+, FastAPI 0.109+, Pydantic v2, Uvicorn, Pandas, PyArrow |
+| Database      | SQLite (local/dev), PostgreSQL-compatible migrations (SQLAlchemy 2.0 + psycopg 3) |
+| AI / Compute  | RunPod Serverless GPU (`Qwen2.5-7B-Instruct` vLLM), CPU ONNX Runtime (`all-MiniLM-L6-v2`) |
+| Hosting / Dev | RunPod Cloud (CPU Pod on port 8000) & Replit |
+
+---
+
+## Project Structure
+
+```
+.
+├── app/                        # FastAPI intelligence engine, auth & business logic
+│   ├── api.py                  # Main REST API application entry point & unified router
+│   ├── auth/                   # Security, Argon2id, CSRF, and session persistence
+│   ├── course_recommender.py   # Hybrid ONNX dense + TF-IDF RRF course retrieval (k=60)
+│   ├── resume_parser.py        # PDF extraction, PII scrubber & vLLM client
+│   ├── role_matcher.py         # Explainable 100-point role matching algorithm
+│   └── trend_analyzer.py       # JobStreet 63k postings empirical market trends
+├── data/                       # Audited datasets, parquets, taxonomy & ONNX models
+├── docs/                       # Architecture diagrams, benchmark reports, dataset docs
+│   ├── ACCOUNT_EXTENSION.md    # Auth & persistence documentation
+│   ├── API.md                  # Comprehensive REST API specifications
+│   ├── BENCHMARKS.md           # Latency & throughput benchmark reports
+│   ├── DATASETS.md             # Dataset auditing, provenance & schemas
+│   └── RUNPOD.md               # RunPod serverless & cloud deployment guide
+├── frontend/                   # FutureReady MY Client Workspace
+│   ├── artifacts/workforce/    # React 19 + TypeScript + Vite SPA client
+│   └── artifacts/api-server/   # Express OpenAPI snapshot adapter (:5000)
+├── migrations/                 # PostgreSQL & SQLite schema migrations
+├── scripts/                    # Preprocessing & retrieval benchmarking scripts
+├── submission/                 # SDC Hackathon declaration PDFs & proof of usage
+│   ├── SDC2026_Powerstranger_Replit_POU.pdf
+│   ├── SDC2026_Powerstranger_Runpod_POU.pdf
+│   ├── SDC2026_Powerstranger_TechDeclaration.pdf
+│   └── SDC2026_Powerstrangers_Preliminary.pdf
+└── tests/                      # 110+ automated pytest backend & security test cases
+```
 
 ---
 
@@ -126,8 +163,6 @@ The platform strictly uses verifiable, publicly auditable datasets:
 
 You can evaluate FutureReady MY either via the **live cloud deployment** or by **running locally on your machine with zero cloud credits**.
 
----
-
 ### Option 1: Live Cloud Deployment (Instant Evaluation)
 
 * **Live Platform URL**: **[https://xvu8eu1rakfbfc-8000.proxy.runpod.net](https://xvu8eu1rakfbfc-8000.proxy.runpod.net)**
@@ -138,7 +173,7 @@ You can evaluate FutureReady MY either via the **live cloud deployment** or by *
 
 ### Option 2: Running Locally (Offline / Zero-Credit Mode)
 
-If your RunPod credits run out, or if you prefer evaluating offline, the entire platform is engineered to run 100% locally on standard CPU hardware with **zero external dependencies and $0 cloud cost**.
+If RunPod credits run out, or if you prefer evaluating offline, the entire platform is engineered to run 100% locally on standard CPU hardware with **zero external dependencies and $0 cloud cost**.
 
 #### Method A: Unified Full-Stack Run (Fastest — 1 Terminal)
 The backend includes a pre-compiled, optimized production bundle of the React 19 frontend and an embedded snapshot adapter. You only need Python!
@@ -201,7 +236,7 @@ FutureReady MY does **not** hard-block or fail if RunPod cloud credits are deple
 ## 🎯 Evaluator Walkthrough: Experience the Platform
 
 1. **Dedicated Auth Portal & Gate (`/login` or `/signup`)**:
-   * Visit `http://localhost:5173`.
+   * Visit `http://localhost:5173` (or the live URL).
    * Unauthenticated visitors are greeted by the standalone, security-hardened authentication portal.
    * **For Evaluators**: Click **"Continue as Guest Preview"** to explore instantly without registration, or create a quick account with $\ge 12$ character password to test persistent syncing.
 2. **AI Resume Parser (`/resume`)**:
@@ -258,31 +293,9 @@ pnpm --filter @workspace/workforce run build
 
 ---
 
-## 📁 Repository Directory Structure
-
-```
-├── app/                        # FastAPI Intelligence Engine
-│   ├── api.py                  # Main API service & unified router
-│   ├── auth/                   # Security, Argon2, CSRF, persistence & models
-│   ├── course_recommender.py   # Hybrid ONNX dense + TF-IDF retriever
-│   ├── role_matcher.py         # 100-point explainable matching algorithm
-│   ├── resume_parser.py        # PDF extraction & PII sanitization
-│   └── trend_analyzer.py       # Empirical JobStreet 63k postings analyzer
-├── frontend/                   # FutureReady MY Client Workspace
-│   ├── artifacts/workforce/    # React 19 + TypeScript + Vite web app
-│   │   ├── src/pages/          # Dedicated routes (account, resume, radar, pathway)
-│   │   └── src/lib/            # React context, auth client, query hooks
-│   └── artifacts/api-server/   # Node.js OpenAPI snapshot adapter
-├── data/                       # Audited datasets & taxonomies
-├── migrations/                 # PostgreSQL & SQLite schema migrations
-├── tests/                      # Automated pytest suite (110+ tests)
-└── docs/                       # Technical specifications & documentation
-```
-
----
-
 ## 👥 Authors & Acknowledgments
 
-* Developed by Team PowerStrangers
+* Developed by **Team Powerstrangers** (Mak Jia Hng, Leader)
+* Affiliations: University of Malaya, University Tunku Abdul Rahman, Xiamen University Malaysia
 * Built with data from [JobStreet Malaysia](https://www.kaggle.com/datasets/azraimohamad/jobstreet-all-job-dataset), [Coursera](https://www.kaggle.com/datasets/elvinrustam/coursera-dataset), and the [World Economic Forum Future of Jobs Report](https://www.weforum.org/).
 * Licensed under the [Apache 2.0 License](LICENSE).
