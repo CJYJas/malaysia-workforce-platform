@@ -283,6 +283,6 @@ pnpm --filter @workspace/workforce run build
 
 ## 👥 Authors & Acknowledgments
 
-* Developed by Jasmine, ReiWen, Ivan
+* Developed by Team PowerStrangers
 * Built with data from [JobStreet Malaysia](https://www.kaggle.com/datasets/azraimohamad/jobstreet-all-job-dataset), [Coursera](https://www.kaggle.com/datasets/elvinrustam/coursera-dataset), and the [World Economic Forum Future of Jobs Report](https://www.weforum.org/).
 * Licensed under the [Apache 2.0 License](LICENSE).
