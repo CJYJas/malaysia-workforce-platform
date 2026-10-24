@@ -2,7 +2,7 @@
 > ## 📁 Submission Documents & Templates
 > **All required submission templates are in the Google Drive folder below. Download them before you start.**
 >
-> ### 👉 [**OPEN THE GOOGLE DRIVE FOLDER**](https://drive.google.com/drive/folders/1xw7c2aN8N-at8hPEULzkcU76e_FFb0Ef) 👈
+> ### 👉 [**OPEN THE GOOGLE DRIVE FOLDER**](https://drive.google.com/drive/folders/1W2apstHq5FjAP19sp99vLAm_CzGRXjf7?usp=sharing) 👈
 
 ---
 
@@ -30,8 +30,8 @@
 | GitHub Repository | https://github.com/CJYJas/malaysia-workforce-platform |
 | Live Demo         | https://xvu8eu1rakfbfc-8000.proxy.runpod.net   |
 | RunPod Endpoint   | https://api.runpod.ai/v2/vllm-qwen2-5-7b/openai/v1 |
-| Slide Deck        | https://drive.google.com/drive/folders/1xw7c2aN8N-at8hPEULzkcU76e_FFb0Ef |
-| Demo Video        | https://drive.google.com/drive/folders/1xw7c2aN8N-at8hPEULzkcU76e_FFb0Ef |
+| Slide Deck        | https://drive.google.com/file/d/16Z32uECBQOPHcBRlcOiit74u6vkUjDCb/view?usp=drivesdk |
+| Demo Video        |  |
 
 ---
 
