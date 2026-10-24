@@ -1,8 +1,8 @@
 > [!IMPORTANT]
-> ## 📁 Submission Documents & Templates
-> **All required submission templates are in the Google Drive folder below. Download them before you start.**
+> ## 📁 Official Submission Documents & Deliverables
+> **All official submission proposals, technical declarations, slide decks, and proofs of use for Team Powerstrangers are accessible in the Google Drive folder below:**
 >
-> ### 👉 [**OPEN THE GOOGLE DRIVE FOLDER**](https://drive.google.com/drive/folders/1W2apstHq5FjAP19sp99vLAm_CzGRXjf7?usp=sharing) 👈
+> ### 👉 [**OPEN SUBMISSION GOOGLE DRIVE FOLDER**](https://drive.google.com/drive/folders/1W2apstHq5FjAP19sp99vLAm_CzGRXjf7?usp=sharing) 👈
 
 ---
 
@@ -228,10 +228,10 @@ curl -X POST https://api.runpod.ai/v2/$RUNPOD_ENDPOINT_ID/openai/v1/chat/complet
 | Name | Role | GitHub |
 | ---- | ---- | ------ |
 | Mak Jia Hng | Team Leader / Architecture & Backend | [@ivanmaktech](https://github.com/ivanmaktech) |
-| Jasmine Chin Jia Yee | Full-stack / AI & Cloud Deployment | [@CJYJas](https://github.com/CJYJas) |
-| Lai Yan Hang | Data Pipeline & Documentation | [@infinite-sherry](https://github.com/infinite-sherry) |
-| Rei Wen | Auth, Persistence & Full-stack | [@reiwen](https://github.com/reiwen) |
-| Powerstrangers Member | QA & Impact Research | [@Powerstrangers](https://github.com/CJYJas) |
+| Jasmine Chin Jia Yee | Frontend | [@CJYJas](https://github.com/CJYJas) |
+| Lai Yan Hang | Documentation | [@infinite-sherry](https://github.com/infinite-sherry) |
+| Jaclyn | Documentation | — |
+| Rei Wen | Auth, Persistence & Backend | [@reiwen](https://github.com/reiwen) |
 
 ---
 
@@ -239,7 +239,7 @@ curl -X POST https://api.runpod.ai/v2/$RUNPOD_ENDPOINT_ID/openai/v1/chat/complet
 
 - [x] Team name, domain (Domain 1 / Domain 2) and SDG track filled in
 - [x] Slide deck link added
-- [ ] Demo video link added
+- [x] Demo video link added
 - [x] Replit used, with proof of use in `submission/`
 - [x] RunPod used, with proof of use in `submission/`
 - [x] Preliminary submission completed (`SDC2026_Powerstrangers_Preliminary.pdf`)
