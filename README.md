@@ -31,7 +31,7 @@
 | Live Demo         | https://xvu8eu1rakfbfc-8000.proxy.runpod.net   |
 | RunPod Endpoint   | https://api.runpod.ai/v2/vllm-qwen2-5-7b/openai/v1 |
 | Slide Deck        | https://drive.google.com/file/d/16Z32uECBQOPHcBRlcOiit74u6vkUjDCb/view?usp=drivesdk |
-| Demo Video        |  |
+| Demo Video        | *(Pending upload / To be added before deadline)* |
 
 ---
 
@@ -61,7 +61,7 @@ FutureReady MY is an empirical, AI-assisted career analytics and upskilling ecos
 | Backend       | Python 3.11+, FastAPI 0.109+, Pydantic v2, Uvicorn, Pandas, PyArrow |
 | Database      | SQLite (local/dev), PostgreSQL-compatible migrations (SQLAlchemy 2.0 + psycopg 3) |
 | AI / Compute  | RunPod Serverless GPU (`Qwen2.5-7B-Instruct` vLLM), CPU ONNX Runtime (`all-MiniLM-L6-v2`) |
-| Hosting / Dev | RunPod Cloud (CPU Pod on port 8000) & Replit |
+| Hosting / Dev | Replit & RunPod Cloud (CPU Pod on port 8000) |
 
 ---
 
@@ -69,233 +69,185 @@ FutureReady MY is an empirical, AI-assisted career analytics and upskilling ecos
 
 ```
 .
-├── app/                        # FastAPI intelligence engine, auth & business logic
-│   ├── api.py                  # Main REST API application entry point & unified router
-│   ├── auth/                   # Security, Argon2id, CSRF, and session persistence
-│   ├── course_recommender.py   # Hybrid ONNX dense + TF-IDF RRF course retrieval (k=60)
-│   ├── resume_parser.py        # PDF extraction, PII scrubber & vLLM client
-│   ├── role_matcher.py         # Explainable 100-point role matching algorithm
-│   └── trend_analyzer.py       # JobStreet 63k postings empirical market trends
-├── data/                       # Audited datasets, parquets, taxonomy & ONNX models
-├── docs/                       # Architecture diagrams, benchmark reports, dataset docs
-│   ├── ACCOUNT_EXTENSION.md    # Auth & persistence documentation
-│   ├── API.md                  # Comprehensive REST API specifications
-│   ├── BENCHMARKS.md           # Latency & throughput benchmark reports
-│   ├── DATASETS.md             # Dataset auditing, provenance & schemas
-│   └── RUNPOD.md               # RunPod serverless & cloud deployment guide
-├── frontend/                   # FutureReady MY Client Workspace
-│   ├── artifacts/workforce/    # React 19 + TypeScript + Vite SPA client
-│   └── artifacts/api-server/   # Express OpenAPI snapshot adapter (:5000)
-├── migrations/                 # PostgreSQL & SQLite schema migrations
-├── scripts/                    # Preprocessing & retrieval benchmarking scripts
-├── submission/                 # SDC Hackathon declaration PDFs & proof of usage
-│   ├── SDC2026_Powerstranger_Replit_POU.pdf
-│   ├── SDC2026_Powerstranger_Runpod_POU.pdf
-│   ├── SDC2026_Powerstranger_TechDeclaration.pdf
-│   └── SDC2026_Powerstrangers_Preliminary.pdf
-└── tests/                      # 110+ automated pytest backend & security test cases
+├── docs/                                          # Technical specifications, benchmarks, dataset docs
+│   ├── ACCOUNT_EXTENSION.md
+│   ├── API.md
+│   ├── BENCHMARKS.md
+│   ├── DATASETS.md
+│   └── RUNPOD.md
+├── runpod/                                        # RunPod serverless & cloud configuration
+│   └── (Serverless vLLM Worker: Qwen2.5-7B-Instruct)
+├── app/                                           # Application entry point & intelligence services
+│   ├── api.py                                     # Main REST API application entry point & unified router
+│   ├── auth/                                      # Security, Argon2id, CSRF, and session persistence
+│   ├── course_recommender.py                      # Hybrid ONNX dense + TF-IDF RRF course retriever (k=60)
+│   ├── resume_parser.py                           # PDF extraction, PII scrubber & vLLM client
+│   ├── role_matcher.py                            # Explainable 100-point role matching algorithm
+│   └── trend_analyzer.py                          # JobStreet 63k postings empirical market trends
+├── frontend/                                      # React 19 + TypeScript + Vite web client workspace
+│   ├── artifacts/workforce/                       # Single Page Application client source code
+│   └── artifacts/api-server/                      # Express OpenAPI snapshot adapter (:5000)
+├── data/                                          # Audited datasets, parquets, taxonomy & ONNX models
+├── migrations/                                    # PostgreSQL & SQLite schema migrations
+├── scripts/                                       # Preprocessing & retrieval benchmarking scripts
+├── submission/                                    # Required SDC hackathon submission documents
+│   ├── SDC2026_Powerstrangers_Preliminary.pdf     # Preliminary submission proposal
+│   ├── SDC2026_Powerstranger_TechDeclaration.pdf  # Technology & tools declaration
+│   ├── SDC2026_Powerstranger_Replit_POU.pdf       # Replit proof of use
+│   └── SDC2026_Powerstranger_Runpod_POU.pdf       # RunPod proof of use
+├── tests/                                         # Automated unit and integration test suite (110+ tests)
+│   ├── test_api.py
+│   ├── test_auth_extension.py
+│   ├── test_course_recommender.py
+│   ├── test_pii_scrubber.py
+│   ├── test_resume_parser.py
+│   └── test_trend_analyzer.py
+├── .env.example                                   # Example environment variables
+├── .gitignore
+├── .replit                                        # Replit run configuration
+├── Dockerfile                                     # Production container build
+├── LICENSE                                        # Apache License 2.0
+├── requirements.txt                               # Python dependencies
+└── README.md
+```
+
+### Architecture
+
+```
+User ──► Replit / Web App (React 19 Frontend) ──► FastAPI Backend (:8000) ──► RunPod vLLM Endpoint (Qwen2.5-7B GPU)
+                                                          │
+                                                          ├──► Hybrid Course Retriever (CPU ONNX + RRF)
+                                                          ├──► 63,852 JobStreet Dataset (Empirical Demand)
+                                                          └──► Response returned to user
 ```
 
 ---
 
-## 🏗️ System Architecture
+## How to Run
 
-```mermaid
-flowchart TD
-    subgraph Client ["Frontend Client (React 19 + TypeScript + Vite)"]
-        UI[FutureReady MY SPA]
-        AuthUI[Standalone Auth Portal & Gate]
-        Journey[4-Stage Career Journey]
-        ResumeUI[AI Resume Parser & Uploader]
-    end
+### Option 1 — Run on Replit (Recommended)
 
-    subgraph Adapters ["Vite Dev & API Server"]
-        Proxy["Vite Proxy (/api & /api/py)"]
-        Snapshot["Express Snapshot Adapter (:5000)"]
-    end
+1. Open the [Replit Project](https://replit.com/@jasminecjy06/malaysia-workforce-platform), or import this repository via **Create Repl → Import from GitHub**.
+2. Open the **Secrets** tab (🔒) and add the variables listed in `.env.example`:
+   - `RUNPOD_API_KEY` (Optional for local fallback)
+   - `RUNPOD_ENDPOINT_ID` (Optional for local fallback)
+3. Click **Run**. Replit uses the `.replit` configuration to start the platform on port 8000.
 
-    subgraph Backend ["FastAPI Intelligence Engine (:8000)"]
-        API[app.api:app]
-        AuthRouter["app/auth (Argon2 + JWT + CSRF)"]
-        Storage[(SQLite / PostgreSQL)]
-        Norm[RoleNormalizer & TrendAnalyzer]
-        Retriever[Hybrid Course Retriever MiniLM ONNX + RRF]
-        Guard[PII Scrubber & Factual Fidelity Gate]
-    end
-
-    subgraph AICloud ["RunPod Serverless Cloud"]
-        vLLM[vLLM Worker: Qwen2.5-7B-Instruct]
-    end
-
-    UI --> AuthUI
-    UI --> Journey
-    UI --> ResumeUI
-    Journey --> Proxy
-    ResumeUI --> Proxy
-    Proxy -->|/api/*| Snapshot
-    Proxy -->|/api/py/*| API
-    API --> AuthRouter
-    AuthRouter --> Storage
-    API --> Norm
-    API --> Retriever
-    API --> Guard
-    Guard <--> vLLM
-```
-
----
-
-## 📊 Dataset Provenance & Empirical Corpus
-
-The platform strictly uses verifiable, publicly auditable datasets:
-
-| Dataset | Source & Link | Total Records | Role in Platform |
-| :--- | :--- | :--- | :--- |
-| **JobStreet Malaysia Postings** | [Kaggle Dataset](https://www.kaggle.com/datasets/azraimohamad/jobstreet-all-job-dataset) | **63,852** deduplicated | **Primary Market Corpus**: Live baseline for tech skill demand shares, temporal shifts, and role definitions across Malaysia. |
-| **Coursera Course Catalog** | [Kaggle Dataset](https://www.kaggle.com/datasets/elvinrustam/coursera-dataset) | **8,370** courses | **Learning Pathway Corpus**: Indexed into 384-dimensional ONNX dense vectors for real-time course recommendations. |
-| **IT Skills Taxonomy** | [Kaggle Dataset](https://www.kaggle.com/datasets/meerawks/it-skills-from-jobs) | **3,000** postings | **Canonical Taxonomy**: Seed dictionary for canonical skill resolution and alias mapping. |
-| **Techsalerator Sample** | [Kaggle Dataset](https://www.kaggle.com/datasets/techsalerator/job-posting-data-in-malaysia) | **9,919** records | **Audited Baseline**: Audited and confirmed 98.76% non-MY data, verifying JobStreet as the authoritative national dataset. |
-
-*Detailed schema verification and cleaning decisions are documented in [docs/DATASETS.md](./docs/DATASETS.md).*
-
----
-
-## 🚀 Quickstart Guide & Deployment Options
-
-You can evaluate FutureReady MY either via the **live cloud deployment** or by **running locally on your machine with zero cloud credits**.
-
-### Option 1: Live Cloud Deployment (Instant Evaluation)
-
-* **Live Platform URL**: **[https://xvu8eu1rakfbfc-8000.proxy.runpod.net](https://xvu8eu1rakfbfc-8000.proxy.runpod.net)**
-* **No Account Required**: Click **"Continue as Guest Preview"** on the sign-in screen to bypass authentication and explore all features immediately.
-* **Pre-configured Cloud Stack**: Hosts the full-stack React 19 client bundled with the FastAPI analytics backend and connected to RunPod Serverless vLLM workers.
-
----
-
-### Option 2: Running Locally (Offline / Zero-Credit Mode)
-
-If RunPod credits run out, or if you prefer evaluating offline, the entire platform is engineered to run 100% locally on standard CPU hardware with **zero external dependencies and $0 cloud cost**.
-
-#### Method A: Unified Full-Stack Run (Fastest — 1 Terminal)
-The backend includes a pre-compiled, optimized production bundle of the React 19 frontend and an embedded snapshot adapter. You only need Python!
+### Option 2 — Run Locally
 
 ```bash
-# 1. Clone repository
+# 1. Clone the repository
 git clone https://github.com/CJYJas/malaysia-workforce-platform.git
 cd malaysia-workforce-platform
 
-# 2. Set up virtual environment
+# 2. Create and activate a virtual environment
 python -m venv venv
 # Windows:
 .\venv\Scripts\activate
 # Linux/macOS:
 source venv/bin/activate
 
-# 3. Install Python dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Start the unified platform (serves Frontend UI + Backend API on port 8000)
+# 4. Configure environment variables
+cp .env.example .env            # then fill in your values (or use defaults for offline CPU mode)
+
+# 5. Run the app (serves Frontend UI + Backend API on port 8000)
 uvicorn app.api:app --host 0.0.0.0 --port 8000 --reload
 ```
+
 Open your browser to: **`http://localhost:8000`** (or view interactive OpenAPI docs at `http://localhost:8000/docs`).
 
-#### Method B: One-Command Docker Run
-If you have Docker Desktop installed, run the official pre-built image with a single command:
+### Run Tests
 
 ```bash
-docker run -p 8000:8000 jasmine06/malaysia-workforce:latest
-```
-Open your browser to: **`http://localhost:8000`**.
-
-#### Method C: Developer Mode (Vite Hot-Reloading)
-For live frontend code editing:
-
-```bash
-# Terminal 1 — Start FastAPI Backend (Port 8000)
-uvicorn app.api:app --host 0.0.0.0 --port 8000 --reload
-
-# Terminal 2 — Start Frontend Client with Hot-Reloading (Port 5173)
-cd frontend
-pnpm install
-pnpm --filter @workspace/workforce run dev
-```
-Open your browser to: **`http://localhost:5173`**.
-
----
-
-### 🛡️ Zero-Credit & Offline Resilience Guarantee
-
-FutureReady MY does **not** hard-block or fail if RunPod cloud credits are depleted:
-
-1. **Local SQLite Persistence**: Account authentication (Argon2id) and personalized learning checkpoint progress automatically persist in a local SQLite file (`local_dev.db`). No cloud databases required.
-2. **CPU-Powered Semantic Search**: Course matching uses a local CPU-optimized ONNX runtime (`all-MiniLM-L6-v2`) paired with TF-IDF Reciprocal Rank Fusion ($k=60$). Vector inference executes entirely on local CPU in **6.9 ms** with $0 cloud spend.
-3. **Deterministic Resume Parsing Fallback**: If the RunPod vLLM GPU worker is offline or out of credit, the platform automatically activates its built-in rule-based and regex dictionary extraction pipeline, ensuring resumes are parsed and matched accurately without errors.
-4. **Offline Snapshot Corpus**: Complete empirical data for 63,852 JobStreet postings, 8,370 Coursera courses, and UN SDG mappings are stored locally in `app/workforce_data/` and `data/`.
-
----
-
-## 🎯 Evaluator Walkthrough: Experience the Platform
-
-1. **Dedicated Auth Portal & Gate (`/login` or `/signup`)**:
-   * Visit `http://localhost:5173` (or the live URL).
-   * Unauthenticated visitors are greeted by the standalone, security-hardened authentication portal.
-   * **For Evaluators**: Click **"Continue as Guest Preview"** to explore instantly without registration, or create a quick account with $\ge 12$ character password to test persistent syncing.
-2. **AI Resume Parser (`/resume`)**:
-   * Upload any tech CV / Resume (PDF).
-   * Watch the AI extract canonical skills, compute role readiness, and highlight skill gaps against Malaysian employer benchmarks.
-3. **Future Skills Radar (`/radar`)**:
-   * Explore rising and declining skill signals categorized by national market velocity and WEF 2025–2030 outlooks.
-4. **Role Match Shortlist (`/matches`)**:
-   * Test what-if scenario lenses (*Steady Transition*, *Accelerated AI Adoption*, *Human-Centred Transition*).
-   * Review explainable 100-point readiness scores with zero black-box ambiguity.
-5. **Personalized Action Plan (`/pathway`)**:
-   * Inspect ordered curriculum steps linked to authentic Coursera courses.
-   * Check off steps (*In Progress*, *Completed*); state persists and reconciles against your verified skills.
-   * Export complete pathway data as a JSON career dossier.
-
----
-
-## 🔒 Security, Ethics & AI Transparency
-
-| Component | Architecture | Guarantee & Safeguard |
-| :--- | :--- | :--- |
-| **Market Intelligence** | Deterministic Pandas | Strictly frequency-based statistics; never uses generative AI to invent demand numbers. |
-| **PII Redaction** | Regex & Boundary Filter | Automatically redacts Malaysian NRIC numbers, phone numbers, emails, and street addresses prior to LLM analysis. |
-| **Profile Parsing** | Qwen2.5-7B-Instruct | Post-extraction verification gate discards non-canonical tokens; falls back to dictionary matcher. |
-| **Executive Narration** | Qwen2.5-7B-Instruct | Factual fidelity checker ensures all output entities exist in source data; rejects hype words. |
-| **User Data & Auth** | Argon2id + CSRF Tokens | Passwords hashed with memory-hard Argon2id; session families rotate on refresh to prevent replay attacks. |
-
----
-
-## 🧪 Comprehensive Test Suite & Benchmarks
-
-Run the complete verification test suites:
-
-```bash
-# 1. Full Backend Test Suite (110+ passing tests)
 python -m pytest tests -v
-
-# 2. Auth & Security Verification
-python -m pytest tests/test_auth_extension.py -v
-
-# 3. Frontend Contract Tests
-cd frontend
-pnpm --filter @workspace/scripts run test:account
-
-# 4. Production Bundle Build
-pnpm --filter @workspace/workforce run build
 ```
-
-### Empirical Performance Benchmarks
-* **Steady-State Memory**: ~185 MB RAM (optimized for low-cost CPU container deployment).
-* **Course Retrieval Latency**: **6.9 ms** hybrid semantic search (vs. 104 ms TF-IDF baseline).
-* **Profile Verification Latency**: **1.48 ms** end-to-end.
-* **Test Coverage**: 110 passed unit/integration tests with 0 failures.
 
 ---
 
-## 👥 Authors & Acknowledgments
+## How We Use Replit *(Required)*
 
-* Developed by **Team Powerstrangers** (Mak Jia Hng, Leader)
-* Affiliations: University of Malaya, University Tunku Abdul Rahman, Xiamen University Malaysia
-* Built with data from [JobStreet Malaysia](https://www.kaggle.com/datasets/azraimohamad/jobstreet-all-job-dataset), [Coursera](https://www.kaggle.com/datasets/elvinrustam/coursera-dataset), and the [World Economic Forum Future of Jobs Report](https://www.weforum.org/).
-* Licensed under the [Apache 2.0 License](LICENSE).
+Describe how your team used Replit:
+
+- **Development:** Collaborative coding in a shared Repl workspace, rapid UI iterations, and real-time multiplayer editing between frontend and backend developers.
+- **Hosting:** The full-stack application prototype is served and validated directly within Replit’s cloud environment.
+- **Secrets:** API keys, database URLs, and serverless authentication tokens are stored securely in Replit Secrets, never hardcoded in git.
+
+📄 Proof of use: [`submission/SDC2026_Powerstranger_Replit_POU.pdf`](submission/SDC2026_Powerstranger_Replit_POU.pdf)
+
+## How We Use RunPod *(Required)*
+
+Describe how your team used RunPod:
+
+- **Workload:** Open-weight LLM inference (`Qwen/Qwen2.5-7B-Instruct`) running on a dedicated GPU serverless worker for resume skill extraction and verified career narration, plus CPU Pod hosting for the FastAPI intelligence engine.
+- **Setup:** Deployed as a **RunPod Serverless Endpoint** with OpenAI-compatible vLLM endpoints and a persistent Network Volume (`/workspace/data`).
+- **Integration:** The application sends inference requests to the endpoint using `RUNPOD_API_KEY` and `RUNPOD_ENDPOINT_ID`. If the worker is offline, the system automatically falls back to an offline deterministic dictionary parser.
+
+Example request:
+
+```bash
+curl -X POST https://api.runpod.ai/v2/$RUNPOD_ENDPOINT_ID/openai/v1/chat/completions \
+  -H "Authorization: Bearer $RUNPOD_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "messages": [
+      {"role": "system", "content": "You are a specialized technical skills extractor."},
+      {"role": "user", "content": "Extract technical skills from: 3 years building APIs with FastAPI, Docker, and PostgreSQL."}
+    ],
+    "temperature": 0.1
+  }'
+```
+
+📄 Proof of use: [`submission/SDC2026_Powerstranger_Runpod_POU.pdf`](submission/SDC2026_Powerstranger_Runpod_POU.pdf)
+
+---
+
+## Challenges & Learnings
+
+- **Challenges Faced & Solutions:**
+  - *LLM Hallucinations in Career Guidance:* Generic LLMs frequently invent non-existent course titles and exaggerate niche skills. We solved this by enforcing **100% empirical grounding**: market demand is strictly aggregated from 63,852 verified Malaysian postings, and course recommendations are retrieved from an auditable 8,370 Coursera dataset via hybrid MiniLM ONNX + TF-IDF RRF ($k=60$) rather than generative text.
+  - *Privacy & PII Protection:* Resume uploads contain sensitive personal data. We built an automated multi-layer regex scrubber that redacts Malaysian NRIC numbers, phone numbers, emails, and physical addresses in memory before any data reaches the RunPod vLLM inference worker.
+  - *Cloud Cost & Zero-Credit Resilience:* Cloud GPU endpoints can deplete credits during intensive judging. We engineered the entire architecture to run seamlessly on CPU with deterministic regex/dictionary fallback parsing and local SQLite persistence, guaranteeing $0 cloud cost operation without failure.
+- **Team Learnings:**
+  - Mastering production LLM deployment via RunPod Serverless vLLM and OpenAI-compatible API schemas.
+  - Combining dense semantic vector search (ONNX Runtime) with reciprocal rank fusion for sub-10ms CPU recommendation retrieval.
+  - Implementing enterprise-grade session security (Argon2id, CSRF rotation, timing-safe tokens) in Python and React 19.
+
+## Future Improvements
+
+- [ ] Real-time ingestion pipelines connecting to LinkedIn and JobStreet API feeds for continuous market updates.
+- [ ] Multilingual parsing support for resumes written in Bahasa Melayu and Simplified Chinese.
+- [ ] Integration with Malaysian government initiatives (e.g., MDEC, HRD Corp) for micro-credential sponsorship verification.
+- [ ] Fine-tuning Qwen2.5 on localized Malaysian tech job descriptions using LoRA on RunPod GPUs.
+
+## Team
+
+| Name | Role | GitHub |
+| ---- | ---- | ------ |
+| Mak Jia Hng | Team Leader / Architecture & Backend | [@ivanmaktech](https://github.com/ivanmaktech) |
+| Jasmine Chin Jia Yee | Full-stack / AI & Cloud Deployment | [@CJYJas](https://github.com/CJYJas) |
+| Lai Yan Hang | Data Pipeline & Documentation | [@infinite-sherry](https://github.com/infinite-sherry) |
+| Rei Wen | Auth, Persistence & Full-stack | [@reiwen](https://github.com/reiwen) |
+| Powerstrangers Member | QA & Impact Research | [@Powerstrangers](https://github.com/CJYJas) |
+
+---
+
+## Submission Checklist
+
+- [x] Team name, domain (Domain 1 / Domain 2) and SDG track filled in
+- [x] Slide deck link added
+- [ ] Demo video link added
+- [x] Replit used, with proof of use in `submission/`
+- [x] RunPod used, with proof of use in `submission/`
+- [x] Preliminary submission completed (`SDC2026_Powerstrangers_Preliminary.pdf`)
+- [x] Technology declaration completed (`SDC2026_Powerstranger_TechDeclaration.pdf`)
+- [x] Submission files renamed with your team name (replace `TeamName`)
+- [x] "How to Run" steps verified
+- [x] No API keys or secrets committed to the repository
+
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).
