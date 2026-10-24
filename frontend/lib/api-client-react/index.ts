@@ -169,15 +169,50 @@ export interface PyRoadmapResponse {
 }
 
 // ============================================================================
+// LIVE RUNPOD BACKEND CONFIGURATION & RESOLVER
+// ============================================================================
+
+export const RUNPOD_BACKEND_URL = "https://xvu8eu1rakfbfc-8000.proxy.runpod.net";
+
+export function getBackendBaseUrl(): string {
+  if (typeof import.meta !== "undefined" && (import.meta as any).env) {
+    const env = (import.meta as any).env;
+    if (env.VITE_API_URL) return String(env.VITE_API_URL).replace(/\/+$/, "");
+    if (env.VITE_BACKEND_API_URL) return String(env.VITE_BACKEND_API_URL).replace(/\/+$/, "");
+    if (env.BACKEND_API_URL) return String(env.BACKEND_API_URL).replace(/\/+$/, "");
+  }
+  return RUNPOD_BACKEND_URL;
+}
+
+/**
+ * Resolves a Python backend endpoint path.
+ * Directs API calls to the live RunPod deployment (https://xvu8eu1rakfbfc-8000.proxy.runpod.net).
+ * Strips duplicate /api/py prefix when appending to base URL.
+ */
+export function resolvePyUrl(path: string): string {
+  if (path.startsWith("http://") || path.startsWith("https://")) {
+    return path;
+  }
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  const baseUrl = getBackendBaseUrl();
+  if (baseUrl) {
+    const endpoint = cleanPath.startsWith("/api/py") ? cleanPath.replace(/^\/api\/py/, "") : cleanPath;
+    return `${baseUrl}${endpoint}`;
+  }
+  return cleanPath.startsWith("/api/py") ? cleanPath : `/api/py${cleanPath}`;
+}
+
+// ============================================================================
 // HTTP CLIENT
 // ============================================================================
 
 async function fetchJson<T = any>(url: string, init?: RequestInit): Promise<T> {
+  const targetUrl = url.startsWith("/api/py") ? resolvePyUrl(url) : url;
   const headers = new Headers(init?.headers);
   if (!(init?.body instanceof FormData) && !headers.has("Content-Type") && init?.method && init.method !== "GET") {
     headers.set("Content-Type", "application/json");
   }
-  const res = await fetch(url, { ...init, headers });
+  const res = await fetch(targetUrl, { ...init, headers });
   if (!res.ok) {
     let msg = `Request failed: ${res.status} ${res.statusText}`;
     try {

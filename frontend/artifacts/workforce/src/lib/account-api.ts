@@ -1,3 +1,5 @@
+import { resolvePyUrl } from "@workspace/api-client-react";
+
 export interface AccountUser {
   id: string;
   email: string;
@@ -47,7 +49,8 @@ export async function accountRequest<T>(
     const csrf = csrfCookie();
     if (csrf) headers.set("X-CSRF-Token", csrf);
   }
-  const response = await fetch(`/api/py${path}`, {
+  const targetUrl = resolvePyUrl(path);
+  const response = await fetch(targetUrl, {
     method,
     headers,
     credentials: "include",

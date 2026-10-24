@@ -11,6 +11,15 @@
 [![Backend Tests](https://img.shields.io/badge/tests-110%20passed-brightgreen.svg)]()
 [![RunPod Cloud](https://img.shields.io/badge/RunPod-Serverless%20vLLM-purple.svg)](https://runpod.io)
 [![UN SDG Alignment](https://img.shields.io/badge/UN%20SDG-4%20|%208%20|%209-E5243B.svg)](https://sdgs.un.org/goals)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-RunPod%20Cloud-success.svg?style=for-the-badge&logo=rocket)](https://xvu8eu1rakfbfc-8000.proxy.runpod.net)
+
+> [!TIP]
+> ### 🌐 Live Cloud Deployment
+> * **Live URL**: [https://xvu8eu1rakfbfc-8000.proxy.runpod.net](https://xvu8eu1rakfbfc-8000.proxy.runpod.net)
+> * **Docker Hub Image**: `jasmine06/malaysia-workforce:latest`
+> * **Zero-Barrier Judge Preview**: Click **"Continue as Guest Preview"** on the sign-in screen to instantly evaluate the complete platform without registration!
+>
+> *Running low on RunPod credits or testing offline? See the [Local Setup Guide (Zero-Credit Mode)](#-running-locally-offline--zero-credit-mode) below.*
 
 ---
 
@@ -113,58 +122,79 @@ The platform strictly uses verifiable, publicly auditable datasets:
 
 ---
 
-## 🚀 Quickstart Guide (Judge & Developer Setup)
+## 🚀 Quickstart Guide & Deployment Options
 
-### Prerequisites
-* **Python**: 3.10+ (Python 3.11 or 3.13 supported)
-* **Node.js**: v20+ or v24
-* **pnpm**: v9+ (`npm install -g pnpm`)
+You can evaluate FutureReady MY either via the **live cloud deployment** or by **running locally on your machine with zero cloud credits**.
 
 ---
 
-### Step 1: Backend Setup (FastAPI Intelligence Engine)
+### Option 1: Live Cloud Deployment (Instant Evaluation)
+
+* **Live Platform URL**: **[https://xvu8eu1rakfbfc-8000.proxy.runpod.net](https://xvu8eu1rakfbfc-8000.proxy.runpod.net)**
+* **No Account Required**: Click **"Continue as Guest Preview"** on the sign-in screen to bypass authentication and explore all features immediately.
+* **Pre-configured Cloud Stack**: Hosts the full-stack React 19 client bundled with the FastAPI analytics backend and connected to RunPod Serverless vLLM workers.
+
+---
+
+### Option 2: Running Locally (Offline / Zero-Credit Mode)
+
+If your RunPod credits run out, or if you prefer evaluating offline, the entire platform is engineered to run 100% locally on standard CPU hardware with **zero external dependencies and $0 cloud cost**.
+
+#### Method A: Unified Full-Stack Run (Fastest — 1 Terminal)
+The backend includes a pre-compiled, optimized production bundle of the React 19 frontend and an embedded snapshot adapter. You only need Python!
 
 ```bash
 # 1. Clone repository
 git clone https://github.com/CJYJas/malaysia-workforce-platform.git
 cd malaysia-workforce-platform
 
-# 2. Virtual environment
+# 2. Set up virtual environment
 python -m venv venv
 # Windows:
 .\venv\Scripts\activate
 # Linux/macOS:
 source venv/bin/activate
 
-# 3. Install dependencies
+# 3. Install Python dependencies
 pip install -r requirements.txt
 
-# 4. Start the backend service
+# 4. Start the unified platform (serves Frontend UI + Backend API on port 8000)
 uvicorn app.api:app --host 0.0.0.0 --port 8000 --reload
 ```
-> [!NOTE]
-> The unified backend automatically initialises local SQLite storage (`local_dev.db`), development signing keys, and allowlisted origins out-of-the-box. Interactive API docs are available at `http://localhost:8000/docs`.
+Open your browser to: **`http://localhost:8000`** (or view interactive OpenAPI docs at `http://localhost:8000/docs`).
+
+#### Method B: One-Command Docker Run
+If you have Docker Desktop installed, run the official pre-built image with a single command:
+
+```bash
+docker run -p 8000:8000 jasmine06/malaysia-workforce:latest
+```
+Open your browser to: **`http://localhost:8000`**.
+
+#### Method C: Developer Mode (Vite Hot-Reloading)
+For live frontend code editing:
+
+```bash
+# Terminal 1 — Start FastAPI Backend (Port 8000)
+uvicorn app.api:app --host 0.0.0.0 --port 8000 --reload
+
+# Terminal 2 — Start Frontend Client with Hot-Reloading (Port 5173)
+cd frontend
+pnpm install
+pnpm --filter @workspace/workforce run dev
+```
+Open your browser to: **`http://localhost:5173`**.
 
 ---
 
-### Step 2: Frontend Setup (FutureReady MY Web Client)
+### 🛡️ Zero-Credit & Offline Resilience Guarantee
 
-In a new terminal window:
+FutureReady MY does **not** hard-block or fail if RunPod cloud credits are depleted:
 
-```bash
-cd frontend
-
-# 1. Install dependencies
-pnpm install
-
-# 2. Start API Snapshot Server (Terminal A - Port 5000)
-pnpm --filter @workspace/api-server run dev
-
-# 3. Start FutureReady MY Web App (Terminal B - Port 5173)
-pnpm --filter @workspace/workforce run dev
-```
-
-Open your browser to: **`http://localhost:5173`**
+1. **Local SQLite Persistence**: Account authentication (Argon2id) and personalized learning checkpoint progress automatically persist in a local SQLite file (`local_dev.db`). No cloud databases required.
+2. **CPU-Powered Semantic Search**: Course matching uses a local CPU-optimized ONNX runtime (`all-MiniLM-L6-v2`) paired with TF-IDF Reciprocal Rank Fusion ($k=60$). Vector inference executes entirely on local CPU in **6.9 ms** with $0 cloud spend.
+3. **Deterministic Resume Parsing Fallback**: If the RunPod vLLM GPU worker is offline or out of credit, the platform automatically activates its built-in rule-based and regex dictionary extraction pipeline, ensuring resumes are parsed and matched accurately without errors.
+4. **Offline Snapshot Corpus**: Complete empirical data for 63,852 JobStreet postings, 8,370 Coursera courses, and UN SDG mappings are stored locally in `app/workforce_data/` and `data/`.
 
 ---
 

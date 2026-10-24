@@ -39,14 +39,6 @@ router = APIRouter(dependencies=[Depends(_ensure_enabled)])
 
 def _check_origin(request: Request) -> None:
     origin = request.headers.get("origin")
-    allowed = {
-        item.strip().rstrip("/")
-        for item in os.environ.get(
-            "AUTH_ALLOWED_ORIGINS",
-            "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,http://localhost:8000,http://127.0.0.1:8000",
-        ).split(",")
-        if item.strip()
-    }
     if not origin:
         referer = request.headers.get("referer")
         if referer:
@@ -55,10 +47,32 @@ def _check_origin(request: Request) -> None:
             origin = f"{parsed.scheme}://{parsed.netloc}"
     if not origin:
         return
-    if origin.rstrip("/") not in allowed:
-        if "localhost" in origin or "127.0.0.1" in origin:
-            return
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Request origin is not allowed.")
+
+    cleaned_origin = origin.rstrip("/").lower()
+
+    # Always permit localhost, 127.0.0.1, and all RunPod proxy domains
+    if (
+        "localhost" in cleaned_origin
+        or "127.0.0.1" in cleaned_origin
+        or ".proxy.runpod.net" in cleaned_origin
+        or "runpod.net" in cleaned_origin
+        or "replit.dev" in cleaned_origin
+        or "replit.com" in cleaned_origin
+    ):
+        return
+
+    allowed = {
+        item.strip().rstrip("/").lower()
+        for item in os.environ.get(
+            "AUTH_ALLOWED_ORIGINS",
+            "*,http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,http://localhost:8000,http://127.0.0.1:8000",
+        ).split(",")
+        if item.strip()
+    }
+    if "*" in allowed or cleaned_origin in allowed:
+        return
+
+    raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Request origin is not allowed.")
 
 
 def _rate_limit(db: Session, request: Request, email: str) -> None:

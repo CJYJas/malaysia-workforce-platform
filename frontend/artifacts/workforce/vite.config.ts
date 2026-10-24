@@ -1,7 +1,7 @@
 import path from 'path';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 
 import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal';
 
@@ -13,6 +13,20 @@ if (Number.isNaN(port) || port <= 0) {
 }
 
 const basePath = process.env.BASE_PATH || '/';
+
+const workspaceRoot = path.resolve(import.meta.dirname, '..', '..');
+const appRoot = path.resolve(import.meta.dirname);
+const loadedEnv = {
+  ...loadEnv(process.env.NODE_ENV || 'development', workspaceRoot, ''),
+  ...loadEnv(process.env.NODE_ENV || 'development', appRoot, ''),
+  ...process.env,
+};
+
+const backendApiUrl =
+  loadedEnv.VITE_API_URL ||
+  loadedEnv.BACKEND_API_URL ||
+  loadedEnv.VITE_BACKEND_API_URL ||
+  'https://xvu8eu1rakfbfc-8000.proxy.runpod.net';
 
 export default defineConfig({
   base: basePath,
@@ -61,8 +75,9 @@ export default defineConfig({
     },
     proxy: {
       '/api/py': {
-        target: process.env.BACKEND_API_URL || 'http://127.0.0.1:8000',
+        target: backendApiUrl,
         changeOrigin: true,
+        secure: false,
         rewrite: (path) => path.replace(/^\/api\/py/, ''),
       },
       '/api': {
@@ -77,8 +92,9 @@ export default defineConfig({
     allowedHosts: true,
     proxy: {
       '/api/py': {
-        target: process.env.BACKEND_API_URL || 'http://localhost:8000',
+        target: backendApiUrl,
         changeOrigin: true,
+        secure: false,
         rewrite: (path) => path.replace(/^\/api\/py/, ''),
       },
       '/api': {

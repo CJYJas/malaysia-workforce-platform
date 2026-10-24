@@ -56,16 +56,30 @@ config = load_config()
 
 # Read CORS origins from environment variable or fallback to config
 cors_env = os.environ.get("CORS_ORIGINS")
+default_allowed_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
 if cors_env:
     try:
-        # Check if valid JSON array
-        cors_origins = json.loads(cors_env)
-        if not isinstance(cors_origins, list):
+        parsed = json.loads(cors_env)
+        if isinstance(parsed, list):
+            cors_origins = [str(x).strip() for x in parsed if str(x).strip()]
+        else:
             cors_origins = [s.strip() for s in cors_env.split(",") if s.strip()]
     except Exception:
         cors_origins = [s.strip() for s in cors_env.split(",") if s.strip()]
 else:
-    cors_origins = config.cors_origins_default
+    cors_origins = list(default_allowed_origins)
+
+# Ensure essential local and preview origins are always present
+for o in default_allowed_origins:
+    if o not in cors_origins:
+        cors_origins.append(o)
 
 # Create FastAPI application
 app = FastAPI(
@@ -79,13 +93,15 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# Attach CORS middleware
+# Attach CORS middleware with credentials, methods, headers, and RunPod proxy domain regex
 app.add_middleware(
     CORSMiddleware,
     allow_origins=cors_origins,
+    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|.*\.proxy\.runpod\.net|.*\.runpod\.net|.*\.replit\.dev|.*\.replit\.com)(:\d+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # Initialize TrendAnalyzer (starts even if data is not loaded yet)
@@ -847,6 +863,55 @@ try:
     logger.info("Auth & account routes successfully mounted on main API app.")
 except Exception as exc:
     logger.warning(f"Could not initialize auth routes: {exc}")
+
+# Mount workforce overview, courses, and journey snapshot adapter
+try:
+    from app.workforce_adapter import router as workforce_router
+    app.include_router(workforce_router)
+    logger.info("Workforce & journey snapshot routes mounted on main API app.")
+except Exception as exc:
+    logger.warning(f"Could not initialize workforce routes: {exc}")
+
+
+# ==============================================================================
+# FRONTEND STATIC FILES & SPA SERVING
+# ==============================================================================
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+_frontend_search_paths = [
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "static"),
+    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "frontend", "artifacts", "workforce", "dist", "public"),
+    "/workspace/app/static",
+    "/workspace/frontend/artifacts/workforce/dist/public"
+]
+
+_static_dist_dir = None
+for _p in _frontend_search_paths:
+    if os.path.isdir(_p) and os.path.exists(os.path.join(_p, "index.html")):
+        _static_dist_dir = _p
+        break
+
+if _static_dist_dir:
+    logger.info(f"Serving bundled frontend UI from: {_static_dist_dir}")
+    _assets_dir = os.path.join(_static_dist_dir, "assets")
+    if os.path.isdir(_assets_dir):
+        app.mount("/assets", StaticFiles(directory=_assets_dir), name="assets")
+
+    @app.get("/", include_in_schema=False)
+    async def serve_frontend_root():
+        return FileResponse(os.path.join(_static_dist_dir, "index.html"))
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    async def serve_frontend_spa(full_path: str):
+        # Exclude reserved API prefixes and docs from SPA fallback
+        if full_path.startswith("api/") or full_path in {"docs", "redoc", "openapi.json"}:
+            raise HTTPException(status_code=404, detail="Endpoint not found")
+
+        candidate_file = os.path.join(_static_dist_dir, full_path)
+        if full_path and os.path.isfile(candidate_file):
+            return FileResponse(candidate_file)
+        return FileResponse(os.path.join(_static_dist_dir, "index.html"))
 
 
 

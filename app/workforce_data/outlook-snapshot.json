@@ -1,0 +1,111 @@
+{
+  "source_title": "World Economic Forum · Future of Jobs Report 2025",
+  "source_url": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/digest/",
+  "published_at": "2025-01-07",
+  "retrieved_at": "2026-10-22T17:24:24.622Z",
+  "checked_at": "2026-10-22T17:24:24.622Z",
+  "status": "bundled",
+  "scope": "Global employer expectations for 2025–2030; not a Malaysian vacancy trend.",
+  "caveat": "Direction is reported employer expectation, not an observed growth rate or a guarantee. The source is an annual report, not a live job feed. Signal vocabulary is a transparent source extraction; detailed role mappings are editorial.",
+  "error": null,
+  "signals": [
+    {
+      "id": "role-big-data-specialists",
+      "label": "Big Data Specialists",
+      "kind": "role",
+      "direction": "rising",
+      "evidence": "Big Data Specialists"
+    },
+    {
+      "id": "role-fintech-engineers",
+      "label": "Fintech Engineers",
+      "kind": "role",
+      "direction": "rising",
+      "evidence": "Fintech Engineers"
+    },
+    {
+      "id": "role-ai-and-machine-learning-specialists",
+      "label": "AI and Machine Learning Specialists",
+      "kind": "role",
+      "direction": "rising",
+      "evidence": "AI and Machine Learning Specialists"
+    },
+    {
+      "id": "role-software-and-application-developers",
+      "label": "Software and Application Developers",
+      "kind": "role",
+      "direction": "rising",
+      "evidence": "Software and Application Developers"
+    },
+    {
+      "id": "role-data-entry-clerks",
+      "label": "Data Entry Clerks",
+      "kind": "role",
+      "direction": "declining",
+      "evidence": "Data Entry Clerks"
+    },
+    {
+      "id": "role-bank-tellers",
+      "label": "Bank Tellers",
+      "kind": "role",
+      "direction": "declining",
+      "evidence": "Bank Tellers"
+    },
+    {
+      "id": "role-administrative-assistants-and-executive-secretaries",
+      "label": "Administrative Assistants and Executive Secretaries",
+      "kind": "role",
+      "direction": "declining",
+      "evidence": "Administrative Assistants and Executive Secretaries"
+    },
+    {
+      "id": "role-cashiers-and-ticket-clerks",
+      "label": "Cashiers and Ticket Clerks",
+      "kind": "role",
+      "direction": "declining",
+      "evidence": "Cashiers and Ticket Clerks"
+    },
+    {
+      "id": "skill-ai-and-big-data",
+      "label": "AI and big data",
+      "kind": "skill",
+      "direction": "rising",
+      "evidence": "AI and big data"
+    },
+    {
+      "id": "skill-networks-and-cybersecurity",
+      "label": "networks and cybersecurity",
+      "kind": "skill",
+      "direction": "rising",
+      "evidence": "networks and cybersecurity"
+    },
+    {
+      "id": "skill-technology-literacy",
+      "label": "technology literacy",
+      "kind": "skill",
+      "direction": "rising",
+      "evidence": "technology literacy"
+    },
+    {
+      "id": "skill-creative-thinking",
+      "label": "creative thinking",
+      "kind": "skill",
+      "direction": "rising",
+      "evidence": "creative thinking"
+    },
+    {
+      "id": "skill-curiosity-and-lifelong-learning",
+      "label": "curiosity and lifelong learning",
+      "kind": "skill",
+      "direction": "rising",
+      "evidence": "curiosity and lifelong learning"
+    },
+    {
+      "id": "skill-manual-dexterity-endurance-and-precision",
+      "label": "manual dexterity, endurance and precision",
+      "kind": "skill",
+      "direction": "declining",
+      "evidence": "manual dexterity, endurance and precision"
+    }
+  ]
+}

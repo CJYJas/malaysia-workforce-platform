@@ -50,9 +50,10 @@ python -m uvicorn app.extension_entrypoint:app --host 127.0.0.1 --port 8000 --re
 SQLite tables are created at startup; production PostgreSQL tables must be created with the documented manual migrations. Account routes reject requests without an allowlisted `Origin`; authenticated mutations also require `X-CSRF-Token` from the registration/login response. Swagger UI at `/docs` does not automatically attach that CSRF header, and command-line requests must supply `Origin` explicitly.
 
 ### Backend & Frontend Connection
-- **Vite Proxy Layer (`vite.config.ts`)**: In development, Vite automatically proxies `/api` requests to the API Snapshot Adapter (`http://127.0.0.1:5000`) and `/api/py` requests to the Python FastAPI backend (`http://127.0.0.1:8000`), preventing CORS friction.
-- **Client Query Layer (`@workspace/api-client-react`)**: TanStack Query hooks handle real-time fetching, caching, deduplication, and error recovery across all views (Market Overview, Demand Radar, Role Matches, Learning Pathways, and Course Catalog).
-- **Default Ports**: `5173` for web frontend, `5000` for API adapter snapshot service, `8000` for Python FastAPI intelligence engine. Override via `API_SERVER_URL` and `BACKEND_API_URL` environment variables if needed.
+- **Live RunPod Deployment**: The Python FastAPI intelligence backend is deployed on RunPod at `https://xvu8eu1rakfbfc-8000.proxy.runpod.net`.
+- **Vite Proxy Layer (`vite.config.ts`)**: In development and preview, Vite automatically proxies `/api` requests to the API Snapshot Adapter (`http://127.0.0.1:5000`) and `/api/py` requests to the live RunPod backend (`https://xvu8eu1rakfbfc-8000.proxy.runpod.net`), preventing CORS friction.
+- **Client Query Layer (`@workspace/api-client-react`)**: TanStack Query hooks handle real-time fetching, caching, deduplication, and error recovery across all views. Python backend calls resolve to `VITE_API_URL` / `BACKEND_API_URL` pointing to the live RunPod endpoint.
+- **Default Ports & Overrides**: `5173` for web frontend, `5000` for API adapter snapshot service, and `https://xvu8eu1rakfbfc-8000.proxy.runpod.net` for the Python FastAPI intelligence engine. Override via `API_SERVER_URL`, `BACKEND_API_URL`, and `VITE_API_URL` environment variables if needed.
 
 ## Verification & Tests
 
