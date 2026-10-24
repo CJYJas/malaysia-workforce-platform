@@ -31,7 +31,7 @@
 | Live Demo         | https://xvu8eu1rakfbfc-8000.proxy.runpod.net   |
 | RunPod Endpoint   | https://api.runpod.ai/v2/vllm-qwen2-5-7b/openai/v1 |
 | Slide Deck        | https://drive.google.com/file/d/16Z32uECBQOPHcBRlcOiit74u6vkUjDCb/view?usp=drivesdk |
-| Demo Video        | *(Pending upload / To be added before deadline)* |
+| Demo Video        | https://youtu.be/Rq44yEZXFb8 |
 
 ---
 
