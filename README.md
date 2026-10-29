@@ -227,8 +227,8 @@ curl -X POST https://api.runpod.ai/v2/$RUNPOD_ENDPOINT_ID/openai/v1/chat/complet
 
 | Name | Role | GitHub |
 | ---- | ---- | ------ |
-| Mak Jia Hng | Team Leader / Architecture & Backend | [@ivanmaktech](https://github.com/ivanmaktech) |
-| Jasmine Chin Jia Yee | Frontend | [@CJYJas](https://github.com/CJYJas) |
+| Mak Jia Hng | Team Leader / Frontend | [@ivanmaktech](https://github.com/ivanmaktech) |
+| Jasmine Chin Jia Yee | Architecture & Backend | [@CJYJas](https://github.com/CJYJas) |
 | Lai Yan Hang | Documentation | [@infinite-sherry](https://github.com/infinite-sherry) |
 | Jaclyn | Documentation | — |
 | Rei Wen | Auth, Persistence & Backend | [@reiwen](https://github.com/reiwen) |
